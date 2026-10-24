@@ -1,0 +1,2992 @@
+{
+ "common": {
+  "locL": [
+   {
+    "lid": "A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@X=16373923@Y=48185939@U=81@L=904008@",
+    "type": "S",
+    "name": "Wien Hbf (Tiefgeschoß Straßenbahn)",
+    "icoX": 1,
+    "extId": "904008",
+    "state": "F",
+    "crd": {
+     "x": 16373923,
+     "y": 48185939,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@X=16338865@Y=48196888@U=81@L=915005@",
+    "type": "S",
+    "name": "Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)",
+    "icoX": 1,
+    "extId": "915005",
+    "state": "F",
+    "crd": {
+     "x": 16338865,
+     "y": 48196888,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Blechturmgasse (Tiefgeschoß)@X=16368359@Y=48184276@U=81@L=904010@",
+    "type": "S",
+    "name": "Wien Blechturmgasse (Tiefgeschoß)",
+    "icoX": 1,
+    "extId": "904010",
+    "state": "F",
+    "crd": {
+     "x": 16368359,
+     "y": 48184276,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Kliebergasse (Tiefgeschoß)@X=16364404@Y=48182883@U=81@L=905043@",
+    "type": "S",
+    "name": "Wien Kliebergasse (Tiefgeschoß)",
+    "icoX": 1,
+    "extId": "905043",
+    "state": "F",
+    "crd": {
+     "x": 16364404,
+     "y": 48182883,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000300"
+   },
+   {
+    "lid": "A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@X=16358965@Y=48180743@U=81@L=910104@",
+    "type": "S",
+    "name": "Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)",
+    "icoX": 1,
+    "extId": "910104",
+    "state": "F",
+    "crd": {
+     "x": 16358965,
+     "y": 48180743,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000200"
+   },
+   {
+    "lid": "A=1@O=Wien Eichenstraße (Tiefgeschoß)@X=16349670@Y=48180518@U=81@L=905033@",
+    "type": "S",
+    "name": "Wien Eichenstraße (Tiefgeschoß)",
+    "icoX": 1,
+    "extId": "905033",
+    "state": "F",
+    "crd": {
+     "x": 16349670,
+     "y": 48180518,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Arbeitergasse/Gürtel@X=16345661@Y=48184447@U=81@L=905048@",
+    "type": "S",
+    "name": "Wien Arbeitergasse/Gürtel",
+    "icoX": 1,
+    "extId": "905048",
+    "state": "F",
+    "crd": {
+     "x": 16345661,
+     "y": 48184447,
+     "floor": 0
+    },
+    "pCls": 576,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Margaretengürtel (Straßenbahn)@X=16341967@Y=48188312@U=81@L=905003@",
+    "type": "S",
+    "name": "Wien Margaretengürtel (Straßenbahn)",
+    "icoX": 1,
+    "extId": "905003",
+    "state": "F",
+    "crd": {
+     "x": 16341967,
+     "y": 48188312,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Gumpendorfer Straße (Gumpendorfer Gürtel)@X=16337841@Y=48190550@U=81@L=906003@",
+    "type": "S",
+    "name": "Wien Gumpendorfer Straße (Gumpendorfer Gürtel)",
+    "icoX": 1,
+    "extId": "906003",
+    "state": "F",
+    "crd": {
+     "x": 16337841,
+     "y": 48190550,
+     "floor": 0
+    },
+    "pCls": 576,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Mariahilfer Gürtel@X=16338874@Y=48193211@U=81@L=906002@",
+    "type": "S",
+    "name": "Wien Mariahilfer Gürtel",
+    "icoX": 1,
+    "extId": "906002",
+    "state": "F",
+    "crd": {
+     "x": 16338874,
+     "y": 48193211,
+     "floor": 0
+    },
+    "pCls": 512,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Westbahnhof@X=16337256@Y=48196753@U=81@L=8100003@",
+    "type": "S",
+    "name": "Wien Westbahnhof",
+    "icoX": 0,
+    "extId": "8100003",
+    "state": "F",
+    "crd": {
+     "x": 16337256,
+     "y": 48196753,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101001",
+      "type": "U"
+     },
+     {
+      "id": "Ws",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   },
+   {
+    "lid": "A=1@O=Salzburg Hbf@X=13045856@Y=47813057@U=81@L=8100002@",
+    "type": "S",
+    "name": "Salzburg Hbf",
+    "icoX": 0,
+    "extId": "8100002",
+    "state": "F",
+    "crd": {
+     "x": 13045856,
+     "y": 47813057,
+     "floor": 0
+    },
+    "pCls": 4159,
+    "globalIdL": [
+     {
+      "id": "8101114",
+      "type": "U"
+     },
+     {
+      "id": "Sb",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000700"
+   },
+   {
+    "lid": "A=1@O=Wien Hütteldorf Bahnhof@X=16261118@Y=48197355@U=81@L=8100447@",
+    "type": "S",
+    "name": "Wien Hütteldorf Bahnhof",
+    "icoX": 0,
+    "extId": "8100447",
+    "state": "F",
+    "crd": {
+     "x": 16261118,
+     "y": 48197355,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101008",
+      "type": "U"
+     },
+     {
+      "id": "Hf",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000400"
+   },
+   {
+    "lid": "A=1@O=St.Pölten Hbf@X=15624681@Y=48208277@U=81@L=8100008@",
+    "type": "S",
+    "name": "St.Pölten Hbf",
+    "icoX": 0,
+    "extId": "8100008",
+    "state": "F",
+    "crd": {
+     "x": 15624681,
+     "y": 48208277,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101032",
+      "type": "U"
+     },
+     {
+      "id": "Pb",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Amstetten NÖ Bahnhof@X=14878253@Y=48121531@U=81@L=8100012@",
+    "type": "S",
+    "name": "Amstetten NÖ Bahnhof",
+    "icoX": 0,
+    "extId": "8100012",
+    "state": "F",
+    "crd": {
+     "x": 14878253,
+     "y": 48121531,
+     "floor": 0
+    },
+    "pCls": 4125,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101049",
+      "type": "U"
+     },
+     {
+      "id": "Ams",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Linz/Donau Hbf@X=14291860@Y=48290241@U=81@L=8100013@",
+    "type": "S",
+    "name": "Linz/Donau Hbf",
+    "icoX": 0,
+    "extId": "8100013",
+    "state": "F",
+    "crd": {
+     "x": 14291860,
+     "y": 48290241,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101073",
+      "type": "U"
+     },
+     {
+      "id": "Lz",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wels Hbf@X=14026507@Y=48165947@U=81@L=8100014@",
+    "type": "S",
+    "name": "Wels Hbf",
+    "icoX": 0,
+    "extId": "8100014",
+    "state": "F",
+    "crd": {
+     "x": 14026507,
+     "y": 48165947,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101081",
+      "type": "U"
+     },
+     {
+      "id": "We",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Attnang-Puchheim Bahnhof@X=13720892@Y=48012609@U=81@L=8100017@",
+    "type": "S",
+    "name": "Attnang-Puchheim Bahnhof",
+    "icoX": 0,
+    "extId": "8100017",
+    "state": "F",
+    "crd": {
+     "x": 13720892,
+     "y": 48012609,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101091",
+      "type": "U"
+     },
+     {
+      "id": "At",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Vöcklabruck Bahnhof@X=13663783@Y=48010083@U=81@L=8100507@",
+    "type": "S",
+    "name": "Vöcklabruck Bahnhof",
+    "icoX": 0,
+    "extId": "8100507",
+    "state": "F",
+    "crd": {
+     "x": 13663783,
+     "y": 48010083,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101093",
+      "type": "U"
+     },
+     {
+      "id": "Vk",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Hbf (Bahnsteige 3-12)@X=16377950@Y=48184986@U=81@L=8103000@",
+    "type": "S",
+    "name": "Wien Hbf (Bahnsteige 3-12)",
+    "icoX": 0,
+    "extId": "8103000",
+    "state": "F",
+    "crd": {
+     "x": 16377950,
+     "y": 48184986,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101003",
+      "type": "U"
+     },
+     {
+      "id": "Wbf",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   },
+   {
+    "lid": "A=1@O=Wien Meidling Bahnhof@X=16333966@Y=48174532@U=81@L=8100514@",
+    "type": "S",
+    "name": "Wien Meidling Bahnhof",
+    "icoX": 0,
+    "extId": "8100514",
+    "state": "F",
+    "crd": {
+     "x": 16333966,
+     "y": 48174532,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8103107",
+      "type": "U"
+     },
+     {
+      "id": "Mi",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   }
+  ],
+  "prodL": [
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-18::*",
+    "name": "Tram 18",
+    "nameS": "Tram 18",
+    "number": "18",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 18 ",
+     "num": "21717",
+     "line": "18",
+     "lineId": "vor-22-18",
+     "matchId": "3118000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "name": "Fußweg",
+    "icoX": 5,
+    "prodCtx": {
+     "name": "Fußweg"
+    }
+   },
+   {
+    "pid": "L::12::WB::B3422329368::WB_3422329368::*",
+    "name": "WB 906",
+    "nameS": "WB 906",
+    "number": "906",
+    "icoX": 6,
+    "cls": 4096,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "WB 906  ",
+     "num": "906",
+     "matchId": "906",
+     "catOut": "WB      ",
+     "catOutS": "WB",
+     "catOutL": "WESTbahn",
+     "catIn": "WB",
+     "catCode": "12",
+     "admin": "3236__"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_917085"
+    ]
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-62::*",
+    "name": "Tram 62",
+    "nameS": "Tram 62",
+    "number": "62",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 62 ",
+     "num": "112406",
+     "line": "62",
+     "lineId": "vor-22-62",
+     "matchId": "3162000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-18::*",
+    "name": "Tram 18",
+    "nameS": "Tram 18",
+    "number": "18",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 18 ",
+     "num": "21718",
+     "line": "18",
+     "lineId": "vor-22-18",
+     "matchId": "3118000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-62::*",
+    "name": "Tram 62",
+    "nameS": "Tram 62",
+    "number": "62",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 62 ",
+     "num": "112407",
+     "line": "62",
+     "lineId": "vor-22-62",
+     "matchId": "3162000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-18::*",
+    "name": "Tram 18",
+    "nameS": "Tram 18",
+    "number": "18",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 18 ",
+     "num": "21719",
+     "line": "18",
+     "lineId": "vor-22-18",
+     "matchId": "3118000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-62::*",
+    "name": "Tram 62",
+    "nameS": "Tram 62",
+    "number": "62",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 62 ",
+     "num": "112408",
+     "line": "62",
+     "lineId": "vor-22-62",
+     "matchId": "3162000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-18::*",
+    "name": "Tram 18",
+    "nameS": "Tram 18",
+    "number": "18",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 18 ",
+     "num": "21720",
+     "line": "18",
+     "lineId": "vor-22-18",
+     "matchId": "3118000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-6::*",
+    "name": "Tram 6",
+    "nameS": "Tram 6",
+    "number": "6",
+    "icoX": 1,
+    "cls": 512,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "Tram 6  ",
+     "num": "103634",
+     "line": "6",
+     "lineId": "vor-22-6",
+     "matchId": "3106000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "name": "Umstieg",
+    "icoX": 5,
+    "prodCtx": {
+     "name": "Umstieg"
+    }
+   },
+   {
+    "pid": "L::0::RJX::B1146449194::RJX_1146449194::*",
+    "name": "RJX 262",
+    "nameS": "RJX 262",
+    "number": "262",
+    "icoX": 0,
+    "cls": 1,
+    "oprX": 2,
+    "prodCtx": {
+     "name": "RJX 262 ",
+     "num": "262",
+     "matchId": "262",
+     "catOut": "RJX     ",
+     "catOutS": "RJX",
+     "catOutL": "railjet xpress",
+     "catIn": "RJX",
+     "catCode": "0",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_835835",
+     "HIM_FREETEXT_836525",
+     "HIM_FREETEXT_836529",
+     "HIM_FREETEXT_836533",
+     "HIM_FREETEXT_836534",
+     "HIM_FREETEXT_836543",
+     "HIM_FREETEXT_836555",
+     "HIM_FREETEXT_836568",
+     "HIM_FREETEXT_836570",
+     "HIM_FREETEXT_836571",
+     "HIM_FREETEXT_836580",
+     "HIM_FREETEXT_836618",
+     "HIM_FREETEXT_836620",
+     "HIM_FREETEXT_836621",
+     "HIM_FREETEXT_836623",
+     "HIM_FREETEXT_836631",
+     "HIM_FREETEXT_836637",
+     "HIM_FREETEXT_836641",
+     "HIM_FREETEXT_836649",
+     "HIM_FREETEXT_836660",
+     "HIM_FREETEXT_836743",
+     "HIM_FREETEXT_836751",
+     "HIM_FREETEXT_836758",
+     "HIM_FREETEXT_836901",
+     "HIM_FREETEXT_879743",
+     "HIM_FREETEXT_879745",
+     "HIM_FREETEXT_884331",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908625",
+     "HIM_FREETEXT_908627",
+     "HIM_FREETEXT_908631",
+     "HIM_FREETEXT_908937",
+     "HIM_FREETEXT_909947",
+     "HIM_FREETEXT_909949",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_911743",
+     "HIM_FREETEXT_913794",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917085",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_919309",
+     "HIM_FREETEXT_920725",
+     "HIM_FREETEXT_920726",
+     "HIM_FREETEXT_920727",
+     "HIM_FREETEXT_920733",
+     "HIM_FREETEXT_920736",
+     "HIM_FREETEXT_920737",
+     "HIM_FREETEXT_920740",
+     "HIM_FREETEXT_920741",
+     "HIM_FREETEXT_920742",
+     "HIM_FREETEXT_920743",
+     "HIM_FREETEXT_920744",
+     "HIM_FREETEXT_920747",
+     "HIM_FREETEXT_920748",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921026",
+     "HIM_FREETEXT_921028",
+     "HIM_FREETEXT_921186",
+     "HIM_FREETEXT_921188",
+     "HIM_FREETEXT_921485",
+     "HIM_FREETEXT_921627",
+     "HIM_FREETEXT_921628",
+     "HIM_FREETEXT_921629",
+     "HIM_FREETEXT_921631",
+     "HIM_FREETEXT_921632",
+     "HIM_FREETEXT_921633",
+     "HIM_FREETEXT_921642",
+     "HIM_FREETEXT_921650",
+     "HIM_FREETEXT_921703",
+     "HIM_FREETEXT_921706",
+     "HIM_FREETEXT_921707",
+     "HIM_FREETEXT_921720",
+     "HIM_FREETEXT_921737",
+     "HIM_FREETEXT_921738",
+     "HIM_FREETEXT_921740",
+     "HIM_FREETEXT_921743",
+     "HIM_FREETEXT_921744",
+     "HIM_FREETEXT_921746",
+     "HIM_FREETEXT_921747",
+     "HIM_FREETEXT_921756",
+     "HIM_FREETEXT_921760",
+     "HIM_FREETEXT_921761",
+     "HIM_FREETEXT_921765",
+     "HIM_FREETEXT_921766",
+     "HIM_FREETEXT_921767",
+     "HIM_FREETEXT_921768",
+     "HIM_FREETEXT_921769",
+     "HIM_FREETEXT_921770",
+     "HIM_FREETEXT_921781"
+    ]
+   },
+   {
+    "pid": "L::0::RJX::B1146449194::RJX_1146449194::*",
+    "name": "RJX19962",
+    "nameS": "RJX19962",
+    "number": "19962",
+    "icoX": 0,
+    "cls": 1,
+    "oprX": 2,
+    "prodCtx": {
+     "name": "RJX19962",
+     "num": "19962",
+     "matchId": "19962",
+     "catOut": "RJX     ",
+     "catOutS": "RJX",
+     "catOutL": "railjet xpress",
+     "catIn": "RJX",
+     "catCode": "0",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_835835",
+     "HIM_FREETEXT_836525",
+     "HIM_FREETEXT_836529",
+     "HIM_FREETEXT_836533",
+     "HIM_FREETEXT_836534",
+     "HIM_FREETEXT_836543",
+     "HIM_FREETEXT_836555",
+     "HIM_FREETEXT_836568",
+     "HIM_FREETEXT_836570",
+     "HIM_FREETEXT_836571",
+     "HIM_FREETEXT_836580",
+     "HIM_FREETEXT_836618",
+     "HIM_FREETEXT_836620",
+     "HIM_FREETEXT_836621",
+     "HIM_FREETEXT_836623",
+     "HIM_FREETEXT_836631",
+     "HIM_FREETEXT_836637",
+     "HIM_FREETEXT_836641",
+     "HIM_FREETEXT_836649",
+     "HIM_FREETEXT_836660",
+     "HIM_FREETEXT_836743",
+     "HIM_FREETEXT_836751",
+     "HIM_FREETEXT_836758",
+     "HIM_FREETEXT_836901",
+     "HIM_FREETEXT_879743",
+     "HIM_FREETEXT_879745",
+     "HIM_FREETEXT_884331",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908625",
+     "HIM_FREETEXT_908627",
+     "HIM_FREETEXT_908631",
+     "HIM_FREETEXT_908937",
+     "HIM_FREETEXT_909947",
+     "HIM_FREETEXT_909949",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_911743",
+     "HIM_FREETEXT_913794",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917085",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_919309",
+     "HIM_FREETEXT_920725",
+     "HIM_FREETEXT_920726",
+     "HIM_FREETEXT_920727",
+     "HIM_FREETEXT_920733",
+     "HIM_FREETEXT_920736",
+     "HIM_FREETEXT_920737",
+     "HIM_FREETEXT_920740",
+     "HIM_FREETEXT_920741",
+     "HIM_FREETEXT_920742",
+     "HIM_FREETEXT_920743",
+     "HIM_FREETEXT_920744",
+     "HIM_FREETEXT_920747",
+     "HIM_FREETEXT_920748",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921026",
+     "HIM_FREETEXT_921028",
+     "HIM_FREETEXT_921186",
+     "HIM_FREETEXT_921188",
+     "HIM_FREETEXT_921485",
+     "HIM_FREETEXT_921627",
+     "HIM_FREETEXT_921628",
+     "HIM_FREETEXT_921629",
+     "HIM_FREETEXT_921631",
+     "HIM_FREETEXT_921632",
+     "HIM_FREETEXT_921633",
+     "HIM_FREETEXT_921642",
+     "HIM_FREETEXT_921650",
+     "HIM_FREETEXT_921703",
+     "HIM_FREETEXT_921706",
+     "HIM_FREETEXT_921707",
+     "HIM_FREETEXT_921720",
+     "HIM_FREETEXT_921737",
+     "HIM_FREETEXT_921738",
+     "HIM_FREETEXT_921740",
+     "HIM_FREETEXT_921743",
+     "HIM_FREETEXT_921744",
+     "HIM_FREETEXT_921746",
+     "HIM_FREETEXT_921747",
+     "HIM_FREETEXT_921756",
+     "HIM_FREETEXT_921760",
+     "HIM_FREETEXT_921761",
+     "HIM_FREETEXT_921765",
+     "HIM_FREETEXT_921766",
+     "HIM_FREETEXT_921767",
+     "HIM_FREETEXT_921768",
+     "HIM_FREETEXT_921769",
+     "HIM_FREETEXT_921770",
+     "HIM_FREETEXT_921781"
+    ]
+   }
+  ],
+  "opL": [
+   {
+    "name": "Wiener Linien GmbH & Co KG",
+    "url": "https://www.wienerlinien.at",
+    "icoX": 2,
+    "street": "Erdbergerstraße 202",
+    "town": "A-1031 Wien",
+    "phone": "+43 1 7909 100",
+    "email": "post@wienerlinien.at",
+    "id": "vor+04+WL"
+   },
+   {
+    "name": "Westbahn Management GmbH",
+    "url": "https://www.westbahn.at",
+    "icoX": 7,
+    "street": "Europaplatz 3/Stiege 5",
+    "town": "A-1150 Wien",
+    "phone": "+43 1 89900",
+    "email": "meinenachricht@westbahn.at",
+    "id": "at:0:WB:3236__"
+   },
+   {
+    "name": "Nahreisezug",
+    "icoX": 14
+   }
+  ],
+  "dirL": [
+   {
+    "txt": "Burggasse-Stadthalle",
+    "flg": "R"
+   },
+   {
+    "txt": "Salzburg Hbf"
+   },
+   {
+    "txt": "Lainz Wolkersbergenstraße",
+    "flg": "H"
+   },
+   {
+    "txt": "München Hbf",
+    "flg": "x"
+   },
+   {
+    "txt": "Bregenz"
+   }
+  ],
+  "lDrawStyleL": [
+   {
+    "sIcoX": 1,
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "sIcoX": 5,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 6,
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "sIcoX": 6,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 12,
+    "eIcoX": 12,
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "sIcoX": 13,
+    "eIcoX": 13,
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "sIcoX": 0,
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   },
+   {
+    "sIcoX": 0,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 22,
+    "eIcoX": 22,
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   }
+  ],
+  "timeStyleL": [
+   {
+    "mode": "ABS"
+   },
+   {
+    "mode": "HIDE"
+   }
+  ]
+ },
+ "outConL": [
+  {
+   "cid": "C-0",
+   "date": "20261025",
+   "dur": "030500",
+   "durS": "030500",
+   "chg": 1,
+   "sDays": {
+    "sDaysR": "nicht täglich",
+    "sDaysI": "25. Okt bis 6. Dez 2026 So; auch 26. Okt 2026, 8. Dez 2026",
+    "sDaysB": "204081020408102060810204081400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "dep": {
+    "locX": 0,
+    "idx": 15,
+    "dProdX": 0,
+    "dPltfS": {
+     "type": "PL",
+     "txt": "H"
+    },
+    "dTimeS": "080300",
+    "dTimeFS": {
+     "styleX": 0
+    },
+    "dProgType": "PROGNOSED",
+    "dTZOffset": 60,
+    "type": "N"
+   },
+   "arr": {
+    "locX": 11,
+    "idx": 8,
+    "aProdX": 2,
+    "aPltfS": {
+     "type": "PL",
+     "txt": "2A-C"
+    },
+    "aTimeS": "110800",
+    "aTimeFS": {
+     "styleX": 0
+    },
+    "aProgType": "PROGNOSED",
+    "aTZOffset": 60,
+    "type": "N"
+   },
+   "secL": [
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 0,
+      "idx": 15,
+      "dProdX": 0,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "H"
+      },
+      "dTimeS": "080300",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 1,
+      "idx": 24,
+      "aProdX": 0,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "B"
+      },
+      "aTimeS": "081800",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#913169#TA#2#DA#251026#1S#902085#1T#738#LS#907007#LT#822#PU#81#RT#1#CA#str#ZE#18#ZB#Tram 18 #PC#9#FR#902085#FT#738#TO#907007#TT#822#",
+      "date": "20261025",
+      "prodX": 0,
+      "dirTxt": "Burggasse-Stadthalle",
+      "dirFlg": "R",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 0,
+        "idx": 15,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "H"
+        },
+        "dTimeS": "080300",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dDirTxt": "Burggasse-Stadthalle",
+        "dDirFlg": "R",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 2,
+        "idx": 16,
+        "aProdX": 0,
+        "aTimeS": "080400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "080400",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 3,
+        "idx": 17,
+        "aProdX": 0,
+        "aTimeS": "080500",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "080500",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 4,
+        "idx": 18,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "A"
+        },
+        "aTimeS": "080700",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "A"
+        },
+        "dTimeS": "080700",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 5,
+        "idx": 19,
+        "aProdX": 0,
+        "aTimeS": "080900",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "080900",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 6,
+        "idx": 20,
+        "aProdX": 0,
+        "aTimeS": "081100",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "081100",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 7,
+        "idx": 21,
+        "aProdX": 0,
+        "aTimeS": "081300",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "081300",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 8,
+        "idx": 22,
+        "aProdX": 0,
+        "aTimeS": "081400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "081400",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 9,
+        "idx": 23,
+        "aProdX": 0,
+        "aTimeS": "081500",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dTimeS": "081500",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 1,
+        "idx": 24,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "B"
+        },
+        "aTimeS": "081800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "freq": {
+       "minC": 10,
+       "maxC": 15,
+       "numC": 10
+      },
+      "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$202610250803$202610250818$Tram 18 $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 0,
+        "sty": "I",
+        "fLocX": 0,
+        "tLocX": 1,
+        "tagL": [
+         "SUM_CON_FTR_H3",
+         "RES_JNY_DTL_H3"
+        ],
+        "sort": 268435456
+       },
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "fLocX": 0,
+        "tLocX": 1,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 556531712
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 0,
+        "fLocX": 0,
+        "tLocX": 1,
+        "fIdx": 15,
+        "tIdx": 24
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 0,
+        "fLocX": 0,
+        "tLocX": 1,
+        "fIdx": 15,
+        "tIdx": 24
+       }
+      ],
+      "sumLDrawStyleX": 0,
+      "resLDrawStyleX": 7,
+      "trainStartDate": "20261025",
+      "durS": "001500"
+     },
+     "minChg": "000600"
+    },
+    {
+     "type": "WALK",
+     "dep": {
+      "locX": 1,
+      "dTimeS": "081800",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 10,
+      "aTimeS": "082400",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "chg": {
+      "txt": "Umstieg",
+      "durS": "002000",
+      "durFS": {
+       "styleX": 1,
+       "txt": "20 Min"
+      }
+     },
+     "gis": {
+      "dist": 120,
+      "durS": "000600",
+      "dirGeo": 16,
+      "ctx": "H|1|W$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$A=1@O=Wien Westbahnhof@L=8100003@a=128@$202610250818$202610250824$$$1$$$$$$|",
+      "polyG": {
+       "polyXL": [
+        1
+       ]
+      },
+      "gisPrvr": "H",
+      "getDescr": false,
+      "getPoly": false,
+      "sumLDrawStyleX": 2,
+      "resLDrawStyleX": 3,
+      "prodX": 1
+     }
+    },
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 10,
+      "idx": 0,
+      "dProdX": 2,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "6"
+      },
+      "dTimeS": "083800",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 11,
+      "idx": 8,
+      "aProdX": 2,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "2A-C"
+      },
+      "aTimeS": "110800",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#553379#TA#0#DA#251026#1S#8100003#1T#838#LS#8100002#LT#1108#PU#81#RT#1#CA#WB#ZE#906#ZB#WB 906  #PC#12#FR#8100003#FT#838#TO#8100002#TT#1108#",
+      "date": "20261025",
+      "prodX": 2,
+      "dirTxt": "Salzburg Hbf",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 10,
+        "idx": 0,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "6"
+        },
+        "dTimeS": "083800",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dProgType": "PROGNOSED",
+        "dDirTxt": "Salzburg Hbf",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 12,
+        "idx": 1,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "aTimeS": "084400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "dTimeS": "084500",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 13,
+        "idx": 2,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "aTimeS": "090500",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "dTimeS": "090600",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 14,
+        "idx": 3,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "092900",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "093000",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 15,
+        "idx": 4,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "8A-F"
+        },
+        "aTimeS": "095400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "8A-F"
+        },
+        "dTimeS": "095600",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 16,
+        "idx": 5,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "101000",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "101100",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 17,
+        "idx": 6,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "aTimeS": "102300",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "dTimeS": "102400",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 18,
+        "idx": 7,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "102800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "102900",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 11,
+        "idx": 8,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2A-C"
+        },
+        "aTimeS": "110800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aProgType": "PROGNOSED",
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "freq": {
+       "minC": 30,
+       "maxC": 30,
+       "numC": 5
+      },
+      "ctxRecon": "T$A=1@O=Wien Westbahnhof@L=8100003@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610250838$202610251108$WB 906  $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 556531712
+       },
+       {
+        "type": "REM",
+        "remX": 2,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 569638912
+       },
+       {
+        "type": "REM",
+        "remX": 3,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 582746112
+       },
+       {
+        "type": "REM",
+        "remX": 4,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 595853312
+       },
+       {
+        "type": "REM",
+        "remX": 5,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 629932032
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 2,
+        "fLocX": 10,
+        "tLocX": 11,
+        "fIdx": 0,
+        "tIdx": 8
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 1,
+        "fLocX": 10,
+        "tLocX": 11,
+        "fIdx": 0,
+        "tIdx": 8
+       }
+      ],
+      "sumLDrawStyleX": 4,
+      "resLDrawStyleX": 8,
+      "trainStartDate": "20261025",
+      "durS": "023000"
+     }
+    }
+   ],
+   "freq": {
+    "minC": 30
+   },
+   "trfRes": {
+    "statusCode": "OK"
+   },
+   "conSubscr": "F",
+   "recState": "U",
+   "cksum": "8a809f6c_3",
+   "cksumDti": "c6407c4f_3",
+   "intvlSubscr": "F",
+   "originType": "INITIAL",
+   "recon": {
+    "ctx": "¶HKI¶T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$202610250803$202610250818$Tram 18 $$1$$$$$$§W$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$A=1@O=Wien Westbahnhof@L=8100003@a=128@$202610250818$202610250824$$$1$$$$$$§T$A=1@O=Wien Westbahnhof@L=8100003@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610250838$202610251108$WB 906  $$1$$$$$$¶KRCC¶#VE#1#MRTF#"
+   }
+  },
+  {
+   "cid": "C-1",
+   "date": "20261025",
+   "dur": "030000",
+   "durS": "030000",
+   "chg": 2,
+   "sDays": {
+    "sDaysR": "nicht täglich",
+    "sDaysI": "25. Okt bis 6. Dez 2026 So; auch 26. Okt 2026, 8. Dez 2026",
+    "sDaysB": "204081020408102060810204081400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "dep": {
+    "locX": 0,
+    "idx": 1,
+    "dProdX": 3,
+    "dPltfS": {
+     "type": "PL",
+     "txt": "H"
+    },
+    "dTimeS": "080800",
+    "dTimeFS": {
+     "styleX": 0
+    },
+    "dProgType": "PROGNOSED",
+    "dTZOffset": 60,
+    "type": "N"
+   },
+   "arr": {
+    "locX": 11,
+    "idx": 8,
+    "aProdX": 2,
+    "aPltfS": {
+     "type": "PL",
+     "txt": "2A-C"
+    },
+    "aTimeS": "110800",
+    "aTimeFS": {
+     "styleX": 0
+    },
+    "aProgType": "PROGNOSED",
+    "aTZOffset": 60,
+    "type": "N"
+   },
+   "secL": [
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 0,
+      "idx": 1,
+      "dProdX": 3,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "H"
+      },
+      "dTimeS": "080800",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 4,
+      "idx": 4,
+      "aProdX": 3,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "A"
+      },
+      "aTimeS": "081200",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#903974#TA#1#DA#251026#1S#904009#1T#806#LS#913105#LT#841#PU#81#RT#1#CA#str#ZE#62#ZB#Tram 62 #PC#9#FR#904009#FT#806#TO#913105#TT#841#",
+      "date": "20261025",
+      "prodX": 3,
+      "dirTxt": "Lainz Wolkersbergenstraße",
+      "dirFlg": "H",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 0,
+        "idx": 1,
+        "dProdX": 3,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "H"
+        },
+        "dTimeS": "080800",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dDirTxt": "Lainz Wolkersbergenstraße",
+        "dDirFlg": "H",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 2,
+        "idx": 2,
+        "aProdX": 3,
+        "aTimeS": "080900",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 3,
+        "dTimeS": "080900",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 3,
+        "idx": 3,
+        "aProdX": 3,
+        "aTimeS": "081000",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 3,
+        "dTimeS": "081000",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 4,
+        "idx": 4,
+        "aProdX": 3,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "A"
+        },
+        "aTimeS": "081200",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "freq": {
+       "minC": 2,
+       "maxC": 10,
+       "numC": 18,
+       "jnyL": [
+        {
+         "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#913169#TA#3#DA#251026#1S#902085#1T#753#LS#907007#LT#837#PU#81#RT#1#CA#str#ZE#18#ZB#Tram 18 #PC#9#FR#902085#FT#753#TO#907007#TT#837#",
+         "date": "20261025",
+         "prodX": 4,
+         "dirTxt": "Burggasse-Stadthalle",
+         "dirFlg": "R",
+         "status": "P",
+         "isRchbl": true,
+         "stopL": [
+          {
+           "locX": 0,
+           "idx": 15,
+           "dProdX": 4,
+           "dPltfS": {
+            "type": "PL",
+            "txt": "H"
+           },
+           "dTimeS": "081800",
+           "dTimeFS": {
+            "styleX": 0
+           },
+           "dDirTxt": "Burggasse-Stadthalle",
+           "dDirFlg": "R",
+           "dTZOffset": 60,
+           "type": "N"
+          },
+          {
+           "locX": 4,
+           "idx": 18,
+           "aProdX": 4,
+           "aPltfS": {
+            "type": "PL",
+            "txt": "A"
+           },
+           "aTimeS": "082200",
+           "aTimeFS": {
+            "styleX": 0
+           },
+           "aTZOffset": 60,
+           "type": "N"
+          }
+         ],
+         "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250818$202610250822$Tram 18 $$1$$$$$$",
+         "subscr": "F",
+         "prodL": [
+          {
+           "prodX": 4,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "dirL": [
+          {
+           "dirX": 0,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "sumLDrawStyleX": 0,
+         "resLDrawStyleX": 1,
+         "trainStartDate": "20261025",
+         "durS": "000400"
+        },
+        {
+         "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#903974#TA#2#DA#251026#1S#904009#1T#821#LS#913105#LT#856#PU#81#RT#1#CA#str#ZE#62#ZB#Tram 62 #PC#9#FR#904009#FT#821#TO#913105#TT#856#",
+         "date": "20261025",
+         "prodX": 5,
+         "dirTxt": "Lainz Wolkersbergenstraße",
+         "dirFlg": "H",
+         "status": "P",
+         "isRchbl": true,
+         "stopL": [
+          {
+           "locX": 0,
+           "idx": 1,
+           "dProdX": 5,
+           "dPltfS": {
+            "type": "PL",
+            "txt": "H"
+           },
+           "dTimeS": "082300",
+           "dTimeFS": {
+            "styleX": 0
+           },
+           "dDirTxt": "Lainz Wolkersbergenstraße",
+           "dDirFlg": "H",
+           "dTZOffset": 60,
+           "type": "N"
+          },
+          {
+           "locX": 4,
+           "idx": 4,
+           "aProdX": 5,
+           "aPltfS": {
+            "type": "PL",
+            "txt": "A"
+           },
+           "aTimeS": "082700",
+           "aTimeFS": {
+            "styleX": 0
+           },
+           "aTZOffset": 60,
+           "type": "N"
+          }
+         ],
+         "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250823$202610250827$Tram 62 $$1$$$$$$",
+         "subscr": "F",
+         "prodL": [
+          {
+           "prodX": 5,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 1,
+           "tIdx": 4
+          }
+         ],
+         "dirL": [
+          {
+           "dirX": 2,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 1,
+           "tIdx": 4
+          }
+         ],
+         "sumLDrawStyleX": 0,
+         "resLDrawStyleX": 1,
+         "trainStartDate": "20261025",
+         "durS": "000400"
+        },
+        {
+         "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#913169#TA#4#DA#251026#1S#902085#1T#808#LS#907007#LT#852#PU#81#RT#1#CA#str#ZE#18#ZB#Tram 18 #PC#9#FR#902085#FT#808#TO#907007#TT#852#",
+         "date": "20261025",
+         "prodX": 6,
+         "dirTxt": "Burggasse-Stadthalle",
+         "dirFlg": "R",
+         "status": "P",
+         "isRchbl": true,
+         "stopL": [
+          {
+           "locX": 0,
+           "idx": 15,
+           "dProdX": 6,
+           "dPltfS": {
+            "type": "PL",
+            "txt": "H"
+           },
+           "dTimeS": "083300",
+           "dTimeFS": {
+            "styleX": 0
+           },
+           "dDirTxt": "Burggasse-Stadthalle",
+           "dDirFlg": "R",
+           "dTZOffset": 60,
+           "type": "N"
+          },
+          {
+           "locX": 4,
+           "idx": 18,
+           "aProdX": 6,
+           "aPltfS": {
+            "type": "PL",
+            "txt": "A"
+           },
+           "aTimeS": "083700",
+           "aTimeFS": {
+            "styleX": 0
+           },
+           "aTZOffset": 60,
+           "type": "N"
+          }
+         ],
+         "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250833$202610250837$Tram 18 $$1$$$$$$",
+         "subscr": "F",
+         "prodL": [
+          {
+           "prodX": 6,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "dirL": [
+          {
+           "dirX": 0,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "sumLDrawStyleX": 0,
+         "resLDrawStyleX": 1,
+         "trainStartDate": "20261025",
+         "durS": "000400"
+        },
+        {
+         "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#903974#TA#3#DA#251026#1S#904009#1T#836#LS#913105#LT#911#PU#81#RT#1#CA#str#ZE#62#ZB#Tram 62 #PC#9#FR#904009#FT#836#TO#913105#TT#911#",
+         "date": "20261025",
+         "prodX": 7,
+         "dirTxt": "Lainz Wolkersbergenstraße",
+         "dirFlg": "H",
+         "status": "P",
+         "isRchbl": true,
+         "stopL": [
+          {
+           "locX": 0,
+           "idx": 1,
+           "dProdX": 7,
+           "dPltfS": {
+            "type": "PL",
+            "txt": "H"
+           },
+           "dTimeS": "083800",
+           "dTimeFS": {
+            "styleX": 0
+           },
+           "dDirTxt": "Lainz Wolkersbergenstraße",
+           "dDirFlg": "H",
+           "dTZOffset": 60,
+           "type": "N"
+          },
+          {
+           "locX": 4,
+           "idx": 4,
+           "aProdX": 7,
+           "aPltfS": {
+            "type": "PL",
+            "txt": "A"
+           },
+           "aTimeS": "084200",
+           "aTimeFS": {
+            "styleX": 0
+           },
+           "aTZOffset": 60,
+           "type": "N"
+          }
+         ],
+         "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250838$202610250842$Tram 62 $$1$$$$$$",
+         "subscr": "F",
+         "prodL": [
+          {
+           "prodX": 7,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 1,
+           "tIdx": 4
+          }
+         ],
+         "dirL": [
+          {
+           "dirX": 2,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 1,
+           "tIdx": 4
+          }
+         ],
+         "sumLDrawStyleX": 0,
+         "resLDrawStyleX": 1,
+         "trainStartDate": "20261025",
+         "durS": "000400"
+        },
+        {
+         "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#913169#TA#5#DA#251026#1S#902085#1T#823#LS#907007#LT#907#PU#81#RT#1#CA#str#ZE#18#ZB#Tram 18 #PC#9#FR#902085#FT#823#TO#907007#TT#907#",
+         "date": "20261025",
+         "prodX": 8,
+         "dirTxt": "Burggasse-Stadthalle",
+         "dirFlg": "R",
+         "status": "P",
+         "isRchbl": true,
+         "stopL": [
+          {
+           "locX": 0,
+           "idx": 15,
+           "dProdX": 8,
+           "dPltfS": {
+            "type": "PL",
+            "txt": "H"
+           },
+           "dTimeS": "084800",
+           "dTimeFS": {
+            "styleX": 0
+           },
+           "dDirTxt": "Burggasse-Stadthalle",
+           "dDirFlg": "R",
+           "dTZOffset": 60,
+           "type": "N"
+          },
+          {
+           "locX": 4,
+           "idx": 18,
+           "aProdX": 8,
+           "aPltfS": {
+            "type": "PL",
+            "txt": "A"
+           },
+           "aTimeS": "085200",
+           "aTimeFS": {
+            "styleX": 0
+           },
+           "aTZOffset": 60,
+           "type": "N"
+          }
+         ],
+         "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250848$202610250852$Tram 18 $$1$$$$$$",
+         "subscr": "F",
+         "prodL": [
+          {
+           "prodX": 8,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "dirL": [
+          {
+           "dirX": 0,
+           "fLocX": 0,
+           "tLocX": 4,
+           "fIdx": 15,
+           "tIdx": 18
+          }
+         ],
+         "sumLDrawStyleX": 0,
+         "resLDrawStyleX": 1,
+         "trainStartDate": "20261025",
+         "durS": "000400"
+        }
+       ]
+      },
+      "ctxRecon": "T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250808$202610250812$Tram 62 $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 0,
+        "sty": "I",
+        "fLocX": 0,
+        "tLocX": 4,
+        "tagL": [
+         "SUM_CON_FTR_H3",
+         "RES_JNY_DTL_H3"
+        ],
+        "sort": 268435456
+       },
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "fLocX": 0,
+        "tLocX": 4,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 556531712
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 3,
+        "fLocX": 0,
+        "tLocX": 4,
+        "fIdx": 1,
+        "tIdx": 4
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 2,
+        "fLocX": 0,
+        "tLocX": 4,
+        "fIdx": 1,
+        "tIdx": 4
+       }
+      ],
+      "sumLDrawStyleX": 0,
+      "resLDrawStyleX": 7,
+      "trainStartDate": "20261025",
+      "durS": "000400"
+     },
+     "minChg": "000200"
+    },
+    {
+     "type": "WALK",
+     "dep": {
+      "locX": 4,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "A"
+      },
+      "dTimeS": "081200",
+      "dTZOffset": 60
+     },
+     "arr": {
+      "locX": 4,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "B"
+      },
+      "aTimeS": "081200",
+      "aTZOffset": 60
+     },
+     "chg": {
+      "txt": "Umstieg",
+      "durS": "000200",
+      "durFS": {
+       "styleX": 1,
+       "txt": "2 Min"
+      }
+     },
+     "gis": {
+      "gisPrvr": "H",
+      "sumLDrawStyleX": 2,
+      "resLDrawStyleX": 3,
+      "prodX": 10
+     }
+    },
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 4,
+      "idx": 10,
+      "dProdX": 9,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "B"
+      },
+      "dTimeS": "081400",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 1,
+      "idx": 16,
+      "aProdX": 9,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "B"
+      },
+      "aTimeS": "082500",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#902939#TA#3#DA#251026#1S#911191#1T#758#LS#907007#LT#829#PU#81#RT#1#CA#str#ZE#6#ZB#Tram 6  #PC#9#FR#911191#FT#758#TO#907007#TT#829#",
+      "date": "20261025",
+      "prodX": 9,
+      "dirTxt": "Burggasse-Stadthalle",
+      "dirFlg": "R",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 4,
+        "idx": 10,
+        "dProdX": 9,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "B"
+        },
+        "dTimeS": "081400",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dDirTxt": "Burggasse-Stadthalle",
+        "dDirFlg": "R",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 5,
+        "idx": 11,
+        "aProdX": 9,
+        "aTimeS": "081600",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 9,
+        "dTimeS": "081600",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 6,
+        "idx": 12,
+        "aProdX": 9,
+        "aTimeS": "081800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 9,
+        "dTimeS": "081800",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 7,
+        "idx": 13,
+        "aProdX": 9,
+        "aTimeS": "082000",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 9,
+        "dTimeS": "082000",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 8,
+        "idx": 14,
+        "aProdX": 9,
+        "aTimeS": "082200",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 9,
+        "dTimeS": "082200",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 9,
+        "idx": 15,
+        "aProdX": 9,
+        "aTimeS": "082300",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 9,
+        "dTimeS": "082300",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 1,
+        "idx": 16,
+        "aProdX": 9,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "B"
+        },
+        "aTimeS": "082500",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "freq": {
+       "minC": 5,
+       "maxC": 8,
+       "numC": 19
+      },
+      "ctxRecon": "T$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$202610250814$202610250825$Tram 6  $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 0,
+        "sty": "I",
+        "fLocX": 4,
+        "tLocX": 1,
+        "tagL": [
+         "SUM_CON_FTR_H3",
+         "RES_JNY_DTL_H3"
+        ],
+        "sort": 268435456
+       },
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "fLocX": 4,
+        "tLocX": 1,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 556531712
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 9,
+        "fLocX": 4,
+        "tLocX": 1,
+        "fIdx": 10,
+        "tIdx": 16
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 0,
+        "fLocX": 4,
+        "tLocX": 1,
+        "fIdx": 10,
+        "tIdx": 16
+       }
+      ],
+      "sumLDrawStyleX": 0,
+      "resLDrawStyleX": 7,
+      "trainStartDate": "20261025",
+      "durS": "001100"
+     },
+     "minChg": "000600"
+    },
+    {
+     "type": "WALK",
+     "dep": {
+      "locX": 1,
+      "dTimeS": "082500",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 10,
+      "aTimeS": "083100",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "chg": {
+      "txt": "Umstieg",
+      "durS": "001300",
+      "durFS": {
+       "styleX": 1,
+       "txt": "13 Min"
+      }
+     },
+     "gis": {
+      "dist": 120,
+      "durS": "000600",
+      "dirGeo": 16,
+      "ctx": "H|1|W$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$A=1@O=Wien Westbahnhof@L=8100003@a=128@$202610250825$202610250831$$$1$$$$$$|",
+      "polyG": {
+       "polyXL": [
+        6
+       ]
+      },
+      "gisPrvr": "H",
+      "getDescr": false,
+      "getPoly": false,
+      "sumLDrawStyleX": 2,
+      "resLDrawStyleX": 3,
+      "prodX": 1
+     }
+    },
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 10,
+      "idx": 0,
+      "dProdX": 2,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "6"
+      },
+      "dTimeS": "083800",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 11,
+      "idx": 8,
+      "aProdX": 2,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "2A-C"
+      },
+      "aTimeS": "110800",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#553379#TA#0#DA#251026#1S#8100003#1T#838#LS#8100002#LT#1108#PU#81#RT#1#CA#WB#ZE#906#ZB#WB 906  #PC#12#FR#8100003#FT#838#TO#8100002#TT#1108#",
+      "date": "20261025",
+      "prodX": 2,
+      "dirTxt": "Salzburg Hbf",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 10,
+        "idx": 0,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "6"
+        },
+        "dTimeS": "083800",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dProgType": "PROGNOSED",
+        "dDirTxt": "Salzburg Hbf",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 12,
+        "idx": 1,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "aTimeS": "084400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "dTimeS": "084500",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 13,
+        "idx": 2,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "aTimeS": "090500",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "dTimeS": "090600",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 14,
+        "idx": 3,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "092900",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "093000",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 15,
+        "idx": 4,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "8A-F"
+        },
+        "aTimeS": "095400",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "8A-F"
+        },
+        "dTimeS": "095600",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 16,
+        "idx": 5,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "101000",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "101100",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 17,
+        "idx": 6,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "aTimeS": "102300",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "dTimeS": "102400",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 18,
+        "idx": 7,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "aTimeS": "102800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 2,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2"
+        },
+        "dTimeS": "102900",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 11,
+        "idx": 8,
+        "aProdX": 2,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2A-C"
+        },
+        "aTimeS": "110800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aProgType": "PROGNOSED",
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "freq": {
+       "minC": 30,
+       "maxC": 30,
+       "numC": 5
+      },
+      "ctxRecon": "T$A=1@O=Wien Westbahnhof@L=8100003@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610250838$202610251108$WB 906  $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 556531712
+       },
+       {
+        "type": "REM",
+        "remX": 2,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 569638912
+       },
+       {
+        "type": "REM",
+        "remX": 3,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 582746112
+       },
+       {
+        "type": "REM",
+        "remX": 4,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 595853312
+       },
+       {
+        "type": "REM",
+        "remX": 5,
+        "sty": "I",
+        "fLocX": 10,
+        "tLocX": 11,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 629932032
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 2,
+        "fLocX": 10,
+        "tLocX": 11,
+        "fIdx": 0,
+        "tIdx": 8
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 1,
+        "fLocX": 10,
+        "tLocX": 11,
+        "fIdx": 0,
+        "tIdx": 8
+       }
+      ],
+      "sumLDrawStyleX": 4,
+      "resLDrawStyleX": 8,
+      "trainStartDate": "20261025",
+      "durS": "023000"
+     }
+    }
+   ],
+   "freq": {
+    "minC": 30
+   },
+   "trfRes": {
+    "statusCode": "OK"
+   },
+   "conSubscr": "F",
+   "recState": "U",
+   "cksum": "21a8bec8_3",
+   "cksumDti": "df379a1d_3",
+   "intvlSubscr": "F",
+   "originType": "INITIAL",
+   "recon": {
+    "ctx": "¶HKI¶T$A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@L=904008@a=128@$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$202610250808$202610250812$Tram 62 $$1$$$$$$§T$A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@L=910104@a=128@$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$202610250814$202610250825$Tram 6  $$1$$$$$$§W$A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@L=915005@a=128@$A=1@O=Wien Westbahnhof@L=8100003@a=128@$202610250825$202610250831$$$1$$$$$$§T$A=1@O=Wien Westbahnhof@L=8100003@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610250838$202610251108$WB 906  $$1$$$$$$¶KRCC¶#VE#1#MRTF#"
+   }
+  }
+ ],
+ "fpB": "20260821",
+ "fpE": "20271211"
+}
