@@ -1,5 +1,7 @@
 # mcp-scotty
 
+[![CI](https://github.com/StefanOOEOrg/mcp-scotty/actions/workflows/ci.yml/badge.svg)](https://github.com/StefanOOEOrg/mcp-scotty/actions/workflows/ci.yml)
+
 **Multi-Provider MCP Server for European Public Transit Information**
 
 mcp-scotty is a Model Context Protocol (MCP) server that provides real-time public transit information across Europe via the HAFAS API. Support for multiple transit providers including ÖBB (Austria), Deutsche Bahn (Germany), SBB (Switzerland), NS (Netherlands), and more.
@@ -19,17 +21,21 @@ mcp-scotty is a Model Context Protocol (MCP) server that provides real-time publ
 
 ## ✨ Features
 
-- **Multi-Provider Support**: Switch between different transit providers on the fly
-- **Station Search**: Find stations by name across Europe
-- **Journey Planning**: Get connections with transfers, times, and durations
-- **Real-Time Departures**: Check upcoming departures from any station
-- **Real-Time Arrivals**: Monitor arriving trains/buses at stations
-- **Delay Information**: Get real-time delay and platform change notifications
+- **Multi-provider profiles**: `oebb`, `db`, `sbb`, `ns` — each with its own endpoint and language
+- **Station search**: free-text search, returning the HAFAS id a client needs for the next step
+- **Journey planning**: connections between two stations with departure/arrival, duration, number of
+  changes and every leg (line name, origin, destination, times) — including overnight connections
+- **Honest failures**: a failed or unsupported call comes back as an MCP error (`is_error: true`) with a
+  readable message, never as an empty list that looks like a result
+
+`get_departures` and `get_arrivals` exist as tools but **do not work yet** — the HAFAS station board is
+still unverified, so they answer with an explicit error. See [Known issues](#-known-issues).
 
 ## 📋 Requirements
 
-- Python 3.10 or higher
-- MCP-compatible client (e.g., Claude Desktop)
+- Python 3.10 or higher (the CI runs 3.10 and 3.14)
+- An MCP-compatible client (e.g. Claude Desktop)
+- Internet access to the HAFAS endpoint of your provider — no account, no API key, no credentials
 
 ## 🚀 Installation
 
@@ -140,9 +146,11 @@ Find connections between two stations.
 Find trains from Vienna to Salzburg tomorrow at 14:00
 ```
 
-### 5. `get_departures`
+### 5. `get_departures` — not implemented yet
 
-Get upcoming departures from a station.
+Currently answers with `is_error: true` and the message *"The station board is not implemented yet for
+ÖBB; use get_journeys or search_stations instead."* The HAFAS `StationBoard` request is still being
+researched (see [Planned improvements](#-planned-improvements)).
 
 **Parameters**:
 - `station` (string): Station name
@@ -153,9 +161,9 @@ Get upcoming departures from a station.
 Show departures from Amsterdam Central Station
 ```
 
-### 6. `get_arrivals`
+### 6. `get_arrivals` — not implemented yet
 
-Get upcoming arrivals at a station.
+Same as `get_departures`: it fails with a readable error instead of returning an empty list.
 
 **Parameters**:
 - `station` (string): Station name
@@ -194,30 +202,32 @@ Once configured with Claude Desktop, you can ask:
 
 ```
 mcp-scotty/
-├── src/
-│   └── mcp_scotty/
-│       ├── __init__.py       # Package initialization
-│       ├── profiles.py       # Transit provider profiles
-│       └── server.py         # Main MCP server
-├── examples/
-│   └── usage_examples.md     # Detailed usage examples
+├── src/mcp_scotty/
+│   ├── __init__.py        # version
+│   ├── hafas_client.py    # LocMatch + TripSearch, normalised into dicts
+│   ├── profiles.py        # the four provider profiles
+│   └── server.py          # MCP server: tools, dispatcher, error handling
 ├── tests/
-│   ├── __init__.py
-│   └── test_server.py       # Tests
-├── run_server.py            # Entry point
-├── requirements.txt         # Dependencies
-├── pyproject.toml          # Project metadata
-├── setup.py                # Setup configuration
-├── README.md               # This file
-├── INSTALL.md              # Installation guide
-├── CONTRIBUTING.md         # Contributing guidelines
-└── CHANGELOG.md            # Version history
+│   ├── fixtures/          # recorded ÖBB responses (no network in CI)
+│   ├── test_hafas_client.py
+│   ├── test_profiles.py
+│   └── test_server.py
+├── examples/usage_examples.md
+├── .github/workflows/ci.yml  # ruff + pytest on 3.10 and 3.14
+├── run_server.py          # entry point
+├── pyproject.toml         # metadata, dependencies, ruff + pytest config
+├── setup.py               # console script
+├── requirements.txt
+├── CHANGELOG.md
+├── INSTALL.md
+├── CONTRIBUTING.md
+└── README.md
 ```
 
 ## 🔒 Technical Details
 
 - **MCP SDK**: Official Python MCP SDK (≥1.2.0)
-- **HAFAS Client**: Custom direct implementation (removed pyhafas dependency)
+- **HAFAS client**: direct HTTP against the provider's `mgate.exe`, no third-party HAFAS library
 - **Protocol**: stdio-based communication (MCP standard)
 - **Architecture**: Multi-profile support with runtime switching
 - **Error Handling**: Comprehensive SSL and network error handling
@@ -225,69 +235,31 @@ mcp-scotty/
 
 ## ⚠️ Known Issues
 
-### HAFAS API Compatibility
-
-**Current Status**: mcp-scotty now uses a custom direct HAFAS API implementation (v0.3.0+):
-
-✅ **Improvements:**
-- Removed pyhafas dependency for better control
-- Direct HTTP requests to HAFAS mgate.exe endpoints
-- Provider-specific configurations (ÖBB, DB, SBB, NS)
-- SSL verification bypass option for testing
-
-⚠️ **Work in Progress:**
-- HAFAS request format requires fine-tuning
-- Some endpoints return PARSE errors
-- Request body structure needs adjustment per provider
-
-**Impact**: Core functionality is implemented but requires further HAFAS protocol refinement.
-
-**Workarounds**:
-
-When mcp-scotty encounters these issues, it provides helpful error messages directing users to:
-- Official transit provider websites (e.g., oebb.at, bahn.de, sbb.ch, ns.nl)
-- Mobile apps available for each provider
-- Customer service contacts
-
-**For Testing** (SSL verification bypass):
-
-```json
-{
-  "mcpServers": {
-    "transit": {
-      ...
-      "env": {
-        "TRANSIT_PROFILE": "oebb",
-        "TRANSIT_DISABLE_SSL_VERIFY": "true"
-      }
-    }
-  }
-}
-```
-
-⚠️ **Warning**: Disabling SSL verification is insecure and should only be used for local testing.
-
-**Alternative Solutions**:
-
-```bash
-# Update to latest versions
-pip install --upgrade certifi pyhafas
-
-# Check for pyhafas updates
-pip list --outdated | grep pyhafas
-```
+- **The station board is not implemented.** HAFAS `StationBoard` returns no entries with the request
+  bodies tried so far, so `get_departures` and `get_arrivals` answer with an explicit error. Everything
+  else works against the live ÖBB API and is covered by tests over recorded responses.
+- **Station search is fuzzy.** `LocMatch` answers even for nonsense queries — "Xyzzy-123" still returns a
+  handful of unrelated stations. The "no stations found" error therefore only fires on genuinely empty
+  answers; check the returned names before using an id.
+- **No delay or platform information.** The normalised journey data carries times, durations, changes and
+  legs — not real-time delays or platform changes.
+- **SSL verification can be disabled** with `TRANSIT_DISABLE_SSL_VERIFY=true` for local testing. That is
+  insecure and must never be used in production; the code logs a warning when it happens.
 
 ## 🚧 Limitations
 
-- Some providers use DB profile as fallback (pending dedicated profiles)
-- Real-time data depends on HAFAS API availability
-- Features may vary between providers
+- Four providers only (`oebb`, `db`, `sbb`, `ns`); more need their own endpoint configuration.
+- No tickets, prices or seat reservations — this server only reads timetable data.
+- No caching: every call goes to the provider, so rate limits and outages are visible immediately.
+- Departures and arrivals are missing until the station board is understood (Stage 2).
+- The HAFAS protocol is undocumented; a provider can change its endpoint without notice.
 
 ## 🔮 Planned Improvements
 
-- [ ] Dedicated HAFAS profiles for each provider
-- [ ] Direct HAFAS API implementation as fallback
-- [ ] Enhanced SSL certificate handling
+- [ ] **Stage 2:** research `StationBoard` and implement `get_departures` / `get_arrivals`
+- [ ] More providers (SNCF, NMBS, DSB) with their own configurations
+- [ ] Optional caching for repeated station lookups
+- [ ] Surface real-time delay and platform data where the provider offers it
 - [ ] Retry logic with exponential backoff
 - [ ] Support for more European transit providers
 - [ ] Fare and pricing information
@@ -306,19 +278,21 @@ Areas for contribution:
 
 ## 📄 License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **GNU General Public License v3.0** — see the [LICENSE](LICENSE)
+file for the full text.
 
 ## 🙏 Acknowledgments
 
 - Built with the [Model Context Protocol](https://modelcontextprotocol.io/)
-- Uses [pyhafas](https://github.com/FahrplanDatenGarten/pyhafas) for HAFAS API access
+- Talks to HAFAS directly (`LocMatch`, `TripSearch`); the day-offset rule for times follows the
+  convention documented by [pyhafas](https://github.com/FahrplanDatenGarten/pyhafas)
 - HAFAS is a product of [HaCon](https://www.hacon.de/) (Siemens Mobility)
 
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/StefanOOEOrg/mcp-scotty/issues)
 - **MCP Documentation**: https://modelcontextprotocol.io/
-- **pyhafas Documentation**: https://pyhafas.readthedocs.io/
+- **pyhafas** (reference for the HAFAS time format): https://pyhafas.readthedocs.io/
 
 ---
 
