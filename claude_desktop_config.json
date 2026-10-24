@@ -3,7 +3,7 @@
     "scottymcp": {
       "command": "python",
       "args": [
-        "/path/to/ScottyMCP/run_server.py"
+        "/path/to/mcp-scotty/run_server.py"
       ],
       "env": {}
     }

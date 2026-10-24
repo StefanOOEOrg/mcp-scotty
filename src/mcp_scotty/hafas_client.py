@@ -77,7 +77,7 @@ class HafasClient:
             'Accept-Charset': 'utf-8',
             'Accept-Encoding': 'gzip',
             'Content-Type': 'application/json',
-            'User-Agent': 'TransitMCP/0.2.0',
+            'User-Agent': 'mcp-scotty/0.3.0',
         })
         self.disable_ssl_verify = disable_ssl_verify
 

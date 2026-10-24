@@ -1,8 +1,8 @@
-# TransitMCP
+# mcp-scotty
 
 **Multi-Provider MCP Server for European Public Transit Information**
 
-TransitMCP is a Model Context Protocol (MCP) server that provides real-time public transit information across Europe via the HAFAS API. Support for multiple transit providers including ÖBB (Austria), Deutsche Bahn (Germany), SBB (Switzerland), NS (Netherlands), and more.
+mcp-scotty is a Model Context Protocol (MCP) server that provides real-time public transit information across Europe via the HAFAS API. Support for multiple transit providers including ÖBB (Austria), Deutsche Bahn (Germany), SBB (Switzerland), NS (Netherlands), and more.
 
 ## 🌍 Supported Transit Providers
 
@@ -36,8 +36,8 @@ TransitMCP is a Model Context Protocol (MCP) server that provides real-time publ
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/StefanOOE/transit-mcp.git
-cd transit-mcp
+git clone https://github.com/StefanOOEOrg/mcp-scotty.git
+cd mcp-scotty
 ```
 
 ### 2. Install Dependencies
@@ -74,9 +74,9 @@ Add to your Claude Desktop configuration file:
 {
   "mcpServers": {
     "transit": {
-      "command": "/absolute/path/to/transit-mcp/venv/bin/python",
+      "command": "/absolute/path/to/mcp-scotty/venv/bin/python",
       "args": [
-        "/absolute/path/to/transit-mcp/run_server.py"
+        "/absolute/path/to/mcp-scotty/run_server.py"
       ],
       "env": {
         "TRANSIT_PROFILE": "oebb"
@@ -193,9 +193,9 @@ Once configured with Claude Desktop, you can ask:
 ## 📁 Project Structure
 
 ```
-transit-mcp/
+mcp-scotty/
 ├── src/
-│   └── transitmcp/
+│   └── mcp_scotty/
 │       ├── __init__.py       # Package initialization
 │       ├── profiles.py       # Transit provider profiles
 │       └── server.py         # Main MCP server
@@ -227,7 +227,7 @@ transit-mcp/
 
 ### HAFAS API Compatibility
 
-**Current Status**: TransitMCP now uses a custom direct HAFAS API implementation (v0.3.0+):
+**Current Status**: mcp-scotty now uses a custom direct HAFAS API implementation (v0.3.0+):
 
 ✅ **Improvements:**
 - Removed pyhafas dependency for better control
@@ -244,7 +244,7 @@ transit-mcp/
 
 **Workarounds**:
 
-When TransitMCP encounters these issues, it provides helpful error messages directing users to:
+When mcp-scotty encounters these issues, it provides helpful error messages directing users to:
 - Official transit provider websites (e.g., oebb.at, bahn.de, sbb.ch, ns.nl)
 - Mobile apps available for each provider
 - Customer service contacts
@@ -316,7 +316,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/StefanOOE/transit-mcp/issues)
+- **Issues**: [GitHub Issues](https://github.com/StefanOOEOrg/mcp-scotty/issues)
 - **MCP Documentation**: https://modelcontextprotocol.io/
 - **pyhafas Documentation**: https://pyhafas.readthedocs.io/
 
