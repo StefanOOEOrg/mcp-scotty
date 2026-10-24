@@ -2,7 +2,7 @@
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 
@@ -57,6 +57,25 @@ HAFAS_CONFIGS = {
         language="en",
     ),
 }
+
+
+def _iso_time(date: str, time: str) -> str:
+    """Combine a HAFAS date (``YYYYMMDD``) and time (``HHMMSS``) into ISO 8601.
+
+    Hours may exceed 23 — ``"250300"`` is 01:03 on the following day — so the
+    time is added to the date instead of being parsed as a clock time.
+    """
+    day = datetime.strptime(date, "%Y%m%d")
+    hours, minutes, seconds = int(time[0:2]), int(time[2:4]), int(time[4:6])
+    stamp = day + timedelta(hours=hours, minutes=minutes, seconds=seconds)
+    return stamp.strftime("%Y-%m-%dT%H:%M:%S")
+
+
+def _minutes(duration: str) -> int:
+    """Minutes of a HAFAS ``HHMMSS`` duration (``"030500"`` is 185)."""
+    if not duration:
+        return 0
+    return int(duration[0:2]) * 60 + int(duration[2:4])
 
 
 class HafasClient:
@@ -170,7 +189,26 @@ class HafasClient:
         Raises:
             Exception: whatever ``_make_request`` raises (network, HAFAS error).
         """
-        raise NotImplementedError
+        params = {
+            "input": {
+                "field": "S",
+                "loc": {"name": query, "type": "S"},
+                "maxLoc": max_results,
+            }
+        }
+        response = self._make_request("LocMatch", params)
+        return [self._location(loc) for loc in response.get("match", {}).get("locL", [])]
+
+    @staticmethod
+    def _location(loc: Dict[str, Any]) -> Dict[str, Any]:
+        """Normalise one ``LocMatch`` location."""
+        ext_id = loc.get("extId")
+        return {
+            "id": loc.get("lid"),
+            "name": loc.get("name"),
+            "ext_id": str(ext_id) if ext_id is not None else None,
+            "type": loc.get("type"),
+        }
 
     def get_journeys(
         self,
@@ -220,4 +258,58 @@ class HafasClient:
         Raises:
             Exception: whatever ``_make_request`` raises (network, HAFAS error).
         """
-        raise NotImplementedError
+        when = date or datetime.now()
+        params = {
+            "depLocL": [{"lid": origin_id}],
+            "arrLocL": [{"lid": dest_id}],
+            "outDate": when.strftime("%Y%m%d"),
+            "outTime": when.strftime("%H%M%S"),
+            "numF": max_journeys,
+            "maxChg": 5,
+        }
+        response = self._make_request("TripSearch", params)
+        common = response.get("common", {})
+        locations = common.get("locL", [])
+        products = common.get("prodL", [])
+        return [
+            self._connection(con, locations, products)
+            for con in response.get("outConL", [])
+        ]
+
+    @classmethod
+    def _connection(
+        cls,
+        con: Dict[str, Any],
+        locations: List[Dict[str, Any]],
+        products: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Normalise one ``TripSearch`` connection."""
+        day = con["date"]
+        return {
+            "id": con.get("cid"),
+            "departure": _iso_time(day, con["dep"]["dTimeS"]),
+            "arrival": _iso_time(day, con["arr"]["aTimeS"]),
+            "duration_minutes": _minutes(con.get("dur", "")),
+            "changes": int(con.get("chg", 0)),
+            "legs": [
+                cls._leg(sec, day, locations, products) for sec in con.get("secL", [])
+            ],
+        }
+
+    @staticmethod
+    def _leg(
+        sec: Dict[str, Any],
+        day: str,
+        locations: List[Dict[str, Any]],
+        products: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Normalise one section of a connection; no ``jny`` means a walk."""
+        prod_x = (sec.get("jny") or {}).get("prodX")
+        return {
+            "type": sec.get("type"),
+            "line": products[int(prod_x)]["name"] if prod_x is not None else None,
+            "origin": locations[int(sec["dep"]["locX"])]["name"],
+            "destination": locations[int(sec["arr"]["locX"])]["name"],
+            "departure": _iso_time(day, sec["dep"]["dTimeS"]),
+            "arrival": _iso_time(day, sec["arr"]["aTimeS"]),
+        }
