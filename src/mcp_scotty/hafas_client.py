@@ -1,9 +1,8 @@
 """Direct HAFAS API Client - bypassing pyhafas for better control."""
 
-import hashlib
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
 
@@ -58,6 +57,28 @@ HAFAS_CONFIGS = {
         language="en",
     ),
 }
+
+
+def _iso_time(date: str, time: str) -> str:
+    """Combine a HAFAS date (``YYYYMMDD``) and time into ISO 8601.
+
+    Six characters are ``HHMMSS`` on the given day; eight are ``DDHHMMSS``,
+    where the first two digits are a day offset (``"01020700"`` is 02:07:00 one
+    day later). pyhafas parses it the same way.
+    """
+    day = datetime.strptime(date, "%Y%m%d")
+    # ``DDHHMMSS``: the first two digits are a day offset, not an hour.
+    offset, clock = (int(time[:2]), time[2:]) if len(time) > 6 else (0, time)
+    hours, minutes, seconds = int(clock[0:2]), int(clock[2:4]), int(clock[4:6])
+    stamp = day + timedelta(days=offset, hours=hours, minutes=minutes, seconds=seconds)
+    return stamp.strftime("%Y-%m-%dT%H:%M:%S")
+
+
+def _minutes(duration: str) -> int:
+    """Minutes of a HAFAS ``HHMMSS`` duration (``"030500"`` is 185)."""
+    if not duration:
+        return 0
+    return int(duration[0:2]) * 60 + int(duration[2:4])
 
 
 class HafasClient:
@@ -150,28 +171,47 @@ class HafasClient:
             raise Exception("HAFAS API returned invalid JSON")
 
     def search_locations(self, query: str, max_results: int = 10) -> List[Dict[str, Any]]:
-        """Search for stations/locations.
+        """Find stations matching a free-text query.
 
         Args:
-            query: Search query (station name)
-            max_results: Maximum number of results
+            query: Station or place name, e.g. "Wien Hbf".
+            max_results: Maximum number of matches.
 
         Returns:
-            List of location dictionaries
+            A list of dicts, each with exactly these keys:
+            ``id`` (the HAFAS location id, called ``lid`` in the response),
+            ``name`` (display name), ``ext_id`` (the provider's external id as a
+            string) and ``type`` (the HAFAS location type, e.g. ``"S"``).
+            No match is an empty list, not an error.
+
+        Request:
+            Service ``LocMatch`` with the body
+            ``{"input": {"field": "S", "loc": {"name": query, "type": "S"},
+            "maxLoc": max_results}}``; the matches are ``res["match"]["locL"]``.
+
+        Raises:
+            Exception: whatever ``_make_request`` raises (network, HAFAS error).
         """
         params = {
-            "input": query,  # Simple string input
-            "maxNo": max_results,
-            "field": "S"  # Station only
+            "input": {
+                "field": "S",
+                "loc": {"name": query, "type": "S"},
+                "maxLoc": max_results,
+            }
         }
+        response = self._make_request("LocMatch", params)
+        return [self._location(loc) for loc in response.get("match", {}).get("locL", [])]
 
-        try:
-            response = self._make_request("LocMatch", params)
-            locations = response.get('match', {}).get('locL', [])
-            return locations
-        except Exception as e:
-            logger.error(f"Location search failed: {e}")
-            raise
+    @staticmethod
+    def _location(loc: Dict[str, Any]) -> Dict[str, Any]:
+        """Normalise one ``LocMatch`` location."""
+        ext_id = loc.get("extId")
+        return {
+            "id": loc.get("lid"),
+            "name": loc.get("name"),
+            "ext_id": str(ext_id) if ext_id is not None else None,
+            "type": loc.get("type"),
+        }
 
     def get_journeys(
         self,
@@ -180,103 +220,102 @@ class HafasClient:
         date: Optional[datetime] = None,
         max_journeys: int = 5
     ) -> List[Dict[str, Any]]:
-        """Get journey connections between two stations.
+        """Find connections between two stations.
 
         Args:
-            origin_id: Origin station ID
-            dest_id: Destination station ID
-            date: Departure date/time
-            max_journeys: Maximum number of journeys
+            origin_id: HAFAS location id of the origin (``id`` from
+                :meth:`search_locations`).
+            dest_id: HAFAS location id of the destination.
+            date: Departure date and time; ``None`` means now.
+            max_journeys: Maximum number of connections.
 
         Returns:
-            List of journey dictionaries
-        """
-        if date is None:
-            date = datetime.now()
+            A list of dicts:
+            ``id`` (HAFAS connection id, the ``cid``),
+            ``departure`` and ``arrival`` (ISO 8601 local time, e.g.
+            ``"2026-10-25T08:03:00"``),
+            ``duration_minutes`` (int), ``changes`` (int),
+            ``legs``: a list of dicts with ``type`` (``"JNY"`` or ``"WALK"``),
+            ``line`` (the product name like ``"Tram 18"``, ``None`` for a walk),
+            ``origin`` and ``destination`` (station names), and
+            ``departure``/``arrival`` (ISO 8601).
+            No connection is an empty list, not an error.
 
+        Request:
+            Service ``TripSearch`` with
+            ``{"depLocL": [{"lid": origin_id}], "arrLocL": [{"lid": dest_id}],
+            "outDate": date.strftime("%Y%m%d"), "outTime": date.strftime("%H%M%S"),
+            "numF": max_journeys, "maxChg": 5}``; the connections are
+            ``res["outConL"]``.
+
+        Notes for the implementation:
+            * The connection carries its date as ``YYYYMMDD`` and its times as
+              ``dTimeS``/``aTimeS`` (``HHMMSS``) on ``dep``/``arr``; legs carry
+              their own ``dep``/``arr`` with the same shape.
+            * A time on a later day carries a **two-digit day offset in front**
+              (``DDHHMMSS``): ``"01020700"`` is 02:07:00 one day after the
+              connection date. Six-character times (``HHMMSS``) are on the
+              connection day itself. This is the convention pyhafas documents
+              (``dateOffset = int(time[:2]) if len(time) > 6``).
+            * Station names are indexes: ``locX`` into ``res["common"]["locL"]``;
+              line names are ``prodX`` into ``res["common"]["prodL"]`` (key
+              ``name``). A leg without ``jny`` is a walk and has no line.
+
+        Raises:
+            Exception: whatever ``_make_request`` raises (network, HAFAS error).
+        """
+        when = date or datetime.now()
         params = {
             "depLocL": [{"lid": origin_id}],
             "arrLocL": [{"lid": dest_id}],
-            "outDate": date.strftime("%Y%m%d"),
-            "outTime": date.strftime("%H%M%S"),
-            "maxChg": 10,  # Max number of transfers
-            "numF": max_journeys
+            "outDate": when.strftime("%Y%m%d"),
+            "outTime": when.strftime("%H%M%S"),
+            "numF": max_journeys,
+            "maxChg": 5,
+        }
+        response = self._make_request("TripSearch", params)
+        common = response.get("common", {})
+        locations = common.get("locL", [])
+        products = common.get("prodL", [])
+        return [
+            self._connection(con, locations, products)
+            for con in response.get("outConL", [])
+        ]
+
+    @classmethod
+    def _connection(
+        cls,
+        con: Dict[str, Any],
+        locations: List[Dict[str, Any]],
+        products: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Normalise one ``TripSearch`` connection."""
+        day = con["date"]
+        return {
+            "id": con.get("cid"),
+            "departure": _iso_time(day, con["dep"]["dTimeS"]),
+            "arrival": _iso_time(day, con["arr"]["aTimeS"]),
+            "duration_minutes": _minutes(con.get("dur", "")),
+            "changes": int(con.get("chg", 0)),
+            "legs": [
+                cls._leg(sec, day, locations, products) for sec in con.get("secL", [])
+            ],
         }
 
-        try:
-            response = self._make_request("TripSearch", params)
-            journeys = response.get('outConL', [])
-            return journeys
-        except Exception as e:
-            logger.error(f"Journey search failed: {e}")
-            raise
-
-    def get_departures(
-        self,
-        station_id: str,
-        date: Optional[datetime] = None,
-        max_results: int = 10
-    ) -> List[Dict[str, Any]]:
-        """Get departures from a station.
-
-        Args:
-            station_id: Station ID
-            date: Date/time for departures
-            max_results: Maximum number of results
-
-        Returns:
-            List of departure dictionaries
-        """
-        if date is None:
-            date = datetime.now()
-
-        params = {
-            "locL": [{"lid": station_id}],
-            "date": date.strftime("%Y%m%d"),
-            "time": date.strftime("%H%M%S"),
-            "maxJny": max_results,
-            "type": "DEP"  # Departures
+    @staticmethod
+    def _leg(
+        sec: Dict[str, Any],
+        day: str,
+        locations: List[Dict[str, Any]],
+        products: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """Normalise one section of a connection; no ``jny`` means a walk."""
+        prod_x = (sec.get("jny") or {}).get("prodX")
+        return {
+            "type": sec.get("type"),
+            "line": products[int(prod_x)]["name"] if prod_x is not None else None,
+            "origin": locations[int(sec["dep"]["locX"])]["name"],
+            "destination": locations[int(sec["arr"]["locX"])]["name"],
+            "departure": _iso_time(day, sec["dep"]["dTimeS"]),
+            "arrival": _iso_time(day, sec["arr"]["aTimeS"]),
         }
-
-        try:
-            response = self._make_request("StationBoard", params)
-            departures = response.get('jnyL', [])
-            return departures
-        except Exception as e:
-            logger.error(f"Departures request failed: {e}")
-            raise
-
-    def get_arrivals(
-        self,
-        station_id: str,
-        date: Optional[datetime] = None,
-        max_results: int = 10
-    ) -> List[Dict[str, Any]]:
-        """Get arrivals at a station.
-
-        Args:
-            station_id: Station ID
-            date: Date/time for arrivals
-            max_results: Maximum number of results
-
-        Returns:
-            List of arrival dictionaries
-        """
-        if date is None:
-            date = datetime.now()
-
-        params = {
-            "locL": [{"lid": station_id}],
-            "date": date.strftime("%Y%m%d"),
-            "time": date.strftime("%H%M%S"),
-            "maxJny": max_results,
-            "type": "ARR"  # Arrivals
-        }
-
-        try:
-            response = self._make_request("StationBoard", params)
-            arrivals = response.get('jnyL', [])
-            return arrivals
-        except Exception as e:
-            logger.error(f"Arrivals request failed: {e}")
-            raise
