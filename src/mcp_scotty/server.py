@@ -1,24 +1,24 @@
 """MCP Server for Public Transit Information across Europe via HAFAS API."""
 
 import logging
-import ssl
 import os
+import ssl
 from datetime import datetime
-from typing import Any, Optional
+from typing import Any
 
 from mcp.server.lowlevel import Server
 from mcp.types import CallToolRequestParams, CallToolResult, ListToolsResult, TextContent, Tool
 
-from .hafas_client import HafasClient, HAFAS_CONFIGS
-from .profiles import get_profile, list_profiles, TransitProfile
+from .hafas_client import HAFAS_CONFIGS, HafasClient
+from .profiles import TransitProfile, get_profile, list_profiles
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Global variables for current profile and client
-current_profile: Optional[TransitProfile] = None
-hafas_client: Optional[HafasClient] = None
+current_profile: TransitProfile | None = None
+hafas_client: HafasClient | None = None
 
 
 
@@ -26,7 +26,7 @@ class ToolFailure(Exception):
     """A tool call that failed for a reason the caller should see."""
 
 
-def initialize_client(profile_name: str = None) -> bool:
+def initialize_client(profile_name: str | None = None) -> bool:
     """Initialize HAFAS client with specified profile.
 
     Args:
@@ -68,7 +68,7 @@ def initialize_client(profile_name: str = None) -> bool:
             f"(SSL verify: {not disable_ssl})"
         )
         return True
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001  # startup: never crash on an init failure
         logger.error(f"Failed to initialize HAFAS client: {e}")
         hafas_client = None
         return False
@@ -240,12 +240,12 @@ async def _dispatch(name: str, arguments: dict[str, Any]) -> tuple[list[TextCont
             return [TextContent(type="text", text=f"Unknown tool: {name}")], True
     except ToolFailure as exc:
         return [TextContent(type="text", text=str(exc))], True
-    except ssl.SSLError as e:
-        logger.error(f"SSL error in tool {name}: {e}", exc_info=True)
+    except ssl.SSLError:
+        logger.exception(f"SSL error in tool {name}")
         error_msg = get_error_message("ssl")
         return [TextContent(type="text", text=error_msg)], True
     except Exception as e:
-        logger.error(f"Error executing tool {name}: {e}", exc_info=True)
+        logger.exception(f"Error executing tool {name}")
         error_msg = get_error_message("general", str(e))
         return [TextContent(type="text", text=error_msg)], True
 
@@ -347,7 +347,7 @@ async def search_stations(arguments: dict) -> list[TextContent]:
     try:
         locations = hafas_client.search_locations(query, max_results)
     except Exception as e:
-        logger.error(f"Error searching stations: {e}", exc_info=True)
+        logger.exception(f"Error searching stations: {query}")
         raise ToolFailure(f"Error searching stations: {e}") from e
 
     if not locations:
@@ -419,7 +419,7 @@ def _resolve_station(name: str, label: str) -> str:
     return matches[0]["id"]
 
 
-def _departure_moment(date: Optional[str], time: Optional[str]) -> datetime:
+def _departure_moment(date: str | None, time: str | None) -> datetime:
     """Build the departure moment; a missing date means today, a missing time now."""
     now = datetime.now()
     day = datetime.strptime(date, "%Y-%m-%d") if date else now

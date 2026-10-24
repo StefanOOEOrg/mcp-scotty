@@ -10,7 +10,7 @@ from datetime import datetime
 import pytest
 from mcp.client import Client
 
-import mcp_scotty.server as server
+from mcp_scotty import server
 from mcp_scotty.profiles import PROFILES
 
 SIX_TOOLS = [
@@ -199,7 +199,7 @@ async def test_get_journeys_resolves_names_to_ids_and_passes_the_moment(connect)
         },
     )
 
-    journey_call = [c for c in fake.calls if c[0] == "get_journeys"][0]
+    journey_call = next(c for c in fake.calls if c[0] == "get_journeys")
     assert journey_call[1] == STATION["id"]
     assert journey_call[2] == STATION["id"]
     assert isinstance(journey_call[3], datetime)

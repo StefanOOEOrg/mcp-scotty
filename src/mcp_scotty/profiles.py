@@ -1,10 +1,8 @@
 """Profile configurations for different transit providers."""
 
-import os
-import ssl
-import urllib3
 from dataclasses import dataclass
-from typing import Optional
+
+import urllib3
 
 # Disable SSL warnings when SSL verification is disabled
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -59,7 +57,7 @@ PROFILES = {
 }
 
 
-def get_profile(profile_name: str) -> Optional[TransitProfile]:
+def get_profile(profile_name: str) -> TransitProfile | None:
     """Get a transit profile by name.
 
     Args:

@@ -2,13 +2,17 @@
 
 import json
 import logging
-from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional
 from dataclasses import dataclass
+from datetime import datetime, timedelta
+from typing import Any
 
 import requests
 
 logger = logging.getLogger(__name__)
+
+
+class HafasError(Exception):
+    """A HAFAS call that failed: an API error or an unusable response."""
 
 
 @dataclass
@@ -107,7 +111,7 @@ class HafasClient:
             import urllib3
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-    def _make_request(self, method: str, params: Dict[str, Any]) -> Dict[str, Any]:
+    def _make_request(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         """Make a request to HAFAS API.
 
         Args:
@@ -157,7 +161,7 @@ class HafasClient:
                 svc_res = data['svcResL'][0]
                 if svc_res.get('err') != 'OK':
                     error_msg = svc_res.get('errTxt', 'Unknown error')
-                    raise Exception(f"HAFAS error: {error_msg}")
+                    raise HafasError(f"HAFAS error: {error_msg}")
                 return svc_res.get('res', {})
 
             return data
@@ -168,9 +172,9 @@ class HafasClient:
         except json.JSONDecodeError as e:
             logger.error(f"Invalid JSON response: {e}")
             logger.error(f"Response text: {response.text[:500]}")
-            raise Exception("HAFAS API returned invalid JSON")
+            raise HafasError("HAFAS API returned invalid JSON")
 
-    def search_locations(self, query: str, max_results: int = 10) -> List[Dict[str, Any]]:
+    def search_locations(self, query: str, max_results: int = 10) -> list[dict[str, Any]]:
         """Find stations matching a free-text query.
 
         Args:
@@ -203,7 +207,7 @@ class HafasClient:
         return [self._location(loc) for loc in response.get("match", {}).get("locL", [])]
 
     @staticmethod
-    def _location(loc: Dict[str, Any]) -> Dict[str, Any]:
+    def _location(loc: dict[str, Any]) -> dict[str, Any]:
         """Normalise one ``LocMatch`` location."""
         ext_id = loc.get("extId")
         return {
@@ -217,9 +221,9 @@ class HafasClient:
         self,
         origin_id: str,
         dest_id: str,
-        date: Optional[datetime] = None,
+        date: datetime | None = None,
         max_journeys: int = 5
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         """Find connections between two stations.
 
         Args:
@@ -285,10 +289,10 @@ class HafasClient:
     @classmethod
     def _connection(
         cls,
-        con: Dict[str, Any],
-        locations: List[Dict[str, Any]],
-        products: List[Dict[str, Any]],
-    ) -> Dict[str, Any]:
+        con: dict[str, Any],
+        locations: list[dict[str, Any]],
+        products: list[dict[str, Any]],
+    ) -> dict[str, Any]:
         """Normalise one ``TripSearch`` connection."""
         day = con["date"]
         return {
@@ -304,11 +308,11 @@ class HafasClient:
 
     @staticmethod
     def _leg(
-        sec: Dict[str, Any],
+        sec: dict[str, Any],
         day: str,
-        locations: List[Dict[str, Any]],
-        products: List[Dict[str, Any]],
-    ) -> Dict[str, Any]:
+        locations: list[dict[str, Any]],
+        products: list[dict[str, Any]],
+    ) -> dict[str, Any]:
         """Normalise one section of a connection; no ``jny`` means a walk."""
         prod_x = (sec.get("jny") or {}).get("prodX")
         return {
