@@ -21,6 +21,11 @@ current_profile: Optional[TransitProfile] = None
 hafas_client: Optional[HafasClient] = None
 
 
+
+class ToolFailure(Exception):
+    """A tool call that failed for a reason the caller should see."""
+
+
 def initialize_client(profile_name: str = None) -> bool:
     """Initialize HAFAS client with specified profile.
 
@@ -233,6 +238,8 @@ async def _dispatch(name: str, arguments: dict[str, Any]) -> tuple[list[TextCont
             return await get_arrivals(arguments), False
         else:
             return [TextContent(type="text", text=f"Unknown tool: {name}")], True
+    except ToolFailure as exc:
+        return [TextContent(type="text", text=str(exc))], True
     except ssl.SSLError as e:
         logger.error(f"SSL error in tool {name}: {e}", exc_info=True)
         error_msg = get_error_message("ssl")
@@ -376,180 +383,56 @@ async def search_stations(arguments: dict) -> list[TextContent]:
 
 
 async def get_journeys(arguments: dict) -> list[TextContent]:
-    """Get journey connections between two stations."""
-    origin = arguments["origin"]
-    destination = arguments["destination"]
-    date_str = arguments.get("date")
-    time_str = arguments.get("time")
-    max_journeys = arguments.get("max_journeys", 5)
+    """Connections between two stations, for the given date and time.
 
-    logger.info(f"Getting journeys from {origin} to {destination} (profile: {current_profile.name})")
+    Arguments: ``origin`` and ``destination`` (station names), optional ``date``
+    (YYYY-MM-DD), ``time`` (HH:MM) and ``max_journeys`` (default 3).
 
-    try:
-        # Parse date and time if provided
-        dt = None
-        if date_str or time_str:
-            date_part = date_str if date_str else datetime.now().strftime("%Y-%m-%d")
-            time_part = time_str if time_str else datetime.now().strftime("%H:%M")
-            dt = datetime.strptime(f"{date_part} {time_part}", "%Y-%m-%d %H:%M")
+    Implementation:
+        1. Resolve both names with ``hafas_client.search_locations(name, 1)``.
+        2. ``raise ToolFailure(f"Origin station not found: {origin}")`` (and the
+           destination equivalent) when nothing matches.
+        3. Build the departure moment from ``date``/``time`` (missing parts: today
+           and now) and call
+           ``hafas_client.get_journeys(origin_id, dest_id, date=when, max_journeys=n)``.
+        4. No connection ->
+           ``raise ToolFailure(f"No journeys found from {origin} to {destination}")``.
+        5. Otherwise one ``TextContent``: a heading, then per connection a line
+           with departure and arrival (``HH:MM``), the duration in minutes and the
+           number of changes, followed by its legs — each ``JNY`` leg with its line
+           name and ``origin -> destination``, each ``WALK`` leg marked as a walk.
+           Every name from the normalised dicts has to appear in the text.
+    """
+    raise NotImplementedError
 
-        # Get locations for origin and destination
-        origin_locations = hafas_client.locations(origin)
-        dest_locations = hafas_client.locations(destination)
-
-        if not origin_locations:
-            return [TextContent(type="text", text=f"Origin station not found: {origin}")]
-        if not dest_locations:
-            return [TextContent(type="text", text=f"Destination station not found: {destination}")]
-
-        origin_id = origin_locations[0].id
-        dest_id = dest_locations[0].id
-
-        # Get journeys
-        journeys = hafas_client.journeys(
-            origin=origin_id,
-            destination=dest_id,
-            date=dt,
-            max_journeys=max_journeys
-        )
-
-        if not journeys:
-            return [TextContent(
-                type="text",
-                text=f"No journeys found from {origin_locations[0].name} to {dest_locations[0].name}"
-            )]
-
-        # Format results
-        results = []
-        for i, journey in enumerate(journeys[:max_journeys]):
-            journey_info = f"### Journey {i + 1}\n"
-            journey_info += f"**Departure:** {journey.departure} from {journey.origin.name}\n"
-            journey_info += f"**Arrival:** {journey.arrival} at {journey.destination.name}\n"
-            journey_info += f"**Duration:** {journey.duration}\n"
-            journey_info += f"**Transfers:** {journey.transfers}\n"
-
-            if journey.legs:
-                journey_info += f"\n**Legs:**\n"
-                for j, leg in enumerate(journey.legs):
-                    journey_info += f"{j + 1}. {leg.name or 'Transfer'}: "
-                    journey_info += f"{leg.origin.name} → {leg.destination.name}\n"
-
-            results.append(journey_info)
-
-        result_text = f"Found {len(results)} journey(ies) from **{origin_locations[0].name}** to **{dest_locations[0].name}**:\n\n"
-        result_text += f"*(Using {current_profile.name} profile)*\n\n"
-        result_text += "\n---\n\n".join(results)
-        return [TextContent(type="text", text=result_text)]
-
-    except Exception as e:
-        logger.error(f"Error getting journeys: {e}")
-        return [TextContent(type="text", text=f"Error getting journeys: {str(e)}")]
 
 
 async def get_departures(arguments: dict) -> list[TextContent]:
-    """Get departures from a station."""
-    station = arguments["station"]
-    max_departures = arguments.get("max_departures", 10)
+    """Departures from one station - not implemented yet (Stage 2).
 
-    logger.info(f"Getting departures from: {station} (profile: {current_profile.name})")
+    Arguments: ``station`` (name), optional ``max_departures`` (default 10).
 
-    try:
-        # Get station location
-        locations = hafas_client.locations(station)
-        if not locations:
-            return [TextContent(type="text", text=f"Station not found: {station}")]
+    The station board of the HAFAS API returns no data yet, so this tool fails
+    honestly instead of pretending:
+    ``raise ToolFailure("The station board is not implemented yet for "
+    f"{current_profile.name}; use get_journeys or search_stations instead.")``.
+    It must not answer with an empty list.
+    """
+    raise NotImplementedError
 
-        station_id = locations[0].id
-        station_name = locations[0].name
-
-        # Get departures
-        departures = hafas_client.departures(
-            station=station_id,
-            date=datetime.now(),
-            max_trips=max_departures
-        )
-
-        if not departures:
-            return [TextContent(type="text", text=f"No departures found for {station_name}")]
-
-        # Format results
-        results = []
-        results.append(f"# Departures from {station_name}\n")
-        results.append(f"*(Using {current_profile.name} profile)*\n")
-
-        for departure in departures[:max_departures]:
-            dep_info = f"**{departure.name}** to {departure.direction}\n"
-            dep_info += f"- Departure: {departure.departure}\n"
-
-            if hasattr(departure, 'platform') and departure.platform:
-                dep_info += f"- Platform: {departure.platform}\n"
-
-            if hasattr(departure, 'delay') and departure.delay:
-                dep_info += f"- Delay: {departure.delay} minutes\n"
-
-            results.append(dep_info)
-
-        result_text = "\n".join(results)
-        return [TextContent(type="text", text=result_text)]
-
-    except Exception as e:
-        logger.error(f"Error getting departures: {e}")
-        return [TextContent(type="text", text=f"Error getting departures: {str(e)}")]
 
 
 async def get_arrivals(arguments: dict) -> list[TextContent]:
-    """Get arrivals at a station."""
-    station = arguments["station"]
-    max_arrivals = arguments.get("max_arrivals", 10)
+    """Arrivals at one station - not implemented yet (Stage 2).
 
-    logger.info(f"Getting arrivals at: {station} (profile: {current_profile.name})")
+    Arguments: ``station`` (name), optional ``max_arrivals`` (default 10).
 
-    try:
-        # Get station location
-        locations = hafas_client.locations(station)
-        if not locations:
-            return [TextContent(type="text", text=f"Station not found: {station}")]
+    Same rule as :func:`get_departures`: ``raise ToolFailure("The station board is
+    not implemented yet for " f"{current_profile.name}; use get_journeys or
+    search_stations instead.")`` instead of returning an empty list.
+    """
+    raise NotImplementedError
 
-        station_id = locations[0].id
-        station_name = locations[0].name
-
-        # Get arrivals
-        arrivals = hafas_client.arrivals(
-            station=station_id,
-            date=datetime.now(),
-            max_trips=max_arrivals
-        )
-
-        if not arrivals:
-            return [TextContent(type="text", text=f"No arrivals found for {station_name}")]
-
-        # Format results
-        results = []
-        results.append(f"# Arrivals at {station_name}\n")
-        results.append(f"*(Using {current_profile.name} profile)*\n")
-
-        for arrival in arrivals[:max_arrivals]:
-            arr_info = f"**{arrival.name}**"
-            if hasattr(arrival, 'origin') and arrival.origin:
-                arr_info += f" from {arrival.origin.name}\n"
-            else:
-                arr_info += "\n"
-            arr_info += f"- Arrival: {arrival.arrival}\n"
-
-            if hasattr(arrival, 'platform') and arrival.platform:
-                arr_info += f"- Platform: {arrival.platform}\n"
-
-            if hasattr(arrival, 'delay') and arrival.delay:
-                arr_info += f"- Delay: {arrival.delay} minutes\n"
-
-            results.append(arr_info)
-
-        result_text = "\n".join(results)
-        return [TextContent(type="text", text=result_text)]
-
-    except Exception as e:
-        logger.error(f"Error getting arrivals: {e}")
-        return [TextContent(type="text", text=f"Error getting arrivals: {str(e)}")]
 
 
 # Built after the handlers so the 2.x constructor can bind them.
