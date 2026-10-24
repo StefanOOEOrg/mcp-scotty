@@ -346,40 +346,28 @@ async def search_stations(arguments: dict) -> list[TextContent]:
 
     try:
         locations = hafas_client.search_locations(query, max_results)
-
-        if not locations:
-            return [TextContent(
-                type="text",
-                text=f"No stations found for query: {query} (using {current_profile.name} profile)"
-            )]
-
-        # Format results
-        results = []
-        for location in locations[:max_results]:
-            # Extract name from location dict
-            name = location.get('name', 'Unknown')
-            lid = location.get('lid', location.get('extId', 'N/A'))
-
-            station_info = f"**{name}**\n"
-            station_info += f"- ID: `{lid}`\n"
-
-            # Check for coordinates
-            if 'crd' in location:
-                crd = location['crd']
-                lat = crd.get('y', 0) / 1000000  # HAFAS uses scaled coordinates
-                lon = crd.get('x', 0) / 1000000
-                if lat != 0 and lon != 0:
-                    station_info += f"- Coordinates: {lat:.6f}, {lon:.6f}\n"
-
-            results.append(station_info)
-
-        result_text = f"Found {len(results)} station(s) for '{query}' ({current_profile.name}):\n\n"
-        result_text += "\n".join(results)
-        return [TextContent(type="text", text=result_text)]
-
     except Exception as e:
         logger.error(f"Error searching stations: {e}", exc_info=True)
-        return [TextContent(type="text", text=f"Error searching stations: {str(e)}")]
+        raise ToolFailure(f"Error searching stations: {e}") from e
+
+    if not locations:
+        raise ToolFailure(
+            f"No stations found for query: {query} (using {current_profile.name} profile)"
+        )
+
+    # Format results
+    results = []
+    for location in locations[:max_results]:
+        name = location.get("name", "Unknown")
+        station_id = location.get("id", "N/A")
+
+        station_info = f"**{name}**\n"
+        station_info += f"- ID: `{station_id}`\n"
+        results.append(station_info)
+
+    result_text = f"Found {len(results)} station(s) for '{query}' ({current_profile.name}):\n\n"
+    result_text += "\n".join(results)
+    return [TextContent(type="text", text=result_text)]
 
 
 async def get_journeys(arguments: dict) -> list[TextContent]:
@@ -403,7 +391,71 @@ async def get_journeys(arguments: dict) -> list[TextContent]:
            name and ``origin -> destination``, each ``WALK`` leg marked as a walk.
            Every name from the normalised dicts has to appear in the text.
     """
-    raise NotImplementedError
+    origin = arguments["origin"]
+    destination = arguments["destination"]
+    max_journeys = arguments.get("max_journeys", 3)
+    when = _departure_moment(arguments.get("date"), arguments.get("time"))
+
+    origin_id = _resolve_station(origin, "Origin")
+    dest_id = _resolve_station(destination, "Destination")
+
+    journeys = hafas_client.get_journeys(
+        origin_id, dest_id, date=when, max_journeys=max_journeys
+    )
+    if not journeys:
+        raise ToolFailure(f"No journeys found from {origin} to {destination}")
+
+    return [TextContent(
+        type="text",
+        text=_format_journeys(origin, destination, journeys),
+    )]
+
+
+def _resolve_station(name: str, label: str) -> str:
+    """Resolve a station name to its HAFAS id, or fail with a clear message."""
+    matches = hafas_client.search_locations(name, 1)
+    if not matches:
+        raise ToolFailure(f"{label} station not found: {name}")
+    return matches[0]["id"]
+
+
+def _departure_moment(date: Optional[str], time: Optional[str]) -> datetime:
+    """Build the departure moment; a missing date means today, a missing time now."""
+    now = datetime.now()
+    day = datetime.strptime(date, "%Y-%m-%d") if date else now
+    if time:
+        clock = datetime.strptime(time, "%H:%M")
+        hour, minute = clock.hour, clock.minute
+    else:
+        hour, minute = now.hour, now.minute
+    return day.replace(hour=hour, minute=minute, second=0, microsecond=0)
+
+
+def _clock(stamp: str) -> str:
+    """``HH:MM`` of an ISO 8601 timestamp."""
+    return datetime.fromisoformat(stamp).strftime("%H:%M")
+
+
+def _format_journeys(origin: str, destination: str, journeys: list[dict]) -> str:
+    """Render the connections as Markdown, one block per connection."""
+    lines = [f"# Connections from {origin} to {destination}", ""]
+    for index, journey in enumerate(journeys, 1):
+        lines.append(
+            f"{index}. {_clock(journey['departure'])} -> {_clock(journey['arrival'])} "
+            f"({journey['duration_minutes']} min, {journey['changes']} change(s))"
+        )
+        for leg in journey["legs"]:
+            lines.append(f"   - {_format_leg(leg)}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def _format_leg(leg: dict) -> str:
+    """One leg as ``line: origin -> destination``, or ``Walk: origin -> destination``."""
+    route = f"{leg['origin']} -> {leg['destination']}"
+    if leg["type"] == "WALK":
+        return f"Walk: {route}"
+    return f"{leg['line']}: {route}"
 
 
 
@@ -418,7 +470,10 @@ async def get_departures(arguments: dict) -> list[TextContent]:
     f"{current_profile.name}; use get_journeys or search_stations instead.")``.
     It must not answer with an empty list.
     """
-    raise NotImplementedError
+    raise ToolFailure(
+        "The station board is not implemented yet for "
+        f"{current_profile.name}; use get_journeys or search_stations instead."
+    )
 
 
 
@@ -431,7 +486,10 @@ async def get_arrivals(arguments: dict) -> list[TextContent]:
     not implemented yet for " f"{current_profile.name}; use get_journeys or
     search_stations instead.")`` instead of returning an empty list.
     """
-    raise NotImplementedError
+    raise ToolFailure(
+        "The station board is not implemented yet for "
+        f"{current_profile.name}; use get_journeys or search_stations instead."
+    )
 
 
 
