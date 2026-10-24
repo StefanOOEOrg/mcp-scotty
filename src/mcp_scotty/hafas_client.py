@@ -66,8 +66,10 @@ def _iso_time(date: str, time: str) -> str:
     time is added to the date instead of being parsed as a clock time.
     """
     day = datetime.strptime(date, "%Y%m%d")
-    hours, minutes, seconds = int(time[0:2]), int(time[2:4]), int(time[4:6])
-    stamp = day + timedelta(hours=hours, minutes=minutes, seconds=seconds)
+    # ``DDHHMMSS``: the first two digits are a day offset, not an hour.
+    offset, clock = (int(time[:2]), time[2:]) if len(time) > 6 else (0, time)
+    hours, minutes, seconds = int(clock[0:2]), int(clock[2:4]), int(clock[4:6])
+    stamp = day + timedelta(days=offset, hours=hours, minutes=minutes, seconds=seconds)
     return stamp.strftime("%Y-%m-%dT%H:%M:%S")
 
 
