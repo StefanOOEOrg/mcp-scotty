@@ -8,13 +8,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned Features
-- Complete HAFAS request format implementation
+- Station board (`get_departures`, `get_arrivals`) — Stage 2
 - Trip tracking functionality
 - Fare and pricing information
 - Station facilities and amenities information
 - Real-time platform change notifications
 - Service disruption alerts
 - Support for more European transit providers (SNCF, NMBS, DSB, etc.)
+
+## [0.4.0] - 2026-10-24
+
+The release that made the server work. Until here it started only with the old
+`mcp` 1.x and returned empty results without saying so.
+
+### Fixed
+- **It runs with the current SDK again.** The handlers were registered with the
+  mcp 1.x decorators, while `pyproject.toml` allowed any version, so a fresh
+  install pulled 2.x and died on import (`'Server' object has no attribute
+  'list_tools'`). Ported to the 2.x handlers (`on_list_tools`, `on_call_tool`),
+  pinned `mcp>=2.2,<3`, and declared `requests`, which was imported but never
+  listed as a dependency.
+- **Station search works.** The `LocMatch` body was ignored by the API, so every
+  search came back empty. It now sends the documented body and normalises the
+  matches (`id`, `name`, `ext_id`, `type`).
+- **Journey planning works.** Same for `TripSearch`: real connections with
+  departure/arrival, duration, number of changes and every leg (line name,
+  origin, destination, times), including connections that cross midnight — HAFAS
+  prefixes those times with a day offset (`01020700` = 02:07 the next day).
+- **Failures look like failures.** Tool errors travel through `ToolFailure` and
+  reach the client as `is_error: true`; an empty result is an error, not a
+  successful empty answer.
+- **`get_departures` / `get_arrivals` fail honestly** with "The station board is
+  not implemented yet …" instead of returning an empty list. The HAFAS
+  `StationBoard` request is still unverified (Stage 2).
+- Removed the unused `pyhafas` dependency (it has no ÖBB profile), and the
+  `Apache-2.0` metadata that contradicted the GPL-3.0 `LICENSE`.
+
+### Added
+- **Tests:** 32 of them — the client against recorded ÖBB responses (no network
+  in CI), the tool layer through an in-process MCP client, and the provider
+  profiles including a guard that every profile has a HAFAS configuration.
+- **CI:** ruff and pytest on Python 3.10 and 3.14.
+- **Rename:** the package is `mcp_scotty` and the project `mcp-scotty`
+  (formerly `transitmcp` / `TransitMCP`); the server announces itself as
+  `scotty`.
 
 ## [0.3.0] - 2025-11-10
 
