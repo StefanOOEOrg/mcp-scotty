@@ -1,14 +1,14 @@
-# Contributing to ScottyMCP
+# Contributing to mcp-scotty
 
-Thank you for your interest in contributing to ScottyMCP! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to mcp-scotty! This document provides guidelines and instructions for contributing.
 
 ## Getting Started
 
 1. Fork the repository on GitHub
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/yourusername/ScottyMCP.git
-   cd ScottyMCP
+   git clone https://github.com/yourusername/mcp-scotty.git
+   cd mcp-scotty
    ```
 3. Create a virtual environment and install dependencies:
    ```bash
@@ -250,4 +250,4 @@ By contributing, you agree that your contributions will be licensed under the Ap
 
 ## Recognition
 
-Contributors will be recognized in the README and release notes. Thank you for helping make ScottyMCP better!
+Contributors will be recognized in the README and release notes. Thank you for helping make mcp-scotty better!

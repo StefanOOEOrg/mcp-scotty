@@ -1,6 +1,6 @@
-# ScottyMCP Usage Examples
+# mcp-scotty Usage Examples
 
-This document provides practical examples of using ScottyMCP with Claude Desktop.
+This document provides practical examples of using mcp-scotty with Claude Desktop.
 
 ## Basic Station Search
 

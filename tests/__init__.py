@@ -1,1 +1,1 @@
-"""Tests for ScottyMCP."""
+"""Tests for mcp-scotty."""

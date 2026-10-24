@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to TransitMCP will be documented in this file.
+All notable changes to mcp-scotty will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -54,9 +54,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2025-11-10
 
 ### Major Changes
-- **Project renamed** from ScottyMCP to TransitMCP for broader international appeal
+- **Project renamed** from mcp-scotty to mcp-scotty for broader international appeal
 - **Multi-provider support**: Can now switch between different transit providers
-- **Package renamed** from `scottymcp` to `transitmcp`
+- **Package renamed** from `scottymcp` to `mcp_scotty`
 
 ### Added
 - Multi-profile architecture supporting different HAFAS providers
@@ -71,7 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - All documentation translated to English
 - Error messages now adapt to selected provider
-- Server name from "scottymcp" to "transitmcp"
+- Server name from "scottymcp" to "mcp_scotty"
 - Claude Desktop config updated to use "transit" identifier
 - README completely rewritten for multi-provider context
 
@@ -84,7 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-11-10
 
 ### Added
-- Initial release of ScottyMCP
+- Initial release of mcp-scotty
 - MCP server implementation using official Python SDK
 - Integration with pyhafas for HAFAS API access
 - Four main tools:
@@ -107,5 +107,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Stdio-based communication protocol
 - Async/await support throughout
 
-[Unreleased]: https://github.com/yourusername/ScottyMCP/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/yourusername/ScottyMCP/releases/tag/v0.1.0
+[Unreleased]: https://github.com/yourusername/mcp-scotty/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/yourusername/mcp-scotty/releases/tag/v0.1.0

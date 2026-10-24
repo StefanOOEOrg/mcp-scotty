@@ -1,6 +1,6 @@
-# Installation Guide for ScottyMCP
+# Installation Guide for mcp-scotty
 
-This guide provides detailed instructions for installing and configuring ScottyMCP.
+This guide provides detailed instructions for installing and configuring mcp-scotty.
 
 ## Prerequisites
 
@@ -25,8 +25,8 @@ If you need to install or upgrade Python, visit [python.org](https://www.python.
 ### 2. Clone or Download the Repository
 
 ```bash
-git clone https://github.com/yourusername/ScottyMCP.git
-cd ScottyMCP
+git clone https://github.com/yourusername/mcp-scotty.git
+cd mcp-scotty
 ```
 
 Or download and extract the ZIP file from GitHub.
@@ -86,34 +86,34 @@ The server should start without errors. Press `Ctrl+C` to stop it.
    touch ~/Library/Application\ Support/Claude/claude_desktop_config.json
    ```
 
-3. Edit the configuration file and add ScottyMCP:
+3. Edit the configuration file and add mcp-scotty:
    ```json
    {
      "mcpServers": {
        "scottymcp": {
          "command": "python",
          "args": [
-           "/full/path/to/ScottyMCP/run_server.py"
+           "/full/path/to/mcp-scotty/run_server.py"
          ]
        }
      }
    }
    ```
 
-4. Replace `/full/path/to/ScottyMCP/` with the actual absolute path. You can find it by running:
+4. Replace `/full/path/to/mcp-scotty/` with the actual absolute path. You can find it by running:
    ```bash
    pwd
    ```
-   in the ScottyMCP directory.
+   in the mcp-scotty directory.
 
 5. If you're using a virtual environment, use the full path to the Python interpreter in the venv:
    ```json
    {
      "mcpServers": {
        "scottymcp": {
-         "command": "/full/path/to/ScottyMCP/venv/bin/python",
+         "command": "/full/path/to/mcp-scotty/venv/bin/python",
          "args": [
-           "/full/path/to/ScottyMCP/run_server.py"
+           "/full/path/to/mcp-scotty/run_server.py"
          ]
        }
      }
@@ -132,14 +132,14 @@ The server should start without errors. Press `Ctrl+C` to stop it.
    New-Item -Path "$env:APPDATA\Claude\claude_desktop_config.json" -ItemType File -Force
    ```
 
-3. Edit the configuration file and add ScottyMCP:
+3. Edit the configuration file and add mcp-scotty:
    ```json
    {
      "mcpServers": {
        "scottymcp": {
          "command": "python",
          "args": [
-           "C:\\full\\path\\to\\ScottyMCP\\run_server.py"
+           "C:\\full\\path\\to\\mcp-scotty\\run_server.py"
          ]
        }
      }
@@ -151,9 +151,9 @@ The server should start without errors. Press `Ctrl+C` to stop it.
    {
      "mcpServers": {
        "scottymcp": {
-         "command": "C:\\full\\path\\to\\ScottyMCP\\venv\\Scripts\\python.exe",
+         "command": "C:\\full\\path\\to\\mcp-scotty\\venv\\Scripts\\python.exe",
          "args": [
-           "C:\\full\\path\\to\\ScottyMCP\\run_server.py"
+           "C:\\full\\path\\to\\mcp-scotty\\run_server.py"
          ]
        }
      }
@@ -173,14 +173,14 @@ The server should start without errors. Press `Ctrl+C` to stop it.
    touch ~/.config/Claude/claude_desktop_config.json
    ```
 
-3. Edit the configuration file and add ScottyMCP:
+3. Edit the configuration file and add mcp-scotty:
    ```json
    {
      "mcpServers": {
        "scottymcp": {
          "command": "python3",
          "args": [
-           "/full/path/to/ScottyMCP/run_server.py"
+           "/full/path/to/mcp-scotty/run_server.py"
          ]
        }
      }
@@ -192,9 +192,9 @@ The server should start without errors. Press `Ctrl+C` to stop it.
    {
      "mcpServers": {
        "scottymcp": {
-         "command": "/full/path/to/ScottyMCP/venv/bin/python",
+         "command": "/full/path/to/mcp-scotty/venv/bin/python",
          "args": [
-           "/full/path/to/ScottyMCP/run_server.py"
+           "/full/path/to/mcp-scotty/run_server.py"
          ]
        }
      }
@@ -207,15 +207,15 @@ After configuring the MCP server, restart Claude Desktop completely:
 
 1. Quit Claude Desktop
 2. Start Claude Desktop again
-3. The ScottyMCP tools should now be available
+3. The mcp-scotty tools should now be available
 
 ## Verify Installation
 
 In Claude Desktop, try asking:
 - "Search for train stations named Wien"
-- "What are the available tools from ScottyMCP?"
+- "What are the available tools from mcp-scotty?"
 
-If configured correctly, Claude should be able to use the ScottyMCP tools.
+If configured correctly, Claude should be able to use the mcp-scotty tools.
 
 ## Troubleshooting
 
@@ -254,7 +254,7 @@ pip install -r requirements.txt
 
 ## Alternative: Using uvx (Universal Virtualenv eXecutor)
 
-If you have `uvx` installed, you can run ScottyMCP without manually creating a virtual environment:
+If you have `uvx` installed, you can run mcp-scotty without manually creating a virtual environment:
 
 ```json
 {
@@ -263,7 +263,7 @@ If you have `uvx` installed, you can run ScottyMCP without manually creating a v
       "command": "uvx",
       "args": [
         "--from",
-        "/full/path/to/ScottyMCP",
+        "/full/path/to/mcp-scotty",
         "scottymcp"
       ]
     }

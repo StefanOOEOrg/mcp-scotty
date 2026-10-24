@@ -1,9 +1,9 @@
 [project]
-name = "transitmcp"
+name = "mcp-scotty"
 version = "0.3.0"
 description = "MCP Server for public transit information across Europe via HAFAS API (ÖBB, DB, SBB, NS, and more)"
 authors = [
-    {name = "TransitMCP Contributors"}
+    {name = "mcp-scotty Contributors"}
 ]
 readme = "README.md"
 requires-python = ">=3.10"
