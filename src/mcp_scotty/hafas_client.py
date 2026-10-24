@@ -249,8 +249,11 @@ class HafasClient:
             * The connection carries its date as ``YYYYMMDD`` and its times as
               ``dTimeS``/``aTimeS`` (``HHMMSS``) on ``dep``/``arr``; legs carry
               their own ``dep``/``arr`` with the same shape.
-            * Hours may exceed 23 — an arrival of ``"250300"`` is 01:03 on the
-              following day — so the date has to roll over.
+            * A time on a later day carries a **two-digit day offset in front**
+              (``DDHHMMSS``): ``"01020700"`` is 02:07:00 one day after the
+              connection date. Six-character times (``HHMMSS``) are on the
+              connection day itself. This is the convention pyhafas documents
+              (``dateOffset = int(time[:2]) if len(time) > 6``).
             * Station names are indexes: ``locX`` into ``res["common"]["locL"]``;
               line names are ``prodX`` into ``res["common"]["prodL"]`` (key
               ``name``). A leg without ``jny`` is a walk and has no line.

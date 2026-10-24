@@ -137,36 +137,14 @@ def test_get_journeys_without_connections_is_an_empty_list():
     assert client.get_journeys("ORIGIN", "DEST") == []
 
 
-def test_times_after_midnight_roll_over_the_date():
-    response = {
-        "common": {
-            "locL": [{"lid": "A", "name": "Start"}, {"lid": "B", "name": "Ziel"}],
-            "prodL": [{"pid": "p", "name": "REX 1"}],
-        },
-        "outConL": [
-            {
-                "cid": "C-late",
-                "date": "20261025",
-                "dur": "003300",
-                "chg": 0,
-                "dep": {"locX": "0", "dTimeS": "233000"},
-                "arr": {"locX": "1", "aTimeS": "250300"},
-                "secL": [
-                    {
-                        "type": "JNY",
-                        "dep": {"locX": "0", "dTimeS": "233000"},
-                        "arr": {"locX": "1", "aTimeS": "250300"},
-                        "jny": {"prodX": "0", "dirTxt": "Ziel"},
-                    }
-                ],
-            }
-        ],
-    }
-    client = RecordingClient(response)
+def test_overnight_arrival_uses_the_day_offset_prefix():
+    """A time on a later day carries a two-digit day offset: ``01020700`` = 02:07 +1 day."""
+    client = RecordingClient(payload("tripsearch_overnight.json"))
 
-    journey = client.get_journeys("A", "B", date=datetime(2026, 10, 25, 23, 30))[0]
+    journey = client.get_journeys("ORIGIN", "DEST", date=datetime(2026, 10, 25, 23, 28))[0]
 
-    assert journey["departure"] == "2026-10-25T23:30:00"
-    assert journey["arrival"] == "2026-10-26T01:03:00"
-    assert journey["legs"][0]["arrival"] == "2026-10-26T01:03:00"
-    assert journey["duration_minutes"] == 33
+    assert journey["departure"] == "2026-10-25T23:28:00"
+    assert journey["arrival"] == "2026-10-26T02:07:00"
+    assert journey["duration_minutes"] == 159
+    assert journey["legs"][0]["line"] == "EC 462"
+    assert journey["legs"][0]["arrival"] == "2026-10-26T02:07:00"

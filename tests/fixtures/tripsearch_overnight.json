@@ -1,0 +1,1973 @@
+{
+ "common": {
+  "locL": [
+   {
+    "lid": "A=1@O=Wien Hbf (Bahnsteige 3-12)@X=16377950@Y=48184986@U=81@L=8103000@",
+    "type": "S",
+    "name": "Wien Hbf (Bahnsteige 3-12)",
+    "icoX": 1,
+    "extId": "8103000",
+    "state": "F",
+    "crd": {
+     "x": 16377950,
+     "y": 48184986,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101003",
+      "type": "U"
+     },
+     {
+      "id": "Wbf",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   },
+   {
+    "lid": "A=1@O=Salzburg Hbf@X=13045856@Y=47813057@U=81@L=8100002@",
+    "type": "S",
+    "name": "Salzburg Hbf",
+    "icoX": 1,
+    "extId": "8100002",
+    "state": "F",
+    "crd": {
+     "x": 13045856,
+     "y": 47813057,
+     "floor": 0
+    },
+    "pCls": 4159,
+    "globalIdL": [
+     {
+      "id": "8101114",
+      "type": "U"
+     },
+     {
+      "id": "Sb",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000700"
+   },
+   {
+    "lid": "A=1@O=Wien Meidling Bahnhof@X=16333966@Y=48174532@U=81@L=8100514@",
+    "type": "S",
+    "name": "Wien Meidling Bahnhof",
+    "icoX": 1,
+    "extId": "8100514",
+    "state": "F",
+    "crd": {
+     "x": 16333966,
+     "y": 48174532,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8103107",
+      "type": "U"
+     },
+     {
+      "id": "Mi",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   },
+   {
+    "lid": "A=1@O=St.Pölten Hbf@X=15624681@Y=48208277@U=81@L=8100008@",
+    "type": "S",
+    "name": "St.Pölten Hbf",
+    "icoX": 1,
+    "extId": "8100008",
+    "state": "F",
+    "crd": {
+     "x": 15624681,
+     "y": 48208277,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101032",
+      "type": "U"
+     },
+     {
+      "id": "Pb",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Linz/Donau Hbf@X=14291860@Y=48290241@U=81@L=8100013@",
+    "type": "S",
+    "name": "Linz/Donau Hbf",
+    "icoX": 1,
+    "extId": "8100013",
+    "state": "F",
+    "crd": {
+     "x": 14291860,
+     "y": 48290241,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101073",
+      "type": "U"
+     },
+     {
+      "id": "Lz",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Hbf (Tiefgeschoß Straßenbahn)@X=16373923@Y=48185939@U=81@L=904008@",
+    "type": "S",
+    "name": "Wien Hbf (Tiefgeschoß Straßenbahn)",
+    "icoX": 0,
+    "extId": "904008",
+    "state": "F",
+    "crd": {
+     "x": 16373923,
+     "y": 48185939,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)@X=16338865@Y=48196888@U=81@L=915005@",
+    "type": "S",
+    "name": "Wien Westbahnhof (Neubaugürtel Mitte/Westeingang)",
+    "icoX": 0,
+    "extId": "915005",
+    "state": "F",
+    "crd": {
+     "x": 16338865,
+     "y": 48196888,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Blechturmgasse (Tiefgeschoß)@X=16368359@Y=48184276@U=81@L=904010@",
+    "type": "S",
+    "name": "Wien Blechturmgasse (Tiefgeschoß)",
+    "icoX": 0,
+    "extId": "904010",
+    "state": "F",
+    "crd": {
+     "x": 16368359,
+     "y": 48184276,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Kliebergasse (Tiefgeschoß)@X=16364404@Y=48182883@U=81@L=905043@",
+    "type": "S",
+    "name": "Wien Kliebergasse (Tiefgeschoß)",
+    "icoX": 0,
+    "extId": "905043",
+    "state": "F",
+    "crd": {
+     "x": 16364404,
+     "y": 48182883,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000300"
+   },
+   {
+    "lid": "A=1@O=Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)@X=16358965@Y=48180743@U=81@L=910104@",
+    "type": "S",
+    "name": "Wien Matzleinsdorfer Platz Bahnhst (Tiefgeschoß)",
+    "icoX": 0,
+    "extId": "910104",
+    "state": "F",
+    "crd": {
+     "x": 16358965,
+     "y": 48180743,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000200"
+   },
+   {
+    "lid": "A=1@O=Wien Eichenstraße (Tiefgeschoß)@X=16349670@Y=48180518@U=81@L=905033@",
+    "type": "S",
+    "name": "Wien Eichenstraße (Tiefgeschoß)",
+    "icoX": 0,
+    "extId": "905033",
+    "state": "F",
+    "crd": {
+     "x": 16349670,
+     "y": 48180518,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Arbeitergasse/Gürtel@X=16345661@Y=48184447@U=81@L=905048@",
+    "type": "S",
+    "name": "Wien Arbeitergasse/Gürtel",
+    "icoX": 0,
+    "extId": "905048",
+    "state": "F",
+    "crd": {
+     "x": 16345661,
+     "y": 48184447,
+     "floor": 0
+    },
+    "pCls": 576,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Margaretengürtel (Straßenbahn)@X=16341967@Y=48188312@U=81@L=905003@",
+    "type": "S",
+    "name": "Wien Margaretengürtel (Straßenbahn)",
+    "icoX": 0,
+    "extId": "905003",
+    "state": "F",
+    "crd": {
+     "x": 16341967,
+     "y": 48188312,
+     "floor": 0
+    },
+    "pCls": 512,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Gumpendorfer Straße (Gumpendorfer Gürtel)@X=16337841@Y=48190550@U=81@L=906003@",
+    "type": "S",
+    "name": "Wien Gumpendorfer Straße (Gumpendorfer Gürtel)",
+    "icoX": 0,
+    "extId": "906003",
+    "state": "F",
+    "crd": {
+     "x": 16337841,
+     "y": 48190550,
+     "floor": 0
+    },
+    "pCls": 576,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Mariahilfer Gürtel@X=16338874@Y=48193211@U=81@L=906002@",
+    "type": "S",
+    "name": "Wien Mariahilfer Gürtel",
+    "icoX": 0,
+    "extId": "906002",
+    "state": "F",
+    "crd": {
+     "x": 16338874,
+     "y": 48193211,
+     "floor": 0
+    },
+    "pCls": 512,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Westbahnhof@X=16337256@Y=48196753@U=81@L=8100003@",
+    "type": "S",
+    "name": "Wien Westbahnhof",
+    "icoX": 1,
+    "extId": "8100003",
+    "state": "F",
+    "crd": {
+     "x": 16337256,
+     "y": 48196753,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101001",
+      "type": "U"
+     },
+     {
+      "id": "Ws",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000600"
+   },
+   {
+    "lid": "A=1@O=Wien Hütteldorf Bahnhof@X=16261118@Y=48197355@U=81@L=8100447@",
+    "type": "S",
+    "name": "Wien Hütteldorf Bahnhof",
+    "icoX": 1,
+    "extId": "8100447",
+    "state": "F",
+    "crd": {
+     "x": 16261118,
+     "y": 48197355,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101008",
+      "type": "U"
+     },
+     {
+      "id": "Hf",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000400"
+   },
+   {
+    "lid": "A=1@O=Amstetten NÖ Bahnhof@X=14878253@Y=48121531@U=81@L=8100012@",
+    "type": "S",
+    "name": "Amstetten NÖ Bahnhof",
+    "icoX": 1,
+    "extId": "8100012",
+    "state": "F",
+    "crd": {
+     "x": 14878253,
+     "y": 48121531,
+     "floor": 0
+    },
+    "pCls": 4125,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101049",
+      "type": "U"
+     },
+     {
+      "id": "Ams",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wels Hbf@X=14026507@Y=48165947@U=81@L=8100014@",
+    "type": "S",
+    "name": "Wels Hbf",
+    "icoX": 1,
+    "extId": "8100014",
+    "state": "F",
+    "crd": {
+     "x": 14026507,
+     "y": 48165947,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "globalIdL": [
+     {
+      "id": "8101081",
+      "type": "U"
+     },
+     {
+      "id": "We",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Attnang-Puchheim Bahnhof@X=13720892@Y=48012609@U=81@L=8100017@",
+    "type": "S",
+    "name": "Attnang-Puchheim Bahnhof",
+    "icoX": 1,
+    "extId": "8100017",
+    "state": "F",
+    "crd": {
+     "x": 13720892,
+     "y": 48012609,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101091",
+      "type": "U"
+     },
+     {
+      "id": "At",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Vöcklabruck Bahnhof@X=13663783@Y=48010083@U=81@L=8100507@",
+    "type": "S",
+    "name": "Vöcklabruck Bahnhof",
+    "icoX": 1,
+    "extId": "8100507",
+    "state": "F",
+    "crd": {
+     "x": 13663783,
+     "y": 48010083,
+     "floor": 0
+    },
+    "pCls": 4157,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101093",
+      "type": "U"
+     },
+     {
+      "id": "Vk",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Hbf (U1)@X=16373447@Y=48187107@U=81@L=904005@",
+    "type": "S",
+    "name": "Wien Hbf (U1)",
+    "icoX": 18,
+    "extId": "904005",
+    "state": "F",
+    "crd": {
+     "x": 16373447,
+     "y": 48187107,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Karlsplatz (U1)@X=16369114@Y=48201553@U=81@L=904001@",
+    "type": "S",
+    "name": "Wien Karlsplatz (U1)",
+    "icoX": 18,
+    "extId": "904001",
+    "state": "F",
+    "crd": {
+     "x": 16369186,
+     "y": 48201292,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Taubstummengasse (U1)@X=16370480@Y=48193526@U=81@L=904006@",
+    "type": "S",
+    "name": "Wien Taubstummengasse (U1)",
+    "icoX": 18,
+    "extId": "904006",
+    "state": "F",
+    "crd": {
+     "x": 16370480,
+     "y": 48193526,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Praterstern Bahnhof (U1)@X=16393223@Y=48219747@U=81@L=902002@",
+    "type": "S",
+    "name": "Wien Praterstern Bahnhof (U1)",
+    "icoX": 18,
+    "extId": "902002",
+    "state": "F",
+    "crd": {
+     "x": 16393223,
+     "y": 48219747,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Karlsplatz (U4)@X=16369599@Y=48200385@U=81@L=904015@",
+    "type": "S",
+    "name": "Wien Karlsplatz (U4)",
+    "icoX": 18,
+    "extId": "904015",
+    "state": "F",
+    "crd": {
+     "x": 16369474,
+     "y": 48200429,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Hütteldorf Bahnhof (U4)@X=16260911@Y=48196951@U=81@L=914013@",
+    "type": "S",
+    "name": "Wien Hütteldorf Bahnhof (U4)",
+    "icoX": 18,
+    "extId": "914013",
+    "state": "F",
+    "crd": {
+     "x": 16260911,
+     "y": 48196951,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Kettenbrückengasse (U4)@X=16358273@Y=48196681@U=81@L=904002@",
+    "type": "S",
+    "name": "Wien Kettenbrückengasse (U4)",
+    "icoX": 18,
+    "extId": "904002",
+    "state": "F",
+    "crd": {
+     "x": 16358273,
+     "y": 48196681,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Pilgramgasse (U4)@X=16354273@Y=48192132@U=81@L=905002@",
+    "type": "S",
+    "name": "Wien Pilgramgasse (U4)",
+    "icoX": 18,
+    "extId": "905002",
+    "state": "F",
+    "crd": {
+     "x": 16354282,
+     "y": 48192186,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000300"
+   },
+   {
+    "lid": "A=1@O=Wien Margaretengürtel (U4)@X=16342164@Y=48188438@U=81@L=905001@",
+    "type": "S",
+    "name": "Wien Margaretengürtel (U4)",
+    "icoX": 18,
+    "extId": "905001",
+    "state": "F",
+    "crd": {
+     "x": 16342164,
+     "y": 48188438,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Längenfeldgasse (U4/U6 Gleis 2)@X=16335261@Y=48184914@U=81@L=912120@",
+    "type": "S",
+    "name": "Wien Längenfeldgasse (U4/U6 Gleis 2)",
+    "icoX": 18,
+    "extId": "912120",
+    "state": "F",
+    "crd": {
+     "x": 16335261,
+     "y": 48184914,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000100"
+   },
+   {
+    "lid": "A=1@O=Wien Meidling Hauptstraße (U4)@X=16327925@Y=48183647@U=81@L=912003@",
+    "type": "S",
+    "name": "Wien Meidling Hauptstraße (U4)",
+    "icoX": 18,
+    "extId": "912003",
+    "state": "F",
+    "crd": {
+     "x": 16328015,
+     "y": 48183692,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Schönbrunn (U4)@X=16318963@Y=48186038@U=81@L=913004@",
+    "type": "S",
+    "name": "Wien Schönbrunn (U4)",
+    "icoX": 18,
+    "extId": "913004",
+    "state": "F",
+    "crd": {
+     "x": 16318963,
+     "y": 48186038,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Hietzing (U4)@X=16304868@Y=48187548@U=81@L=913002@",
+    "type": "S",
+    "name": "Wien Hietzing (U4)",
+    "icoX": 18,
+    "extId": "913002",
+    "state": "F",
+    "crd": {
+     "x": 16304868,
+     "y": 48187548,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Braunschweiggasse (U4)@X=16295888@Y=48189382@U=81@L=913001@",
+    "type": "S",
+    "name": "Wien Braunschweiggasse (U4)",
+    "icoX": 18,
+    "extId": "913001",
+    "state": "F",
+    "crd": {
+     "x": 16295888,
+     "y": 48189382,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Unter St.Veit (U4)@X=16286368@Y=48191063@U=81@L=913005@",
+    "type": "S",
+    "name": "Wien Unter St.Veit (U4)",
+    "icoX": 18,
+    "extId": "913005",
+    "state": "F",
+    "crd": {
+     "x": 16286368,
+     "y": 48191063,
+     "floor": 0
+    },
+    "pCls": 256,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Wien Ober St.Veit (U4)@X=16276184@Y=48192231@U=81@L=913003@",
+    "type": "S",
+    "name": "Wien Ober St.Veit (U4)",
+    "icoX": 18,
+    "extId": "913003",
+    "state": "F",
+    "crd": {
+     "x": 16276184,
+     "y": 48192231,
+     "floor": 0
+    },
+    "pCls": 320,
+    "entry": true,
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=Tullnerfeld Bahnhof@X=15996529@Y=48295275@U=81@L=8102059@",
+    "type": "S",
+    "name": "Tullnerfeld Bahnhof",
+    "icoX": 1,
+    "extId": "8102059",
+    "state": "F",
+    "crd": {
+     "x": 15996529,
+     "y": 48295275,
+     "floor": 0
+    },
+    "pCls": 61,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101295",
+      "type": "U"
+     },
+     {
+      "id": "Tfd",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   },
+   {
+    "lid": "A=1@O=St.Valentin Bahnhof@X=14522002@Y=48178909@U=81@L=8100009@",
+    "type": "S",
+    "name": "St.Valentin Bahnhof",
+    "icoX": 1,
+    "extId": "8100009",
+    "state": "F",
+    "crd": {
+     "x": 14522002,
+     "y": 48178909,
+     "floor": 0
+    },
+    "pCls": 61,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101061",
+      "type": "U"
+     },
+     {
+      "id": "Sv",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000400"
+   },
+   {
+    "lid": "A=1@O=Neumarkt/Wallersee Bahnhof@X=13225964@Y=47955842@U=81@L=8100134@",
+    "type": "S",
+    "name": "Neumarkt/Wallersee Bahnhof",
+    "icoX": 1,
+    "extId": "8100134",
+    "state": "F",
+    "crd": {
+     "x": 13225964,
+     "y": 47955842,
+     "floor": 0
+    },
+    "pCls": 53,
+    "entry": true,
+    "globalIdL": [
+     {
+      "id": "8101211",
+      "type": "U"
+     },
+     {
+      "id": "Nsk",
+      "type": "B"
+     }
+    ],
+    "chgTime": "000500"
+   }
+  ],
+  "prodL": [
+   {
+    "pid": "L::2::EC::B1146449194::EC_1146449194::*",
+    "name": "EC 462",
+    "nameS": "EC 462",
+    "number": "462",
+    "icoX": 2,
+    "cls": 4,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "EC 462  ",
+     "num": "462",
+     "matchId": "462",
+     "catOut": "EC      ",
+     "catOutS": "EC",
+     "catOutL": "Eurocity",
+     "catIn": "EC",
+     "catCode": "2",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_836595",
+     "HIM_FREETEXT_836614",
+     "HIM_FREETEXT_836615",
+     "HIM_FREETEXT_887014",
+     "HIM_FREETEXT_887025",
+     "HIM_FREETEXT_887033",
+     "HIM_FREETEXT_889048",
+     "HIM_FREETEXT_894907",
+     "HIM_FREETEXT_894917",
+     "HIM_FREETEXT_894923",
+     "HIM_FREETEXT_894939",
+     "HIM_FREETEXT_901088",
+     "HIM_FREETEXT_903557",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905283",
+     "HIM_FREETEXT_906322",
+     "HIM_FREETEXT_907515",
+     "HIM_FREETEXT_907517",
+     "HIM_FREETEXT_907734",
+     "HIM_FREETEXT_907801",
+     "HIM_FREETEXT_908818",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_919067",
+     "HIM_FREETEXT_919068",
+     "HIM_FREETEXT_920471",
+     "HIM_FREETEXT_920477",
+     "HIM_FREETEXT_920478",
+     "HIM_FREETEXT_920479",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921046",
+     "HIM_FREETEXT_921056",
+     "HIM_FREETEXT_921225",
+     "HIM_FREETEXT_921485"
+    ]
+   },
+   {
+    "pid": "L::9::Tram::B4256541157::vor-22-18::*",
+    "name": "Tram 18",
+    "nameS": "Tram 18",
+    "number": "18",
+    "icoX": 0,
+    "cls": 512,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "Tram 18 ",
+     "num": "21410",
+     "line": "18",
+     "lineId": "vor-22-18",
+     "matchId": "3118000",
+     "catOut": "Tram    ",
+     "catOutS": "str",
+     "catOutL": "Straßenbahn",
+     "catIn": "str",
+     "catCode": "9",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "name": "Fußweg",
+    "icoX": 10,
+    "prodCtx": {
+     "name": "Fußweg"
+    }
+   },
+   {
+    "pid": "L::12::WB::B3422329368::WB_3422329368::*",
+    "name": "WB 998",
+    "nameS": "WB 998",
+    "number": "998",
+    "icoX": 11,
+    "cls": 4096,
+    "oprX": 2,
+    "prodCtx": {
+     "name": "WB 998  ",
+     "num": "998",
+     "matchId": "998",
+     "catOut": "WB      ",
+     "catOutS": "WB",
+     "catOutL": "WESTbahn",
+     "catIn": "WB",
+     "catCode": "12",
+     "admin": "3236__"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_917085"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "904358",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "905014",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "904359",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "905015",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "904360",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U1::*",
+    "name": "U1",
+    "nameS": "U1",
+    "number": "U1",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U1",
+     "num": "905016",
+     "line": "U1",
+     "lineId": "vor-21-U1",
+     "matchId": "3301000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_896329",
+     "HIM_FREETEXT_909456"
+    ]
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "950517",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "951352",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "950518",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "951353",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "950519",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::8::U::B4256541157::vor-21-U4::*",
+    "name": "U4",
+    "nameS": "U4",
+    "number": "U4",
+    "icoX": 18,
+    "cls": 256,
+    "oprX": 1,
+    "prodCtx": {
+     "name": "      U4",
+     "num": "951355",
+     "line": "U4",
+     "lineId": "vor-21-U4",
+     "matchId": "3304000",
+     "catOut": "U       ",
+     "catOutS": "U",
+     "catOutL": "U-Bahn",
+     "catIn": "U",
+     "catCode": "8",
+     "admin": "v04WL_"
+    }
+   },
+   {
+    "pid": "L::2::IC::B1146449194::IC_1146449194::*",
+    "name": "IC 848",
+    "nameS": "IC 848",
+    "number": "848",
+    "icoX": 2,
+    "cls": 4,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "IC 848  ",
+     "num": "848",
+     "matchId": "848",
+     "catOut": "IC      ",
+     "catOutS": "IC",
+     "catOutL": "Intercity",
+     "catIn": "IC",
+     "catCode": "2",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_836779",
+     "HIM_FREETEXT_836780",
+     "HIM_FREETEXT_836782",
+     "HIM_FREETEXT_836788",
+     "HIM_FREETEXT_836789",
+     "HIM_FREETEXT_836807",
+     "HIM_FREETEXT_836815",
+     "HIM_FREETEXT_836816",
+     "HIM_FREETEXT_836817",
+     "HIM_FREETEXT_836818",
+     "HIM_FREETEXT_836820",
+     "HIM_FREETEXT_859661",
+     "HIM_FREETEXT_863868",
+     "HIM_FREETEXT_877737",
+     "HIM_FREETEXT_889048",
+     "HIM_FREETEXT_894939",
+     "HIM_FREETEXT_894963",
+     "HIM_FREETEXT_901088",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908818",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_917780",
+     "HIM_FREETEXT_917781",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_920810",
+     "HIM_FREETEXT_920813",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921225",
+     "HIM_FREETEXT_921241",
+     "HIM_FREETEXT_921261",
+     "HIM_FREETEXT_921643",
+     "HIM_FREETEXT_921647",
+     "HIM_FREETEXT_921752"
+    ]
+   },
+   {
+    "pid": "L::2::IC::B1146449194::IC_1146449194::*",
+    "name": "IC 407",
+    "nameS": "IC 407",
+    "number": "407",
+    "icoX": 2,
+    "cls": 4,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "IC 407  ",
+     "num": "407",
+     "matchId": "407",
+     "catOut": "IC      ",
+     "catOutS": "IC",
+     "catOutL": "Intercity",
+     "catIn": "IC",
+     "catCode": "2",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_836779",
+     "HIM_FREETEXT_836780",
+     "HIM_FREETEXT_836782",
+     "HIM_FREETEXT_836788",
+     "HIM_FREETEXT_836789",
+     "HIM_FREETEXT_836807",
+     "HIM_FREETEXT_836815",
+     "HIM_FREETEXT_836816",
+     "HIM_FREETEXT_836817",
+     "HIM_FREETEXT_836818",
+     "HIM_FREETEXT_836820",
+     "HIM_FREETEXT_859661",
+     "HIM_FREETEXT_863868",
+     "HIM_FREETEXT_877737",
+     "HIM_FREETEXT_889048",
+     "HIM_FREETEXT_894939",
+     "HIM_FREETEXT_894963",
+     "HIM_FREETEXT_901088",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908818",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_917780",
+     "HIM_FREETEXT_917781",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_920810",
+     "HIM_FREETEXT_920813",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921225",
+     "HIM_FREETEXT_921241",
+     "HIM_FREETEXT_921261",
+     "HIM_FREETEXT_921643",
+     "HIM_FREETEXT_921647",
+     "HIM_FREETEXT_921752"
+    ]
+   },
+   {
+    "pid": "L::2::IC::B1146449194::IC_1146449194::*",
+    "name": "IC 540",
+    "nameS": "IC 540",
+    "number": "540",
+    "icoX": 2,
+    "cls": 4,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "IC 540  ",
+     "num": "540",
+     "matchId": "540",
+     "catOut": "IC      ",
+     "catOutS": "IC",
+     "catOutL": "Intercity",
+     "catIn": "IC",
+     "catCode": "2",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_836779",
+     "HIM_FREETEXT_836780",
+     "HIM_FREETEXT_836782",
+     "HIM_FREETEXT_836788",
+     "HIM_FREETEXT_836789",
+     "HIM_FREETEXT_836807",
+     "HIM_FREETEXT_836815",
+     "HIM_FREETEXT_836816",
+     "HIM_FREETEXT_836817",
+     "HIM_FREETEXT_836818",
+     "HIM_FREETEXT_836820",
+     "HIM_FREETEXT_859661",
+     "HIM_FREETEXT_863868",
+     "HIM_FREETEXT_877737",
+     "HIM_FREETEXT_889048",
+     "HIM_FREETEXT_894939",
+     "HIM_FREETEXT_894963",
+     "HIM_FREETEXT_901088",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908818",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_917780",
+     "HIM_FREETEXT_917781",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_920810",
+     "HIM_FREETEXT_920813",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921225",
+     "HIM_FREETEXT_921241",
+     "HIM_FREETEXT_921261",
+     "HIM_FREETEXT_921643",
+     "HIM_FREETEXT_921647",
+     "HIM_FREETEXT_921752"
+    ]
+   },
+   {
+    "pid": "L::2::IC::B1146449194::IC_1146449194::*",
+    "name": "IC 544",
+    "nameS": "IC 544",
+    "number": "544",
+    "icoX": 2,
+    "cls": 4,
+    "oprX": 0,
+    "prodCtx": {
+     "name": "IC 544  ",
+     "num": "544",
+     "matchId": "544",
+     "catOut": "IC      ",
+     "catOutS": "IC",
+     "catOutL": "Intercity",
+     "catIn": "IC",
+     "catCode": "2",
+     "admin": "81____"
+    },
+    "himIdL": [
+     "HIM_FREETEXT_836779",
+     "HIM_FREETEXT_836780",
+     "HIM_FREETEXT_836782",
+     "HIM_FREETEXT_836788",
+     "HIM_FREETEXT_836789",
+     "HIM_FREETEXT_836807",
+     "HIM_FREETEXT_836815",
+     "HIM_FREETEXT_836816",
+     "HIM_FREETEXT_836817",
+     "HIM_FREETEXT_836818",
+     "HIM_FREETEXT_836820",
+     "HIM_FREETEXT_859661",
+     "HIM_FREETEXT_863868",
+     "HIM_FREETEXT_877737",
+     "HIM_FREETEXT_889048",
+     "HIM_FREETEXT_894939",
+     "HIM_FREETEXT_894963",
+     "HIM_FREETEXT_901088",
+     "HIM_FREETEXT_904332",
+     "HIM_FREETEXT_905828",
+     "HIM_FREETEXT_908818",
+     "HIM_FREETEXT_909990",
+     "HIM_FREETEXT_910486",
+     "HIM_FREETEXT_916192",
+     "HIM_FREETEXT_917526",
+     "HIM_FREETEXT_917780",
+     "HIM_FREETEXT_917781",
+     "HIM_FREETEXT_919094",
+     "HIM_FREETEXT_920810",
+     "HIM_FREETEXT_920813",
+     "HIM_FREETEXT_920998",
+     "HIM_FREETEXT_921225",
+     "HIM_FREETEXT_921241",
+     "HIM_FREETEXT_921261",
+     "HIM_FREETEXT_921643",
+     "HIM_FREETEXT_921647",
+     "HIM_FREETEXT_921752"
+    ]
+   }
+  ],
+  "opL": [
+   {
+    "name": "Nahreisezug",
+    "icoX": 3
+   },
+   {
+    "name": "Wiener Linien GmbH & Co KG",
+    "url": "https://www.wienerlinien.at",
+    "icoX": 7,
+    "street": "Erdbergerstraße 202",
+    "town": "A-1031 Wien",
+    "phone": "+43 1 7909 100",
+    "email": "post@wienerlinien.at",
+    "id": "vor+04+WL"
+   },
+   {
+    "name": "Westbahn Management GmbH",
+    "url": "https://www.westbahn.at",
+    "icoX": 12,
+    "street": "Europaplatz 3/Stiege 5",
+    "town": "A-1150 Wien",
+    "phone": "+43 1 89900",
+    "email": "meinenachricht@westbahn.at",
+    "id": "at:0:WB:3236__"
+   }
+  ],
+  "himL": [
+   {
+    "hid": "896329",
+    "act": true,
+    "head": "Bauarbeiten - Zugausfall",
+    "text": "Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf </b>bzw.<b> Wien St.Marx</b> und <b>Wien Praterstern</b><br>von <b>07.09.2026</b> bis <b>Ende Oktober 2027 </b><br>keine Züge fahren.<br>Als Ersatz haben Sie die Möglichkeit das Angebot der Wiener Linien zu nutzen.<br><br>Zur Hauptverkehrszeit beachten Sie bitte, dass die U1 stark ausgelastet ist und Sie auch an den Stationen Wien Stadlau, Wien Floridsdorf, Wien Simmering, Wien Praterstern und Wien Meidling auf die Verkehre der Wiener Linien Richtung Innenstadt umsteigen können.<br><br>Wir bitten um Entschuldigung.<br><a href=\"https://www.oebb.at/dam/jcr:80a9fe9a-1afe-4100-89d9-245b3058f7b2/infofolder-hauptsperre-barrierefrei.pdf\" target=\"_blank\" rel=\"noopener\">Details finden Sie hier...</a><br><a href=\"https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke/bauphase2\" target=\"_blank\" rel=\"noopener\">Information (Homepage)</a>",
+    "icoX": 19,
+    "prio": 100,
+    "fLocX": 21,
+    "tLocX": 24,
+    "altSection": "Wien Hbf/Wien St.Marx &#60;=&#62; Wien Praterstern",
+    "prod": 304,
+    "src": 99,
+    "lModDate": "20260916",
+    "lModTime": "091801",
+    "sDate": "20260907",
+    "sTime": "000000",
+    "eDate": "20271031",
+    "eTime": "235900",
+    "sDaily": "000000",
+    "eDaily": "235900",
+    "comp": "KI HIM BAU",
+    "catRefL": [
+     0
+    ],
+    "pubChL": [
+     {
+      "name": "TIMETABLE",
+      "fDate": "20260916",
+      "fTime": "091700",
+      "tDate": "20271031",
+      "tTime": "235900"
+     }
+    ],
+    "rRefL": [
+     10
+    ],
+    "edgeRefL": [
+     0
+    ]
+   }
+  ],
+  "himMsgEdgeL": [
+   {
+    "icoCrd": {
+     "x": 13375318,
+     "y": 48594481
+    }
+   }
+  ],
+  "himMsgCatL": [
+   {
+    "id": 1
+   }
+  ],
+  "dirL": [
+   {
+    "txt": "Salzburg Hbf"
+   },
+   {
+    "txt": "Burggasse-Stadthalle",
+    "flg": "R"
+   },
+   {
+    "txt": "Leopoldau",
+    "flg": "H"
+   },
+   {
+    "txt": "Hütteldorf",
+    "flg": "R"
+   },
+   {
+    "txt": "München Hbf",
+    "flg": "x"
+   }
+  ],
+  "lDrawStyleL": [
+   {
+    "sIcoX": 2,
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   },
+   {
+    "sIcoX": 2,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 6,
+    "eIcoX": 6,
+    "type": "SOLID",
+    "bg": {
+     "r": 171,
+     "g": 0,
+     "b": 32
+    }
+   },
+   {
+    "sIcoX": 0,
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "sIcoX": 10,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 11,
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "sIcoX": 11,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 16,
+    "eIcoX": 16,
+    "type": "SOLID",
+    "bg": {
+     "r": 100,
+     "g": 100,
+     "b": 100
+    }
+   },
+   {
+    "sIcoX": 17,
+    "eIcoX": 17,
+    "type": "SOLID",
+    "bg": {
+     "r": 0,
+     "g": 96,
+     "b": 240
+    }
+   },
+   {
+    "sIcoX": 18,
+    "type": "SOLID",
+    "bg": {
+     "r": 51,
+     "g": 103,
+     "b": 170
+    }
+   },
+   {
+    "type": "SOLID",
+    "bg": {
+     "r": 51,
+     "g": 103,
+     "b": 170
+    }
+   },
+   {
+    "sIcoX": 18,
+    "type": "DOT",
+    "bg": {
+     "r": 135,
+     "g": 135,
+     "b": 135
+    }
+   },
+   {
+    "sIcoX": 20,
+    "eIcoX": 20,
+    "type": "SOLID",
+    "bg": {
+     "r": 51,
+     "g": 103,
+     "b": 170
+    }
+   }
+  ],
+  "timeStyleL": [
+   {
+    "mode": "ABS"
+   },
+   {
+    "mode": "HIDE"
+   }
+  ]
+ },
+ "outConL": [
+  {
+   "cid": "C-0",
+   "date": "20261025",
+   "dur": "023900",
+   "durS": "023900",
+   "chg": 0,
+   "sDays": {
+    "sDaysR": "täglich",
+    "sDaysI": "nicht 7. Feb bis 8. Jul 2027",
+    "sDaysB": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC00000000000000000000000000000000000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC"
+   },
+   "dep": {
+    "locX": 0,
+    "idx": 7,
+    "dProdX": 0,
+    "dPltfS": {
+     "type": "PL",
+     "txt": "8"
+    },
+    "dTimeS": "232800",
+    "dTimeFS": {
+     "styleX": 0
+    },
+    "dProgType": "PROGNOSED",
+    "dTZOffset": 60,
+    "type": "N"
+   },
+   "arr": {
+    "locX": 1,
+    "idx": 11,
+    "aProdX": 0,
+    "aPltfS": {
+     "type": "PL",
+     "txt": "3"
+    },
+    "aTimeS": "01020700",
+    "aTimeFS": {
+     "styleX": 0
+    },
+    "aProgType": "PROGNOSED",
+    "aTZOffset": 60,
+    "msgL": [
+     {
+      "type": "REM",
+      "remX": 1,
+      "sty": "I",
+      "tagL": [
+       "RES_LOC_H3"
+      ],
+      "sort": 147324928
+     }
+    ],
+    "type": "N"
+   },
+   "secL": [
+    {
+     "type": "JNY",
+     "dep": {
+      "locX": 0,
+      "idx": 7,
+      "dProdX": 0,
+      "dPltfS": {
+       "type": "PL",
+       "txt": "8"
+      },
+      "dTimeS": "232800",
+      "dTimeFS": {
+       "styleX": 0
+      },
+      "dProgType": "PROGNOSED",
+      "dTZOffset": 60,
+      "type": "N"
+     },
+     "arr": {
+      "locX": 1,
+      "idx": 11,
+      "aProdX": 0,
+      "aPltfS": {
+       "type": "PL",
+       "txt": "3"
+      },
+      "aTimeS": "01020700",
+      "aTimeFS": {
+       "styleX": 0
+      },
+      "aProgType": "PROGNOSED",
+      "aTZOffset": 60,
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 1,
+        "sty": "I",
+        "tagL": [
+         "RES_LOC_H3"
+        ],
+        "sort": 147324928
+       }
+      ],
+      "type": "N"
+     },
+     "jny": {
+      "jid": "2|#VN#1#ST#1792663957#PI#0#ZI#200857#TA#0#DA#251026#1S#5500003#1T#2030#LS#8100002#LT#10207#PU#81#RT#1#CA#EC#ZE#462#ZB#EC 462  #PC#2#FR#5500003#FT#2030#TO#8100002#TT#10207#",
+      "date": "20261025",
+      "prodX": 0,
+      "dirTxt": "Salzburg Hbf",
+      "status": "P",
+      "isRchbl": true,
+      "stopL": [
+       {
+        "locX": 0,
+        "idx": 7,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "8"
+        },
+        "dTimeS": "232800",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dDirTxt": "Salzburg Hbf",
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 2,
+        "idx": 8,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "aTimeS": "233300",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "dTimeS": "233500",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 3,
+        "idx": 9,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "aTimeS": "235900",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "5"
+        },
+        "dTimeS": "01000100",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 4,
+        "idx": 10,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "2A-D"
+        },
+        "aTimeS": "01004800",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aTZOffset": 60,
+        "dProdX": 0,
+        "dPltfS": {
+         "type": "PL",
+         "txt": "2A-D"
+        },
+        "dTimeS": "01005100",
+        "dTimeFS": {
+         "styleX": 0
+        },
+        "dTZOffset": 60,
+        "type": "N"
+       },
+       {
+        "locX": 1,
+        "idx": 11,
+        "aProdX": 0,
+        "aPltfS": {
+         "type": "PL",
+         "txt": "3"
+        },
+        "aTimeS": "01020700",
+        "aTimeFS": {
+         "styleX": 0
+        },
+        "aProgType": "PROGNOSED",
+        "aTZOffset": 60,
+        "type": "N"
+       }
+      ],
+      "ctxRecon": "T$A=1@O=Wien Hbf (Bahnsteige 3-12)@L=8103000@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610252328$202610260207$EC 462  $$1$$$$$$",
+      "msgL": [
+       {
+        "type": "REM",
+        "remX": 0,
+        "sty": "I",
+        "fLocX": 0,
+        "tLocX": 1,
+        "tagL": [
+         "RES_JNY_DTL"
+        ],
+        "sort": 549978112
+       }
+      ],
+      "subscr": "F",
+      "prodL": [
+       {
+        "prodX": 0,
+        "fLocX": 0,
+        "tLocX": 1,
+        "fIdx": 7,
+        "tIdx": 11
+       }
+      ],
+      "dirL": [
+       {
+        "dirX": 0,
+        "fLocX": 0,
+        "tLocX": 1,
+        "fIdx": 7,
+        "tIdx": 11
+       }
+      ],
+      "sumLDrawStyleX": 0,
+      "resLDrawStyleX": 3,
+      "trainStartDate": "20261025",
+      "durS": "023900"
+     }
+    }
+   ],
+   "trfRes": {
+    "statusCode": "OK",
+    "clickout": "https://shop.oebbtickets.at/de/ticket?cref=scottymobil&connectionDatetimeDeparture=2026-10-25T23:28&connectionDatetimeArrival=2026-10-26T02:07&connectionOrigEva=8103000&connectionDestEva=8100002&stationOrigName=Wien%20Hbf%20(Tiefgescho%C3%9F%20Stra%C3%9Fenbahn)&stationDestName=Salzburg%20Hbf",
+    "extContActionBar": {
+     "text": "Tickets",
+     "content": {
+      "type": "URL_EXT",
+      "content": "aHR0cHM6Ly9zaG9wLm9lYmJ0aWNrZXRzLmF0L2RlL3RpY2tldD9jcmVmPXNjb3R0eW1vYmlsJmNvbm5lY3Rpb25EYXRldGltZURlcGFydHVyZT0yMDI2LTEwLTI1VDIzOjI4JmNvbm5lY3Rpb25EYXRldGltZUFycml2YWw9MjAyNi0xMC0yNlQwMjowNyZjb25uZWN0aW9uT3JpZ0V2YT04MTAzMDAwJmNvbm5lY3Rpb25EZXN0RXZhPTgxMDAwMDImc3RhdGlvbk9yaWdOYW1lPVdpZW4lMjBIYmYlMjAoVGllZmdlc2NobyVDMyU5RiUyMFN0cmElQzMlOUZlbmJhaG4pJnN0YXRpb25EZXN0TmFtZT1TYWx6YnVyZyUyMEhiZg=="
+     }
+    }
+   },
+   "msgL": [
+    {
+     "type": "REM",
+     "remX": 2,
+     "sty": "I",
+     "tagL": [
+      "SUM_CON_HDR_H3",
+      "RES_CON_FTR_H3"
+     ],
+     "sort": 147324928
+    }
+   ],
+   "conSubscr": "F",
+   "recState": "U",
+   "cksum": "c53fa476_3",
+   "cksumDti": "7a5fb931_3",
+   "intvlSubscr": "F",
+   "originType": "INITIAL",
+   "recon": {
+    "ctx": "¶HKI¶T$A=1@O=Wien Hbf (Bahnsteige 3-12)@L=8103000@a=128@$A=1@O=Salzburg Hbf@L=8100002@a=128@$202610252328$202610260207$EC 462  $$1$$$$$$¶KRCC¶#VE#1#MRTF#"
+   }
+  }
+ ],
+ "fpB": "20260821",
+ "fpE": "20271211"
+}
