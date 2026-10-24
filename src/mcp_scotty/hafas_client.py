@@ -60,10 +60,11 @@ HAFAS_CONFIGS = {
 
 
 def _iso_time(date: str, time: str) -> str:
-    """Combine a HAFAS date (``YYYYMMDD``) and time (``HHMMSS``) into ISO 8601.
+    """Combine a HAFAS date (``YYYYMMDD``) and time into ISO 8601.
 
-    Hours may exceed 23 — ``"250300"`` is 01:03 on the following day — so the
-    time is added to the date instead of being parsed as a clock time.
+    Six characters are ``HHMMSS`` on the given day; eight are ``DDHHMMSS``,
+    where the first two digits are a day offset (``"01020700"`` is 02:07:00 one
+    day later). pyhafas parses it the same way.
     """
     day = datetime.strptime(date, "%Y%m%d")
     # ``DDHHMMSS``: the first two digits are a day offset, not an hour.
