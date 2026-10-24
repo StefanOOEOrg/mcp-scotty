@@ -8,8 +8,6 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-import pytest
-
 from mcp_scotty.hafas_client import HAFAS_CONFIGS, HafasClient
 
 FIXTURES = Path(__file__).parent / "fixtures"
