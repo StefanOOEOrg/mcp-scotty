@@ -496,7 +496,7 @@ async def get_arrivals(arguments: dict) -> list[TextContent]:
 # Built after the handlers so the 2.x constructor can bind them.
 app = Server(
     "scotty",
-    version="0.3.0",
+    version="0.4.0",
     on_list_tools=handle_list_tools,
     on_call_tool=handle_call_tool,
 )
