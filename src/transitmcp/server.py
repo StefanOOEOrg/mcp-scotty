@@ -6,8 +6,8 @@ import os
 from datetime import datetime
 from typing import Any, Optional
 
-from mcp.server import Server
-from mcp.types import Tool, TextContent
+from mcp.server.lowlevel import Server
+from mcp.types import CallToolRequestParams, CallToolResult, ListToolsResult, TextContent, Tool
 
 from .hafas_client import HafasClient, HAFAS_CONFIGS
 from .profiles import get_profile, list_profiles, TransitProfile
@@ -15,9 +15,6 @@ from .profiles import get_profile, list_profiles, TransitProfile
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-# Initialize the MCP server
-app = Server("transitmcp")
 
 # Global variables for current profile and client
 current_profile: Optional[TransitProfile] = None
@@ -76,10 +73,9 @@ def initialize_client(profile_name: str = None) -> bool:
 initialize_client()
 
 
-@app.list_tools()
-async def list_tools() -> list[Tool]:
-    """List available tools for transit information."""
-    return [
+async def handle_list_tools(ctx, params) -> ListToolsResult:
+    """Return the tool definitions."""
+    return ListToolsResult(tools=[
         Tool(
             name="list_transit_profiles",
             description=(
@@ -210,42 +206,47 @@ async def list_tools() -> list[Tool]:
                 "required": ["station"],
             },
         ),
-    ]
+    ])
 
 
-@app.call_tool()
-async def call_tool(name: str, arguments: Any) -> list[TextContent]:
+async def _dispatch(name: str, arguments: dict[str, Any]) -> tuple[list[TextContent], bool]:
     """Handle tool calls for transit information."""
     # Handle profile management tools
     if name == "list_transit_profiles":
-        return await handle_list_profiles()
+        return await handle_list_profiles(), False
     elif name == "set_transit_profile":
-        return await handle_set_profile(arguments)
+        return await handle_set_profile(arguments), False
 
     # Check if HAFAS client is available for other tools
     if hafas_client is None:
         error_msg = get_error_message("unavailable")
-        return [TextContent(type="text", text=error_msg)]
+        return [TextContent(type="text", text=error_msg)], True
 
     try:
         if name == "search_stations":
-            return await search_stations(arguments)
+            return await search_stations(arguments), False
         elif name == "get_journeys":
-            return await get_journeys(arguments)
+            return await get_journeys(arguments), False
         elif name == "get_departures":
-            return await get_departures(arguments)
+            return await get_departures(arguments), False
         elif name == "get_arrivals":
-            return await get_arrivals(arguments)
+            return await get_arrivals(arguments), False
         else:
-            return [TextContent(type="text", text=f"Unknown tool: {name}")]
+            return [TextContent(type="text", text=f"Unknown tool: {name}")], True
     except ssl.SSLError as e:
         logger.error(f"SSL error in tool {name}: {e}", exc_info=True)
         error_msg = get_error_message("ssl")
-        return [TextContent(type="text", text=error_msg)]
+        return [TextContent(type="text", text=error_msg)], True
     except Exception as e:
         logger.error(f"Error executing tool {name}: {e}", exc_info=True)
         error_msg = get_error_message("general", str(e))
-        return [TextContent(type="text", text=error_msg)]
+        return [TextContent(type="text", text=error_msg)], True
+
+
+async def handle_call_tool(ctx, params: CallToolRequestParams) -> CallToolResult:
+    """Dispatch a tool call and wrap the result for the mcp 2.x API."""
+    content, is_error = await _dispatch(params.name, params.arguments or {})
+    return CallToolResult(content=content, is_error=is_error)
 
 
 def get_error_message(error_type: str, technical_detail: str = "") -> str:
@@ -549,6 +550,15 @@ async def get_arrivals(arguments: dict) -> list[TextContent]:
     except Exception as e:
         logger.error(f"Error getting arrivals: {e}")
         return [TextContent(type="text", text=f"Error getting arrivals: {str(e)}")]
+
+
+# Built after the handlers so the 2.x constructor can bind them.
+app = Server(
+    "transitmcp",
+    version="0.3.0",
+    on_list_tools=handle_list_tools,
+    on_call_tool=handle_call_tool,
+)
 
 
 async def main():
