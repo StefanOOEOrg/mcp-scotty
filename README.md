@@ -1,7 +1,7 @@
 # mcp-scotty
 
 [![CI](https://github.com/StefanOOEOrg/mcp-scotty/actions/workflows/ci.yml/badge.svg)](https://github.com/StefanOOEOrg/mcp-scotty/actions/workflows/ci.yml)
-[![M8ven Verified](https://m8ven.ai/badge/mcp/stefanooeorg-mcp-scotty-vw6uta?variant=verified)](https://m8ven.ai/mcp/stefanooeorg-mcp-scotty-vw6uta)
+[![M8ven Score](https://m8ven.ai/badge/mcp/stefanooeorg-mcp-scotty-vw6uta?v=1be218941eb5916cc75b4f2a5ed68f07)](https://m8ven.ai/mcp/stefanooeorg-mcp-scotty-vw6uta?s=readme)
 
 **Multi-Provider MCP Server for European Public Transit Information**
 
