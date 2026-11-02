@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Relicensed from GPL-3.0 to MIT; releases up to 0.4.0 remain under GPL-3.0.
+
 ### Planned Features
 - Station board (`get_departures`, `get_arrivals`) — Stage 2
 - Trip tracking functionality
