@@ -11,10 +11,10 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.14",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Environment :: Console",
 ]
-license = {text = "GPL-3.0-only"}
+license = "MIT"
+license-files = ["LICENSE"]
 
 dependencies = [
     "mcp>=2.2,<3",
