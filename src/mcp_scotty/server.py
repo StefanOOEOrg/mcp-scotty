@@ -152,7 +152,9 @@ async def handle_list_tools(ctx, params) -> ListToolsResult:
                     },
                     "date": {
                         "type": "string",
-                        "description": "Date for journey (YYYY-MM-DD format, optional, defaults to today)",
+                        "description": (
+                            "Date for journey (YYYY-MM-DD format, optional, defaults to today)"
+                        ),
                     },
                     "time": {
                         "type": "string",
