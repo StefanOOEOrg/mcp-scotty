@@ -60,7 +60,9 @@ def test_search_locations_returns_normalised_matches():
     assert len(matches) == 3
     assert [m["name"] for m in matches] == ["Wien Hbf (U)", "Wr.Neustadt Hbf", "Wien"]
     assert set(matches[0]) == {"id", "name", "ext_id", "type"}
-    assert matches[0]["id"] == "A=1@O=Wien Hbf (U)@X=16377950@Y=48184986@U=81@L=1290401@p=1792663957@"
+    assert matches[0]["id"] == (
+        "A=1@O=Wien Hbf (U)@X=16377950@Y=48184986@U=81@L=1290401@p=1792663957@"
+    )
     assert matches[0]["ext_id"] == "1290401"
     assert matches[0]["type"] == "S"
 

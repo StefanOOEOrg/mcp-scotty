@@ -172,7 +172,7 @@ class HafasClient:
         except json.JSONDecodeError as e:
             logger.error(f"Invalid JSON response: {e}")
             logger.error(f"Response text: {response.text[:500]}")
-            raise HafasError("HAFAS API returned invalid JSON")
+            raise HafasError("HAFAS API returned invalid JSON") from e
 
     def search_locations(self, query: str, max_results: int = 10) -> list[dict[str, Any]]:
         """Find stations matching a free-text query.
