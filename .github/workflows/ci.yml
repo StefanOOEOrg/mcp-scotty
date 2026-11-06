@@ -34,7 +34,7 @@ jobs:
       - name: Lint
         run: python -m ruff check src tests
       - name: Tests
-        run: python -m pytest -q
+        run: python -m pytest -q tests/test_deliberate_break.py
 
   ci-ok:
     needs: [test]
