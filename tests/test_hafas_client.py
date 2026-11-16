@@ -1,4 +1,4 @@
-"""Tests for the HAFAS client (Stage 1: LocMatch and TripSearch).
+"""Tests for the HAFAS client (LocMatch, TripSearch and StationBoard).
 
 The fixtures are real responses of the ÖBB endpoint, cut down to the fields the
 client needs. `_make_request` is replaced, so no test touches the network.
@@ -8,7 +8,9 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from mcp_scotty.hafas_client import HAFAS_CONFIGS, HafasClient
+import pytest
+
+from mcp_scotty.hafas_client import HAFAS_CONFIGS, HafasClient, HafasError
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -148,3 +150,152 @@ def test_overnight_arrival_uses_the_day_offset_prefix():
     assert journey["duration_minutes"] == 159
     assert journey["legs"][0]["line"] == "EC 462"
     assert journey["legs"][0]["arrival"] == "2026-10-26T02:07:00"
+
+
+# ----------------------------------------------------------------------- StationBoard
+
+
+class FakeResponse:
+    """Minimal stand-in for a ``requests`` response (the raw envelope is the point)."""
+
+    def __init__(self, data: dict) -> None:
+        self.data = data
+        self.text = json.dumps(data)
+
+    def raise_for_status(self) -> None:
+        """A recorded 200 needs no work."""
+
+    def json(self) -> dict:
+        return self.data
+
+
+def test_get_station_board_sends_a_station_board_request():
+    client = RecordingClient(payload("station_board_dep_wien_hbf.json"))
+
+    client.get_station_board(
+        "STATION",
+        board_type="DEP",
+        date=datetime(2026, 11, 16),
+        time=datetime(2026, 11, 16, 9, 58),
+        max_results=10,
+    )
+
+    assert len(client.calls) == 1
+    method, params = client.calls[0]
+    assert method == "StationBoard"
+    assert params == {
+        "type": "DEP",
+        "stbLoc": {"lid": "STATION", "type": "S"},
+        "date": "20261116",
+        "time": "095800",
+        "maxJny": 10,
+    }
+
+
+def test_get_station_board_normalises_departures():
+    client = RecordingClient(payload("station_board_dep_wien_hbf.json"))
+
+    rows = client.get_station_board("STATION", board_type="DEP", max_results=10)
+
+    assert len(rows) == 10
+    assert rows[0] == {
+        "line": "Tram 62",
+        "category": "Straßenbahn",
+        "direction": "Quartier Belvedere Bahnhst",
+        "time": "2026-11-16T10:18:00",
+        "planned_time": "2026-11-16T10:18:00",
+        "platform": "J",
+    }
+    assert rows[-1]["line"] == "REX 6 (Zug-Nr. 7612)"
+    assert rows[-1]["platform"] == "5A-B"
+    assert [row["time"] for row in rows] == sorted(row["time"] for row in rows)
+
+
+def test_get_station_board_normalises_arrivals():
+    client = RecordingClient(payload("station_board_arr_wien_hbf.json"))
+
+    rows = client.get_station_board("STATION", board_type="ARR", max_results=10)
+
+    assert len(rows) == 10
+    assert rows[0] == {
+        "line": "NJ 40421",
+        "category": "nightjet",
+        "direction": "Amsterdam Centraal",
+        "time": "2026-11-16T09:48:00",
+        "planned_time": "2026-11-16T09:48:00",
+        "platform": "9",
+    }
+
+
+def test_overnight_arrival_uses_the_entry_day_not_the_requested_one():
+    """The row says ``20261115`` and ``01094800``: 09:48 the day after the row date."""
+    client = RecordingClient(payload("station_board_arr_wien_hbf.json"))
+
+    rows = client.get_station_board("STATION", board_type="ARR", max_results=10)
+
+    assert rows[0]["time"] == "2026-11-16T09:48:00"
+    assert rows[1]["direction"] == "Hamburg-Altona"
+
+
+def test_a_row_without_a_platform_has_none():
+    client = RecordingClient(payload("station_board_arr_wien_hbf.json"))
+
+    rows = client.get_station_board("STATION", board_type="ARR", max_results=10)
+
+    assert rows[-1]["direction"] == "Wien Nußdorf Beethovengang (Zahnradbahnstraße/Straßenbahn)"
+    assert rows[-1]["platform"] is None
+
+
+def test_a_row_without_a_product_category_has_none():
+    client = RecordingClient(
+        {
+            "common": {"prodL": [{"name": "Bus 13A"}]},
+            "jnyL": [
+                {
+                    "prodX": 0,
+                    "dirTxt": "Wien Simmering Bahnhof",
+                    "date": "20261116",
+                    "stbStop": {"dTimeS": "102200", "dPlatfS": "G"},
+                }
+            ],
+        }
+    )
+
+    row = client.get_station_board("STATION", board_type="DEP")[0]
+
+    assert row["line"] == "Bus 13A"
+    assert row["category"] is None
+
+
+def test_get_station_board_without_rows_is_an_empty_list():
+    client = RecordingClient({})
+
+    assert client.get_station_board("STATION") == []
+
+
+def test_get_station_board_rejects_an_unknown_board_type():
+    client = RecordingClient({})
+
+    with pytest.raises(ValueError):
+        client.get_station_board("STATION", board_type="XYZ")
+
+
+# --------------------------------------------------------------- empty envelopes
+
+
+def test_make_request_raises_on_an_empty_service_result(monkeypatch):
+    """The recorded wrong-field response: no ``err`` at the service level, no rows."""
+    client = HafasClient(HAFAS_CONFIGS["oebb"])
+    envelope = payload("station_board_empty_envelope.json")
+    monkeypatch.setattr(client.session, "post", lambda *args, **kwargs: FakeResponse(envelope))
+
+    with pytest.raises(HafasError, match="no service result"):
+        client._make_request("StationBoard", {"type": "DEP"})
+
+
+def test_make_request_raises_when_svcresl_is_missing(monkeypatch):
+    client = HafasClient(HAFAS_CONFIGS["oebb"])
+    monkeypatch.setattr(client.session, "post", lambda *args, **kwargs: FakeResponse({}))
+
+    with pytest.raises(HafasError, match="no service result"):
+        client._make_request("StationBoard", {"type": "DEP"})

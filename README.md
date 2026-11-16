@@ -26,11 +26,10 @@ mcp-scotty is a Model Context Protocol (MCP) server that provides real-time publ
 - **Station search**: free-text search, returning the HAFAS id a client needs for the next step
 - **Journey planning**: connections between two stations with departure/arrival, duration, number of
   changes and every leg (line name, origin, destination, times) — including overnight connections
+- **Departures and arrivals**: the station board of one station — line, direction, planned time and
+  planned platform, in the order the backend returns them
 - **Honest failures**: a failed or unsupported call comes back as an MCP error (`is_error: true`) with a
   readable message, never as an empty list that looks like a result
-
-`get_departures` and `get_arrivals` exist as tools but **do not work yet** — the HAFAS station board is
-still unverified, so they answer with an explicit error. See [Known issues](#-known-issues).
 
 ## 📋 Requirements
 
@@ -147,28 +146,34 @@ Find connections between two stations.
 Find trains from Vienna to Salzburg tomorrow at 14:00
 ```
 
-### 5. `get_departures` — not implemented yet
+### 5. `get_departures`
 
-Currently answers with `is_error: true` and the message *"The station board is not implemented yet for
-ÖBB; use get_journeys or search_stations instead."* The HAFAS `StationBoard` request is still being
-researched (see [Planned improvements](#-planned-improvements)).
+Show the upcoming departures from one station.
 
 **Parameters**:
 - `station` (string): Station name
 - `max_departures` (int, optional): Maximum departures (default: 10)
+
+**Output**: a heading, then one line per departure with line, direction, `HH:MM` and planned platform,
+in the order the provider returns them. An unknown station and an empty board are errors — the tool never
+answers with an empty list.
 
 **Example**:
 ```
 Show departures from Amsterdam Central Station
 ```
 
-### 6. `get_arrivals` — not implemented yet
+### 6. `get_arrivals`
 
-Same as `get_departures`: it fails with a readable error instead of returning an empty list.
+Show the upcoming arrivals at one station.
 
 **Parameters**:
 - `station` (string): Station name
 - `max_arrivals` (int, optional): Maximum arrivals (default: 10)
+
+**Output**: the same rows as `get_departures`, with the arrival time; `direction` is where the train comes
+from. Times of trains that cross midnight keep their own day (an overnight train from Amsterdam arriving
+at 09:48 the next morning is shown on the day it arrives).
 
 **Example**:
 ```
@@ -236,14 +241,12 @@ mcp-scotty/
 
 ## ⚠️ Known Issues
 
-- **The station board is not implemented.** HAFAS `StationBoard` returns no entries with the request
-  bodies tried so far, so `get_departures` and `get_arrivals` answer with an explicit error. Everything
-  else works against the live ÖBB API and is covered by tests over recorded responses.
 - **Station search is fuzzy.** `LocMatch` answers even for nonsense queries — "Xyzzy-123" still returns a
   handful of unrelated stations. The "no stations found" error therefore only fires on genuinely empty
   answers; check the returned names before using an id.
-- **No delay or platform information.** The normalised journey data carries times, durations, changes and
-  legs — not real-time delays or platform changes.
+- **No real-time delay or platform information.** The station board shows the **planned** time and the
+  **planned** platform; a delay or a platform change is not reflected. Journey data carries times,
+  durations, changes and legs — no live delays either.
 - **SSL verification can be disabled** with `TRANSIT_DISABLE_SSL_VERIFY=true` for local testing. That is
   insecure and must never be used in production; the code logs a warning when it happens.
 
@@ -252,12 +255,11 @@ mcp-scotty/
 - Four providers only (`oebb`, `db`, `sbb`, `ns`); more need their own endpoint configuration.
 - No tickets, prices or seat reservations — this server only reads timetable data.
 - No caching: every call goes to the provider, so rate limits and outages are visible immediately.
-- Departures and arrivals are missing until the station board is understood (Stage 2).
 - The HAFAS protocol is undocumented; a provider can change its endpoint without notice.
 
 ## 🔮 Planned Improvements
 
-- [ ] **Stage 2:** research `StationBoard` and implement `get_departures` / `get_arrivals`
+- [x] **Stage 2:** research `StationBoard` and implement `get_departures` / `get_arrivals`
 - [ ] More providers (SNCF, NMBS, DSB) with their own configurations
 - [ ] Optional caching for repeated station lookups
 - [ ] Surface real-time delay and platform data where the provider offers it

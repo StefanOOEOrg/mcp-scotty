@@ -1,0 +1,184 @@
+{
+ "common": {
+  "prodL": [
+   {
+    "name": "NJ 40421",
+    "prodCtx": {
+     "catOutL": "nightjet"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "NJ 493",
+    "prodCtx": {
+     "catOutL": "nightjet"
+    }
+   },
+   {
+    "name": "Tram O",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "IC 548",
+    "prodCtx": {
+     "catOutL": "Intercity"
+    }
+   },
+   {
+    "name": "EC 101",
+    "prodCtx": {
+     "catOutL": "Eurocity"
+    }
+   },
+   {
+    "name": "Tram 62",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": "Bus 13A",
+    "prodCtx": {
+     "catOutL": "Bus"
+    }
+   },
+   {
+    "name": "Tram O",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": "U1",
+    "prodCtx": {
+     "catOutL": "U-Bahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "Tram D",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   }
+  ]
+ },
+ "jnyL": [
+  {
+   "prodX": 0,
+   "dirTxt": "Amsterdam Centraal",
+   "date": "20261115",
+   "stbStop": {
+    "aTimeS": "01094800",
+    "aPlatfS": "9"
+   }
+  },
+  {
+   "prodX": 7,
+   "dirTxt": "Hamburg-Altona",
+   "date": "20261115",
+   "stbStop": {
+    "aTimeS": "01094800",
+    "aPlatfS": "9"
+   }
+  },
+  {
+   "prodX": 8,
+   "dirTxt": "Wien Bruno-Marek-Allee (Schleife)",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "094800",
+    "aPlatfS": "E"
+   }
+  },
+  {
+   "prodX": 11,
+   "dirTxt": "Flughafen Wien Bahnhof",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "094800",
+    "aPlatfS": "8A-B"
+   }
+  },
+  {
+   "prodX": 12,
+   "dirTxt": "Katowice",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "094900",
+    "aPlatfS": "6A-B"
+   }
+  },
+  {
+   "prodX": 13,
+   "dirTxt": "Wien Quartier Belvedere Bahnhst (Wiedner Gürtel)",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "095000",
+    "aPlatfS": "H"
+   }
+  },
+  {
+   "prodX": 14,
+   "dirTxt": "Wien Skodagasse (Nr.27)",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "095100",
+    "aPlatfS": "G"
+   }
+  },
+  {
+   "prodX": 15,
+   "dirTxt": "Wien Migerkastraße",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "095200",
+    "aPlatfS": "F"
+   }
+  },
+  {
+   "prodX": 16,
+   "dirTxt": "Wien Leopoldau Bahnhst (U1)",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "095300",
+    "aPlatfS": "2"
+   }
+  },
+  {
+   "prodX": 18,
+   "dirTxt": "Wien Nußdorf Beethovengang (Zahnradbahnstraße/Straßenbahn)",
+   "date": "20261116",
+   "stbStop": {
+    "aTimeS": "095300"
+   }
+  }
+ ]
+}

@@ -7,17 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-- Relicensed from GPL-3.0 to MIT; releases up to 0.4.0 remain under GPL-3.0.
-
 ### Planned Features
-- Station board (`get_departures`, `get_arrivals`) — Stage 2
 - Trip tracking functionality
 - Fare and pricing information
 - Station facilities and amenities information
 - Real-time platform change notifications
 - Service disruption alerts
 - Support for more European transit providers (SNCF, NMBS, DSB, etc.)
+
+## [0.5.0] - 2026-11-16
+
+The station board works — and a silently empty answer is no longer possible.
+
+### Added
+- **Departures and arrivals.** `get_departures` and `get_arrivals` return the station board:
+  line, category, direction, planned time and planned platform, one row per departure or
+  arrival, in the order the provider returns them. The `StationBoard` body needs the station
+  in `stbLoc` (a `loc` field is answered with an empty envelope); the row's own `date` plus the
+  `DDHHMMSS` day offset of `_iso_time` keeps overnight trains on the day they actually arrive.
+
+### Changed
+- Relicensed from GPL-3.0 to MIT; releases up to 0.4.0 remain under GPL-3.0.
+
+### Fixed
+- **An empty `svcResL` is an error now.** `_make_request` raised only on a service-level `err`,
+  so a response with an empty `svcResL` and no service result was returned as-is — a broken
+  request looked exactly like an empty board. It now raises
+  `HafasError("HAFAS returned no service result")` for every method, which is the honest
+  failure the README promises.
 
 ## [0.4.0] - 2026-10-24
 
