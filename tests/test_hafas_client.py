@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 
+from mcp_scotty import __version__
 from mcp_scotty.hafas_client import HAFAS_CONFIGS, HafasClient, HafasError
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -267,6 +268,27 @@ def test_a_row_without_a_product_category_has_none():
     assert row["category"] is None
 
 
+def test_a_prod_x_outside_the_product_list_degrades_to_no_line():
+    client = RecordingClient(
+        {
+            "common": {"prodL": [{"name": "Bus 13A"}]},
+            "jnyL": [
+                {
+                    "prodX": 7,
+                    "dirTxt": "Wien Simmering Bahnhof",
+                    "date": "20261116",
+                    "stbStop": {"dTimeS": "102200"},
+                }
+            ],
+        }
+    )
+
+    row = client.get_station_board("STATION", board_type="DEP")[0]
+
+    assert row["line"] is None
+    assert row["category"] is None
+
+
 def test_get_station_board_without_rows_is_an_empty_list():
     client = RecordingClient({})
 
@@ -278,6 +300,13 @@ def test_get_station_board_rejects_an_unknown_board_type():
 
     with pytest.raises(ValueError):
         client.get_station_board("STATION", board_type="XYZ")
+
+
+def test_user_agent_carries_the_package_version():
+    """The wire identifier and ``__version__`` are one number, not two."""
+    client = HafasClient(HAFAS_CONFIGS["oebb"])
+
+    assert client.session.headers["User-Agent"] == f"mcp-scotty/{__version__}"
 
 
 # --------------------------------------------------------------- empty envelopes

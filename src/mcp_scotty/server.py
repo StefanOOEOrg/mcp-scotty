@@ -467,7 +467,7 @@ async def get_departures(arguments: dict) -> list[TextContent]:
     Arguments: ``station`` (name), optional ``max_departures`` (default 10).
 
     Implementation:
-        1. Resolve the name with ``_resolve_station(station, "Station")``.
+        1. Resolve the name with ``_resolve_station(station, "Departure")``.
         2. ``hafas_client.get_station_board(station_id, "DEP", max_results=n)``.
         3. No row -> ``raise ToolFailure(f"No departures found at {station}")``,
            never an empty list.
@@ -478,7 +478,7 @@ async def get_departures(arguments: dict) -> list[TextContent]:
     station = arguments["station"]
     max_results = arguments.get("max_departures", 10)
 
-    station_id = _resolve_station(station, "Station")
+    station_id = _resolve_station(station, "Departure")
     rows = hafas_client.get_station_board(station_id, "DEP", max_results=max_results)
     if not rows:
         raise ToolFailure(f"No departures found at {station}")
@@ -492,7 +492,7 @@ async def get_arrivals(arguments: dict) -> list[TextContent]:
     Arguments: ``station`` (name), optional ``max_arrivals`` (default 10).
 
     Same as :func:`get_departures` with the arrival board: resolve the name with
-    ``_resolve_station(station, "Station")``, call
+    ``_resolve_station(station, "Arrival")``, call
     ``hafas_client.get_station_board(station_id, "ARR", max_results=n)`` and
     ``raise ToolFailure(f"No arrivals found at {station}")`` for an empty board
     instead of returning an empty list.
@@ -500,7 +500,7 @@ async def get_arrivals(arguments: dict) -> list[TextContent]:
     station = arguments["station"]
     max_results = arguments.get("max_arrivals", 10)
 
-    station_id = _resolve_station(station, "Station")
+    station_id = _resolve_station(station, "Arrival")
     rows = hafas_client.get_station_board(station_id, "ARR", max_results=max_results)
     if not rows:
         raise ToolFailure(f"No arrivals found at {station}")

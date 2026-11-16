@@ -102,7 +102,7 @@ class HafasClient:
             'Accept-Charset': 'utf-8',
             'Accept-Encoding': 'gzip',
             'Content-Type': 'application/json',
-            'User-Agent': 'mcp-scotty/0.4.0',
+            'User-Agent': 'mcp-scotty/0.5.0',
         })
         self.disable_ssl_verify = disable_ssl_verify
 
@@ -318,7 +318,7 @@ class HafasClient:
             it comes from), ``time`` and ``planned_time`` (both the planned instant
             as ISO 8601, ``"2026-11-16T10:00:00"``) and ``platform`` (the planned
             platform as a plain string like ``"6A-B"``, ``None`` when absent).
-            No row is an empty list, not an error.
+            No rows is an empty list, not an error.
 
         Request:
             Service ``StationBoard`` with
@@ -407,7 +407,8 @@ class HafasClient:
         prefix = "d" if board_type == "DEP" else "a"
         planned = _iso_time(entry["date"], stop[f"{prefix}TimeS"])
         prod_x = entry.get("prodX")
-        product = products[int(prod_x)] if prod_x is not None else {}
+        index = int(prod_x) if prod_x is not None else -1
+        product = products[index] if 0 <= index < len(products) else {}
         return {
             "line": product.get("name"),
             "category": (product.get("prodCtx") or {}).get("catOutL"),

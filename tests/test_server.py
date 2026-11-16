@@ -299,7 +299,7 @@ async def test_get_departures_with_unknown_station_is_an_error(connect):
     is_error, text = await call_tool("get_departures", {"station": "Nirgendwo"})
 
     assert is_error is True
-    assert "Nirgendwo" in text
+    assert "Departure station not found: Nirgendwo" in text
 
 
 async def test_get_departures_without_rows_is_an_error(connect):
@@ -337,3 +337,12 @@ async def test_get_arrivals_without_rows_is_an_error(connect):
 
     assert is_error is True
     assert "No arrivals found at Wien Hbf" in text
+
+
+async def test_get_arrivals_with_unknown_station_is_an_error(connect):
+    connect(FakeClient(locations=[]))
+
+    is_error, text = await call_tool("get_arrivals", {"station": "Nirgendwo"})
+
+    assert is_error is True
+    assert "Arrival station not found: Nirgendwo" in text
