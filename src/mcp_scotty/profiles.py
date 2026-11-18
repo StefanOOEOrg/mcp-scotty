@@ -28,7 +28,7 @@ PROFILES = {
         description="Austrian Federal Railways (Österreichische Bundesbahnen)",
         hafas_profile_id="oebb",
         language="de",
-        timezone="Europe/Vienna"
+        timezone="Europe/Vienna",
     ),
     "db": TransitProfile(
         name="Deutsche Bahn",
@@ -36,7 +36,7 @@ PROFILES = {
         description="German Federal Railway (Deutsche Bahn)",
         hafas_profile_id="db",
         language="de",
-        timezone="Europe/Berlin"
+        timezone="Europe/Berlin",
     ),
     "sbb": TransitProfile(
         name="SBB",
@@ -44,7 +44,7 @@ PROFILES = {
         description="Swiss Federal Railways (Schweizerische Bundesbahnen)",
         hafas_profile_id="sbb",
         language="de",
-        timezone="Europe/Zurich"
+        timezone="Europe/Zurich",
     ),
     "ns": TransitProfile(
         name="NS",
@@ -52,7 +52,7 @@ PROFILES = {
         description="Nederlandse Spoorwegen (Dutch Railways)",
         hafas_profile_id="ns",
         language="en",
-        timezone="Europe/Amsterdam"
+        timezone="Europe/Amsterdam",
     ),
 }
 

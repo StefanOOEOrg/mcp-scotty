@@ -165,11 +165,7 @@ When adding new tools:
 
 1. **Define the tool** in `list_tools()`:
    ```python
-   Tool(
-       name="tool_name",
-       description="Clear description of what the tool does",
-       inputSchema={...}
-   )
+   Tool(name="tool_name", description="Clear description of what the tool does", inputSchema={...})
    ```
 
 2. **Implement the handler** in `call_tool()`:
@@ -199,6 +195,7 @@ Create test files in a `tests/` directory:
 ```python
 import pytest
 from scottymcp.server import search_stations
+
 
 @pytest.mark.asyncio
 async def test_search_stations():
