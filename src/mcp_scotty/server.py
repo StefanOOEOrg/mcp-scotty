@@ -137,7 +137,7 @@ async def handle_list_tools(ctx, params) -> ListToolsResult:
                 name="get_journeys",
                 description=(
                     "Find transit connections between two stations. "
-                    "Returns journey options with departure/arrival times, transfers, and durations."  # noqa: E501
+                    "Returns journey options with departure/arrival times, transfers, and durations."
                 ),
                 inputSchema={
                     "type": "object",
@@ -158,11 +158,11 @@ async def handle_list_tools(ctx, params) -> ListToolsResult:
                         },
                         "time": {
                             "type": "string",
-                            "description": "Time for journey (HH:MM format, optional, defaults to now)",  # noqa: E501
+                            "description": "Time for journey (HH:MM format, optional, defaults to now)",
                         },
                         "max_journeys": {
                             "type": "integer",
-                            "description": "Maximum number of journey options to return (default: 5)",  # noqa: E501
+                            "description": "Maximum number of journey options to return (default: 5)",
                             "default": 5,
                         },
                     },
@@ -331,7 +331,7 @@ async def handle_set_profile(arguments: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})",  # noqa: E501
+                text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})",
             )
         ]
     else:
@@ -339,7 +339,7 @@ async def handle_set_profile(arguments: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}",  # noqa: E501
+                text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}",
             )
         ]
 
