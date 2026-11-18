@@ -462,43 +462,68 @@ def _format_leg(leg: dict) -> str:
 
 
 async def get_departures(arguments: dict) -> list[TextContent]:
-    """Departures from one station - not implemented yet (Stage 2).
+    """Departures from one station.
 
     Arguments: ``station`` (name), optional ``max_departures`` (default 10).
 
-    The station board of the HAFAS API returns no data yet, so this tool fails
-    honestly instead of pretending:
-    ``raise ToolFailure("The station board is not implemented yet for "
-    f"{current_profile.name}; use get_journeys or search_stations instead.")``.
-    It must not answer with an empty list.
+    Implementation:
+        1. Resolve the name with ``_resolve_station(station, "Departure")``.
+        2. ``hafas_client.get_station_board(station_id, "DEP", max_results=n)``.
+        3. No row -> ``raise ToolFailure(f"No departures found at {station}")``,
+           never an empty list.
+        4. Otherwise one ``TextContent``: a heading, then one line per row with
+           line, direction, ``HH:MM`` and platform, in the order the backend
+           returned them (it is already time-ordered).
     """
-    raise ToolFailure(
-        "The station board is not implemented yet for "
-        f"{current_profile.name}; use get_journeys or search_stations instead."
-    )
+    station = arguments["station"]
+    max_results = arguments.get("max_departures", 10)
 
+    station_id = _resolve_station(station, "Departure")
+    rows = hafas_client.get_station_board(station_id, "DEP", max_results=max_results)
+    if not rows:
+        raise ToolFailure(f"No departures found at {station}")
+
+    return [TextContent(type="text", text=_format_board(station, "Departures", rows))]
 
 
 async def get_arrivals(arguments: dict) -> list[TextContent]:
-    """Arrivals at one station - not implemented yet (Stage 2).
+    """Arrivals at one station.
 
     Arguments: ``station`` (name), optional ``max_arrivals`` (default 10).
 
-    Same rule as :func:`get_departures`: ``raise ToolFailure("The station board is
-    not implemented yet for " f"{current_profile.name}; use get_journeys or
-    search_stations instead.")`` instead of returning an empty list.
+    Same as :func:`get_departures` with the arrival board: resolve the name with
+    ``_resolve_station(station, "Arrival")``, call
+    ``hafas_client.get_station_board(station_id, "ARR", max_results=n)`` and
+    ``raise ToolFailure(f"No arrivals found at {station}")`` for an empty board
+    instead of returning an empty list.
     """
-    raise ToolFailure(
-        "The station board is not implemented yet for "
-        f"{current_profile.name}; use get_journeys or search_stations instead."
-    )
+    station = arguments["station"]
+    max_results = arguments.get("max_arrivals", 10)
+
+    station_id = _resolve_station(station, "Arrival")
+    rows = hafas_client.get_station_board(station_id, "ARR", max_results=max_results)
+    if not rows:
+        raise ToolFailure(f"No arrivals found at {station}")
+
+    return [TextContent(type="text", text=_format_board(station, "Arrivals", rows))]
+
+
+def _format_board(station: str, title: str, rows: list[dict]) -> str:
+    """Render a station board as Markdown, one line per row."""
+    lines = [f"# {title} at {station}", ""]
+    for row in rows:
+        platform = row["platform"] or "-"
+        lines.append(
+            f"- {_clock(row['time'])} {row['line']}: {row['direction']} (platform {platform})"
+        )
+    return "\n".join(lines)
 
 
 
 # Built after the handlers so the 2.x constructor can bind them.
 app = Server(
     "scotty",
-    version="0.4.0",
+    version="0.5.0",
     on_list_tools=handle_list_tools,
     on_call_tool=handle_call_tool,
 )

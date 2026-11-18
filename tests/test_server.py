@@ -67,9 +67,10 @@ JOURNEY = {
 class FakeClient:
     """Stands in for ``HafasClient`` and records what the handlers ask for."""
 
-    def __init__(self, locations=(), journeys=(), error=None):
+    def __init__(self, locations=(), journeys=(), boards=(), error=None):
         self.locations = list(locations)
         self.journeys = list(journeys)
+        self.boards = list(boards)
         self.error = error
         self.calls = []
 
@@ -84,6 +85,12 @@ class FakeClient:
         if self.error:
             raise self.error
         return self.journeys[:max_journeys]
+
+    def get_station_board(self, station_id, board_type="DEP", date=None, time=None, max_results=10):
+        self.calls.append(("get_station_board", station_id, board_type, max_results))
+        if self.error:
+            raise self.error
+        return self.boards[:max_results]
 
 
 @pytest.fixture
@@ -229,24 +236,113 @@ async def test_get_journeys_without_connections_is_an_error(connect):
     assert "No journeys found from Wien Hbf to Salzburg Hbf" in text
 
 
-# ------------------------------------------------- departures / arrivals: honest
+# ------------------------------------------------------- departures / arrivals
 
 
-async def test_departures_say_they_are_not_implemented(connect):
-    connect(FakeClient())
+DEPARTURES = [
+    {
+        "line": "Tram 62",
+        "category": "Straßenbahn",
+        "direction": "Quartier Belvedere Bahnhst",
+        "time": "2026-11-16T10:18:00",
+        "planned_time": "2026-11-16T10:18:00",
+        "platform": "J",
+    },
+    {
+        "line": "REX 6 (Zug-Nr. 7612)",
+        "category": "RegionalExpress",
+        "direction": "Deutschkreutz",
+        "time": "2026-11-16T10:23:00",
+        "planned_time": "2026-11-16T10:23:00",
+        "platform": None,
+    },
+]
+
+ARRIVALS = [
+    {
+        "line": "NJ 40421",
+        "category": "nightjet",
+        "direction": "Amsterdam Centraal",
+        "time": "2026-11-16T09:48:00",
+        "planned_time": "2026-11-16T09:48:00",
+        "platform": "9",
+    },
+]
+
+
+async def test_get_departures_formats_rows(connect):
+    connect(FakeClient(locations=[STATION], boards=DEPARTURES))
+
+    is_error, text = await call_tool("get_departures", {"station": "Wien Hbf"})
+
+    assert is_error is False
+    assert "10:18" in text
+    assert "Tram 62" in text
+    assert "Quartier Belvedere Bahnhst" in text
+    assert "platform J" in text
+    assert "10:23" in text
+    assert "platform -" in text
+
+
+async def test_get_departures_resolves_the_station_and_asks_for_the_board(connect):
+    fake = connect(FakeClient(locations=[STATION], boards=DEPARTURES))
+
+    await call_tool("get_departures", {"station": "Wien Hbf", "max_departures": 4})
+
+    assert fake.calls[0] == ("search_locations", "Wien Hbf", 1)
+    assert fake.calls[1] == ("get_station_board", STATION["id"], "DEP", 4)
+
+
+async def test_get_departures_with_unknown_station_is_an_error(connect):
+    connect(FakeClient(locations=[]))
+
+    is_error, text = await call_tool("get_departures", {"station": "Nirgendwo"})
+
+    assert is_error is True
+    assert "Departure station not found: Nirgendwo" in text
+
+
+async def test_get_departures_without_rows_is_an_error(connect):
+    connect(FakeClient(locations=[STATION], boards=[]))
 
     is_error, text = await call_tool("get_departures", {"station": "Wien Hbf"})
 
     assert is_error is True
-    assert "not implemented yet" in text
-    assert "ÖBB" in text
+    assert "No departures found at Wien Hbf" in text
 
 
-async def test_arrivals_say_they_are_not_implemented(connect):
-    connect(FakeClient())
+async def test_get_arrivals_formats_rows(connect):
+    connect(FakeClient(locations=[STATION], boards=ARRIVALS))
+
+    is_error, text = await call_tool("get_arrivals", {"station": "Wien Hbf"})
+
+    assert is_error is False
+    assert "09:48" in text
+    assert "NJ 40421" in text
+    assert "Amsterdam Centraal" in text
+
+
+async def test_get_arrivals_asks_for_the_arrival_board(connect):
+    fake = connect(FakeClient(locations=[STATION], boards=ARRIVALS))
+
+    await call_tool("get_arrivals", {"station": "Wien Hbf", "max_arrivals": 3})
+
+    assert fake.calls[1] == ("get_station_board", STATION["id"], "ARR", 3)
+
+
+async def test_get_arrivals_without_rows_is_an_error(connect):
+    connect(FakeClient(locations=[STATION], boards=[]))
 
     is_error, text = await call_tool("get_arrivals", {"station": "Wien Hbf"})
 
     assert is_error is True
-    assert "not implemented yet" in text
-    assert "ÖBB" in text
+    assert "No arrivals found at Wien Hbf" in text
+
+
+async def test_get_arrivals_with_unknown_station_is_an_error(connect):
+    connect(FakeClient(locations=[]))
+
+    is_error, text = await call_tool("get_arrivals", {"station": "Nirgendwo"})
+
+    assert is_error is True
+    assert "Arrival station not found: Nirgendwo" in text

@@ -1,0 +1,184 @@
+{
+ "common": {
+  "prodL": [
+   {
+    "name": "Tram 62",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "Tram O",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "S 60 (Zug-Nr. 26031)",
+    "prodCtx": {
+     "catOutL": "S-Bahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "Bus 13A",
+    "prodCtx": {
+     "catOutL": "Bus"
+    }
+   },
+   {
+    "name": "Tram 18",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": "U1",
+    "prodCtx": {
+     "catOutL": "U-Bahn"
+    }
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": "Tram D",
+    "prodCtx": {
+     "catOutL": "Straßenbahn"
+    }
+   },
+   {
+    "name": "REX 7 (Zug-Nr. 22729)",
+    "prodCtx": {
+     "catOutL": "RegionalExpress"
+    }
+   },
+   {
+    "name": "U1",
+    "prodCtx": {
+     "catOutL": "U-Bahn"
+    }
+   },
+   {
+    "name": "REX 6 (Zug-Nr. 7612)",
+    "prodCtx": {
+     "catOutL": "RegionalExpress"
+    }
+   }
+  ]
+ },
+ "jnyL": [
+  {
+   "prodX": 0,
+   "dirTxt": "Quartier Belvedere Bahnhst",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "101800",
+    "dPlatfS": "J"
+   }
+  },
+  {
+   "prodX": 2,
+   "dirTxt": "Raxstraße",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102100",
+    "dPlatfS": "E"
+   }
+  },
+  {
+   "prodX": 4,
+   "dirTxt": "Bruck/Leitha",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102100",
+    "dPlatfS": "11A-B"
+   }
+  },
+  {
+   "prodX": 11,
+   "dirTxt": "Alser Straße/Skodagasse",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102200",
+    "dPlatfS": "G"
+   }
+  },
+  {
+   "prodX": 12,
+   "dirTxt": "Stadion",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102200",
+    "dPlatfS": "J"
+   }
+  },
+  {
+   "prodX": 13,
+   "dirTxt": "Alaudagasse",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102300",
+    "dPlatfS": "2"
+   }
+  },
+  {
+   "prodX": 15,
+   "dirTxt": "Absberggasse",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102300"
+   }
+  },
+  {
+   "prodX": 16,
+   "dirTxt": "Wolfsthal",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102300",
+    "dPlatfS": "12A-B"
+   }
+  },
+  {
+   "prodX": 17,
+   "dirTxt": "Leopoldau",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102300",
+    "dPlatfS": "1"
+   }
+  },
+  {
+   "prodX": 18,
+   "dirTxt": "Deutschkreutz",
+   "date": "20261116",
+   "stbStop": {
+    "dTimeS": "102300",
+    "dPlatfS": "5A-B"
+   }
+  }
+ ]
+}

@@ -102,7 +102,7 @@ class HafasClient:
             'Accept-Charset': 'utf-8',
             'Accept-Encoding': 'gzip',
             'Content-Type': 'application/json',
-            'User-Agent': 'mcp-scotty/0.4.0',
+            'User-Agent': 'mcp-scotty/0.5.0',
         })
         self.disable_ssl_verify = disable_ssl_verify
 
@@ -120,6 +120,11 @@ class HafasClient:
 
         Returns:
             Response dictionary
+
+        Raises:
+            HafasError: the service reported an error, or the envelope carries no
+                service result at all (the API answers some bad request bodies with
+                an empty ``svcResL`` and no error).
         """
         # Build request body
         request_body = {
@@ -156,15 +161,15 @@ class HafasClient:
 
             data = response.json()
 
-            # Check for errors in response
-            if 'svcResL' in data and len(data['svcResL']) > 0:
-                svc_res = data['svcResL'][0]
-                if svc_res.get('err') != 'OK':
-                    error_msg = svc_res.get('errTxt', 'Unknown error')
-                    raise HafasError(f"HAFAS error: {error_msg}")
-                return svc_res.get('res', {})
+            # A missing or empty svcResL is a failed call, not an empty result.
+            if not data.get('svcResL'):
+                raise HafasError("HAFAS returned no service result")
 
-            return data
+            svc_res = data['svcResL'][0]
+            if svc_res.get('err') != 'OK':
+                error_msg = svc_res.get('errTxt', 'Unknown error')
+                raise HafasError(f"HAFAS error: {error_msg}")
+            return svc_res.get('res', {})
 
         except requests.exceptions.RequestException as e:
             logger.error(f"Request failed: {e}")
@@ -286,6 +291,73 @@ class HafasClient:
             for con in response.get("outConL", [])
         ]
 
+    def get_station_board(
+        self,
+        station_id: str,
+        board_type: str = "DEP",
+        date: datetime | None = None,
+        time: datetime | None = None,
+        max_results: int = 10,
+    ) -> list[dict[str, Any]]:
+        """Departures from or arrivals at one station.
+
+        Args:
+            station_id: HAFAS location id of the station (``id`` from
+                :meth:`search_locations`).
+            board_type: ``"DEP"`` for departures, ``"ARR"`` for arrivals.
+            date: Day of the board; ``None`` means today.
+            time: Moment of the board; ``None`` means now.
+            max_results: Maximum number of rows.
+
+        Returns:
+            A list of dicts, one per row, in the order the backend returned them
+            (already time-ordered):
+            ``line`` (the product name like ``"EC 101"``), ``category`` (e.g.
+            ``"Eurocity"``, ``None`` when the product carries none), ``direction``
+            (``dirTxt``, for a departure where the train goes, for an arrival where
+            it comes from), ``time`` and ``planned_time`` (both the planned instant
+            as ISO 8601, ``"2026-11-16T10:00:00"``) and ``platform`` (the planned
+            platform as a plain string like ``"6A-B"``, ``None`` when absent).
+            No rows is an empty list, not an error.
+
+        Request:
+            Service ``StationBoard`` with
+            ``{"type": board_type, "stbLoc": {"lid": station_id, "type": "S"},
+            "date": date.strftime("%Y%m%d"), "time": time.strftime("%H%M%S"),
+            "maxJny": max_results}``; the rows are ``res["jnyL"]``. The station
+            goes into ``stbLoc`` — a ``loc`` field is answered with an empty
+            ``svcResL``.
+
+        Notes:
+            * A row carries its **own** day in ``date`` (``YYYYMMDD``) and its
+              times in ``stbStop`` as ``dTimeS`` (departure) or ``aTimeS``
+              (arrival), with the ``DDHHMMSS`` day offset of :meth:`get_journeys`;
+              use the row's day, not the requested one.
+            * ``prodX`` indexes ``res["common"]["prodL"]``; the platform comes from
+              ``dPlatfS``/``aPlatfS``. Real-time values (``dTimeR``, ``dPlatfR``)
+              are not used.
+
+        Raises:
+            ValueError: ``board_type`` is neither ``"DEP"`` nor ``"ARR"``.
+            Exception: whatever ``_make_request`` raises (network, HAFAS error).
+        """
+        if board_type not in ("DEP", "ARR"):
+            raise ValueError(f"Unknown board type: {board_type}")
+
+        now = datetime.now()
+        params = {
+            "type": board_type,
+            "stbLoc": {"lid": station_id, "type": "S"},
+            "date": (date or now).strftime("%Y%m%d"),
+            "time": (time or now).strftime("%H%M%S"),
+            "maxJny": max_results,
+        }
+        response = self._make_request("StationBoard", params)
+        products = response.get("common", {}).get("prodL", [])
+        return [
+            self._board_entry(entry, products, board_type) for entry in response.get("jnyL", [])
+        ]
+
     @classmethod
     def _connection(
         cls,
@@ -322,4 +394,26 @@ class HafasClient:
             "destination": locations[int(sec["arr"]["locX"])]["name"],
             "departure": _iso_time(day, sec["dep"]["dTimeS"]),
             "arrival": _iso_time(day, sec["arr"]["aTimeS"]),
+        }
+
+    @staticmethod
+    def _board_entry(
+        entry: dict[str, Any],
+        products: list[dict[str, Any]],
+        board_type: str,
+    ) -> dict[str, Any]:
+        """Normalise one ``StationBoard`` row; only the planned values are used."""
+        stop = entry.get("stbStop", {})
+        prefix = "d" if board_type == "DEP" else "a"
+        planned = _iso_time(entry["date"], stop[f"{prefix}TimeS"])
+        prod_x = entry.get("prodX")
+        index = int(prod_x) if prod_x is not None else -1
+        product = products[index] if 0 <= index < len(products) else {}
+        return {
+            "line": product.get("name"),
+            "category": (product.get("prodCtx") or {}).get("catOutL"),
+            "direction": entry.get("dirTxt"),
+            "time": planned,
+            "planned_time": planned,
+            "platform": stop.get(f"{prefix}PlatfS"),
         }
