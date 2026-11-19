@@ -97,18 +97,21 @@ class HafasClient:
         """
         self.config = config
         self.session = requests.Session()
-        self.session.headers.update({
-            'Accept': 'application/json',
-            'Accept-Charset': 'utf-8',
-            'Accept-Encoding': 'gzip',
-            'Content-Type': 'application/json',
-            'User-Agent': 'mcp-scotty/0.5.0',
-        })
+        self.session.headers.update(
+            {
+                "Accept": "application/json",
+                "Accept-Charset": "utf-8",
+                "Accept-Encoding": "gzip",
+                "Content-Type": "application/json",
+                "User-Agent": "mcp-scotty/0.5.0",
+            }
+        )
         self.disable_ssl_verify = disable_ssl_verify
 
         if disable_ssl_verify:
             logger.warning("SSL verification is DISABLED - only use for testing!")
             import urllib3
+
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     def _make_request(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
@@ -128,24 +131,16 @@ class HafasClient:
         """
         # Build request body
         request_body = {
-            "auth": {
-                "type": "AID",
-                "aid": self.config.aid
-            },
+            "auth": {"type": "AID", "aid": self.config.aid},
             "client": {
                 "id": self.config.client_id,
                 "name": self.config.client_name,
                 "type": "AND",
-                "v": self.config.client_version
+                "v": self.config.client_version,
             },
             "ver": self.config.api_version,
             "lang": self.config.language,
-            "svcReqL": [
-                {
-                    "meth": method,
-                    "req": params
-                }
-            ]
+            "svcReqL": [{"meth": method, "req": params}],
         }
 
         logger.debug(f"HAFAS request: {method} to {self.config.endpoint}")
@@ -155,21 +150,21 @@ class HafasClient:
                 self.config.endpoint,
                 json=request_body,
                 verify=not self.disable_ssl_verify,
-                timeout=10
+                timeout=10,
             )
             response.raise_for_status()
 
             data = response.json()
 
             # A missing or empty svcResL is a failed call, not an empty result.
-            if not data.get('svcResL'):
+            if not data.get("svcResL"):
                 raise HafasError("HAFAS returned no service result")
 
-            svc_res = data['svcResL'][0]
-            if svc_res.get('err') != 'OK':
-                error_msg = svc_res.get('errTxt', 'Unknown error')
+            svc_res = data["svcResL"][0]
+            if svc_res.get("err") != "OK":
+                error_msg = svc_res.get("errTxt", "Unknown error")
                 raise HafasError(f"HAFAS error: {error_msg}")
-            return svc_res.get('res', {})
+            return svc_res.get("res", {})
 
         except requests.exceptions.RequestException as e:
             logger.error(f"Request failed: {e}")
@@ -223,11 +218,7 @@ class HafasClient:
         }
 
     def get_journeys(
-        self,
-        origin_id: str,
-        dest_id: str,
-        date: datetime | None = None,
-        max_journeys: int = 5
+        self, origin_id: str, dest_id: str, date: datetime | None = None, max_journeys: int = 5
     ) -> list[dict[str, Any]]:
         """Find connections between two stations.
 
@@ -286,10 +277,7 @@ class HafasClient:
         common = response.get("common", {})
         locations = common.get("locL", [])
         products = common.get("prodL", [])
-        return [
-            self._connection(con, locations, products)
-            for con in response.get("outConL", [])
-        ]
+        return [self._connection(con, locations, products) for con in response.get("outConL", [])]
 
     def get_station_board(
         self,
@@ -373,9 +361,7 @@ class HafasClient:
             "arrival": _iso_time(day, con["arr"]["aTimeS"]),
             "duration_minutes": _minutes(con.get("dur", "")),
             "changes": int(con.get("chg", 0)),
-            "legs": [
-                cls._leg(sec, day, locations, products) for sec in con.get("secL", [])
-            ],
+            "legs": [cls._leg(sec, day, locations, products) for sec in con.get("secL", [])],
         }
 
     @staticmethod

@@ -21,7 +21,6 @@ current_profile: TransitProfile | None = None
 hafas_client: HafasClient | None = None
 
 
-
 class ToolFailure(Exception):
     """A tool call that failed for a reason the caller should see."""
 
@@ -80,140 +79,142 @@ initialize_client()
 
 async def handle_list_tools(ctx, params) -> ListToolsResult:
     """Return the tool definitions."""
-    return ListToolsResult(tools=[
-        Tool(
-            name="list_transit_profiles",
-            description=(
-                "List all available transit provider profiles (ÖBB, DB, SBB, NS, etc.). "
-                "Shows which countries and providers are supported."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {},
-            },
-        ),
-        Tool(
-            name="set_transit_profile",
-            description=(
-                "Switch to a different transit provider profile. "
-                "Use 'oebb' for Austria, 'db' for Germany, 'sbb' for Switzerland, "
-                "'ns' for Netherlands, etc."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "profile": {
-                        "type": "string",
-                        "description": "Profile ID (e.g., 'oebb', 'db', 'sbb', 'ns')",
-                    },
+    return ListToolsResult(
+        tools=[
+            Tool(
+                name="list_transit_profiles",
+                description=(
+                    "List all available transit provider profiles (ÖBB, DB, SBB, NS, etc.). "
+                    "Shows which countries and providers are supported."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {},
                 },
-                "required": ["profile"],
-            },
-        ),
-        Tool(
-            name="search_stations",
-            description=(
-                "Search for train/transit stations by name. "
-                "Returns station names, IDs, and locations. "
-                "Use this to find station IDs needed for journey planning."
             ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "Station name or partial name to search for",
+            Tool(
+                name="set_transit_profile",
+                description=(
+                    "Switch to a different transit provider profile. "
+                    "Use 'oebb' for Austria, 'db' for Germany, 'sbb' for Switzerland, "
+                    "'ns' for Netherlands, etc."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {
+                        "profile": {
+                            "type": "string",
+                            "description": "Profile ID (e.g., 'oebb', 'db', 'sbb', 'ns')",
+                        },
                     },
-                    "max_results": {
-                        "type": "integer",
-                        "description": "Maximum number of results to return (default: 10)",
-                        "default": 10,
-                    },
+                    "required": ["profile"],
                 },
-                "required": ["query"],
-            },
-        ),
-        Tool(
-            name="get_journeys",
-            description=(
-                "Find transit connections between two stations. "
-                "Returns journey options with departure/arrival times, transfers, and durations."
             ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "origin": {
-                        "type": "string",
-                        "description": "Origin station name or ID",
+            Tool(
+                name="search_stations",
+                description=(
+                    "Search for train/transit stations by name. "
+                    "Returns station names, IDs, and locations. "
+                    "Use this to find station IDs needed for journey planning."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {
+                        "query": {
+                            "type": "string",
+                            "description": "Station name or partial name to search for",
+                        },
+                        "max_results": {
+                            "type": "integer",
+                            "description": "Maximum number of results to return (default: 10)",
+                            "default": 10,
+                        },
                     },
-                    "destination": {
-                        "type": "string",
-                        "description": "Destination station name or ID",
-                    },
-                    "date": {
-                        "type": "string",
-                        "description": (
-                            "Date for journey (YYYY-MM-DD format, optional, defaults to today)"
-                        ),
-                    },
-                    "time": {
-                        "type": "string",
-                        "description": "Time for journey (HH:MM format, optional, defaults to now)",
-                    },
-                    "max_journeys": {
-                        "type": "integer",
-                        "description": "Maximum number of journey options to return (default: 5)",
-                        "default": 5,
-                    },
+                    "required": ["query"],
                 },
-                "required": ["origin", "destination"],
-            },
-        ),
-        Tool(
-            name="get_departures",
-            description=(
-                "Get upcoming departures from a specific station. "
-                "Shows train/bus number, destination, platform, and departure time."
             ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "station": {
-                        "type": "string",
-                        "description": "Station name or ID to get departures from",
+            Tool(
+                name="get_journeys",
+                description=(
+                    "Find transit connections between two stations. "
+                    "Returns journey options with departure/arrival times, transfers, and durations."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {
+                        "origin": {
+                            "type": "string",
+                            "description": "Origin station name or ID",
+                        },
+                        "destination": {
+                            "type": "string",
+                            "description": "Destination station name or ID",
+                        },
+                        "date": {
+                            "type": "string",
+                            "description": (
+                                "Date for journey (YYYY-MM-DD format, optional, defaults to today)"
+                            ),
+                        },
+                        "time": {
+                            "type": "string",
+                            "description": "Time for journey (HH:MM format, optional, defaults to now)",
+                        },
+                        "max_journeys": {
+                            "type": "integer",
+                            "description": "Maximum number of journey options to return (default: 5)",
+                            "default": 5,
+                        },
                     },
-                    "max_departures": {
-                        "type": "integer",
-                        "description": "Maximum number of departures to return (default: 10)",
-                        "default": 10,
-                    },
+                    "required": ["origin", "destination"],
                 },
-                "required": ["station"],
-            },
-        ),
-        Tool(
-            name="get_arrivals",
-            description=(
-                "Get upcoming arrivals at a specific station. "
-                "Shows train/bus number, origin, platform, and arrival time."
             ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "station": {
-                        "type": "string",
-                        "description": "Station name or ID to get arrivals for",
+            Tool(
+                name="get_departures",
+                description=(
+                    "Get upcoming departures from a specific station. "
+                    "Shows train/bus number, destination, platform, and departure time."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {
+                        "station": {
+                            "type": "string",
+                            "description": "Station name or ID to get departures from",
+                        },
+                        "max_departures": {
+                            "type": "integer",
+                            "description": "Maximum number of departures to return (default: 10)",
+                            "default": 10,
+                        },
                     },
-                    "max_arrivals": {
-                        "type": "integer",
-                        "description": "Maximum number of arrivals to return (default: 10)",
-                        "default": 10,
-                    },
+                    "required": ["station"],
                 },
-                "required": ["station"],
-            },
-        ),
-    ])
+            ),
+            Tool(
+                name="get_arrivals",
+                description=(
+                    "Get upcoming arrivals at a specific station. "
+                    "Shows train/bus number, origin, platform, and arrival time."
+                ),
+                inputSchema={
+                    "type": "object",
+                    "properties": {
+                        "station": {
+                            "type": "string",
+                            "description": "Station name or ID to get arrivals for",
+                        },
+                        "max_arrivals": {
+                            "type": "integer",
+                            "description": "Maximum number of arrivals to return (default: 10)",
+                            "default": 10,
+                        },
+                    },
+                    "required": ["station"],
+                },
+            ),
+        ]
+    )
 
 
 async def _dispatch(name: str, arguments: dict[str, Any]) -> tuple[list[TextContent], bool]:
@@ -327,16 +328,20 @@ async def handle_set_profile(arguments: dict) -> list[TextContent]:
     profile_name = arguments["profile"]
 
     if initialize_client(profile_name):
-        return [TextContent(
-            type="text",
-            text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})"
-        )]
+        return [
+            TextContent(
+                type="text",
+                text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})",
+            )
+        ]
     else:
         available = ", ".join(list_profiles())
-        return [TextContent(
-            type="text",
-            text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}"
-        )]
+        return [
+            TextContent(
+                type="text",
+                text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}",
+            )
+        ]
 
 
 async def search_stations(arguments: dict) -> list[TextContent]:
@@ -401,16 +406,16 @@ async def get_journeys(arguments: dict) -> list[TextContent]:
     origin_id = _resolve_station(origin, "Origin")
     dest_id = _resolve_station(destination, "Destination")
 
-    journeys = hafas_client.get_journeys(
-        origin_id, dest_id, date=when, max_journeys=max_journeys
-    )
+    journeys = hafas_client.get_journeys(origin_id, dest_id, date=when, max_journeys=max_journeys)
     if not journeys:
         raise ToolFailure(f"No journeys found from {origin} to {destination}")
 
-    return [TextContent(
-        type="text",
-        text=_format_journeys(origin, destination, journeys),
-    )]
+    return [
+        TextContent(
+            type="text",
+            text=_format_journeys(origin, destination, journeys),
+        )
+    ]
 
 
 def _resolve_station(name: str, label: str) -> str:
@@ -458,7 +463,6 @@ def _format_leg(leg: dict) -> str:
     if leg["type"] == "WALK":
         return f"Walk: {route}"
     return f"{leg['line']}: {route}"
-
 
 
 async def get_departures(arguments: dict) -> list[TextContent]:
@@ -519,7 +523,6 @@ def _format_board(station: str, title: str, rows: list[dict]) -> str:
     return "\n".join(lines)
 
 
-
 # Built after the handlers so the 2.x constructor can bind them.
 app = Server(
     "scotty",
@@ -534,13 +537,10 @@ async def main():
     from mcp.server.stdio import stdio_server
 
     async with stdio_server() as (read_stream, write_stream):
-        await app.run(
-            read_stream,
-            write_stream,
-            app.create_initialization_options()
-        )
+        await app.run(read_stream, write_stream, app.create_initialization_options())
 
 
 if __name__ == "__main__":
     import asyncio
+
     asyncio.run(main())
