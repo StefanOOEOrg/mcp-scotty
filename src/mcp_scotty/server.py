@@ -137,7 +137,7 @@ async def handle_list_tools(ctx, params) -> ListToolsResult:
                 name="get_journeys",
                 description=(
                     "Find transit connections between two stations. "
-                    "Returns journey options with departure/arrival times, transfers, and durations."
+                    "Returns journey options with departure/arrival times, transfers, and durations."  # noqa: E501  # get_journeys tool description, 2nd half of a two-line sentence clients read verbatim
                 ),
                 inputSchema={
                     "type": "object",
@@ -158,11 +158,11 @@ async def handle_list_tools(ctx, params) -> ListToolsResult:
                         },
                         "time": {
                             "type": "string",
-                            "description": "Time for journey (HH:MM format, optional, defaults to now)",
+                            "description": "Time for journey (HH:MM format, optional, defaults to now)",  # noqa: E501  # time-parameter schema hint; one field per line keeps the sentence whole
                         },
                         "max_journeys": {
                             "type": "integer",
-                            "description": "Maximum number of journey options to return (default: 5)",
+                            "description": "Maximum number of journey options to return (default: 5)",  # noqa: E501  # max_journeys schema hint, same one-field-per-line schema layout as its siblings
                             "default": 5,
                         },
                     },
@@ -331,7 +331,7 @@ async def handle_set_profile(arguments: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})",
+                text=f"✓ Successfully switched to {current_profile.name} ({current_profile.country})",  # noqa: E501  # profile-switch confirmation shown to the user; splitting the f-string adds a newline
             )
         ]
     else:
@@ -339,7 +339,7 @@ async def handle_set_profile(arguments: dict) -> list[TextContent]:
         return [
             TextContent(
                 type="text",
-                text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}",
+                text=f"✗ Failed to switch to profile '{profile_name}'. Available profiles: {available}",  # noqa: E501  # profile-switch error listing the available profiles; user-facing single line, no wrap
             )
         ]
 
